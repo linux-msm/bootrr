@@ -1,0 +1,156 @@
+#!/bin/sh
+
+# Allow MMC to catch up
+sleep 2
+
+# APCS IPC                       0/0/0/0 (0)
+assert_driver_present apcs-ipc-driver-present qcom_apcs_ipc
+assert_device_present apcs-ipc-device-probed qcom_apcs_ipc b011000.*
+
+# BAM                            0/0/0/0 (0)
+assert_driver_present bam-driver-present bam-dma-engine
+assert_device_present bam-blsp-dma-device-probed bam-dma-engine 7884000.*
+
+# CPU clock                      0/0/0/0 (0)
+assert_driver_present cpu-clock-driver-present qcom-apcs-msm8916-clk
+assert_device_present cpu-clock-device-probed qcom-apcs-msm8916-clk qcom-apcs-msm8916-clk
+
+# GCC                            0/0/0/0 (0)
+assert_driver_present gcc-driver-present gcc-msm8916
+assert_device_present gcc-device-probed gcc-msm8916 1800000.*
+
+# GDSC                           0/0/0/0 (0)
+assert_driver_present gdsc-driver-present gcc-msm8916
+assert_device_present gdsc-device-probed gcc-msm8916 1800000.*
+
+# GIC                            0/0/0/0 (0)
+# CPR                            0/0/0/0 (0)
+assert_driver_present cpr-driver-present qcom-cpr
+assert_device_present cpr-device-probed qcom-cpr b018000.*
+
+# I2C QUP                        0/0/0/0 (0)
+assert_driver_present qup-i2c-driver-present i2c_qup
+assert_device_present qup-i2c-blsp-i2c2-probed i2c_qup 78b6000.*
+assert_device_present qup-i2c-blsp-i2c4-probed i2c_qup 78b8000.*
+assert_device_present qup-i2c-blsp-i2c6-probed i2c_qup 78ba000.*
+
+# MMCC                           0/0/0/0 (0)
+# msm_bus                        0/0/0/0 (0)
+# PSHOLD                         0/0/0/0 (0)
+assert_driver_present pshold-driver-present msm-restart
+assert_device_present pshold-device-probed 4ab000.*
+
+# QFPROM
+assert_driver_present qfprom-driver-present qcom,qfprom
+assert_device_present qfprom-device-probed qcom,qfprom 5c000.*
+
+# RPM-clocks                     0/0/0/0 (0)
+assert_driver_present rpm-clock-driver-present qcom-clk-smd-rpm
+assert_device_present rpm-clock-device-probed qcom-clk-smd-rpm *smd*
+
+# RPM-regulators                 0/0/0/0 (0)
+assert_driver_present rpm-regulator-driver-present qcom_rpm_smd_regulator
+assert_device_present rpm-regulator-device-probed qcom_rpm_smd_regulator *smd*
+
+# SCM
+assert_driver_present scm-driver-present qcom_scm
+assert_device_present scm-device-probed qcom_scm firmware:scm
+
+# Serial                         0/0/0/0 (0)
+assert_driver_present msm_serial-driver-present msm_serial
+assert_device_present msm_serial-uart1-probed msm_serial 78af000.*
+assert_device_present msm_serial-uart2-probed msm_serial 78b0000.*
+
+# SMD                            0/0/0/0 (0)
+assert_driver_present smd-driver-present qcom-smd
+assert_device_present smd-device-present qcom-smd smd
+
+# SMEM                           0/0/0/0 (0)
+assert_driver_present smem-driver-present qcom-smem
+assert_device_present smem-device-probed qcom-smem smem
+
+# SMMU                           0/0/0/0 (0)
+# SPI QUP                        0/0/0/0 (0)
+assert_driver_present qup-spi-driver-present spi_qup
+assert_device_present qup-spi-spi3-probed spi_qup 78b7000.*
+assert_device_present qup-spi-spi5-probed spi_qup 78b9000.*
+
+# TCSR mutex                     0/0/0/0 (0)
+assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
+assert_device_present tcsr-mutex-device-probed qcom_hwspinlock soc:hwlock
+
+# Timer                          0/0/0/0 (0)
+# TLMM                           0/0/0/0 (0)
+assert_driver_present tlmm-driver-present msm8916-pinctrl
+assert_device_present tlmm-device-probed msm8916-pinctrl 1000000.*
+
+# APR                            0/0/0/0 (0)
+# GLINK/SMEM                     0/0/0/0 (0)
+# GLINK/SPSS                     0/0/0/0 (0)
+# IPCROUTER                      0/0/0/0 (0)
+# SMP2P                          0/0/0/0 (0)
+assert_driver_present smp2p-driver-present qcom_smp2p
+assert_device_present smp2p-hexagon-device-probed qcom_smp2p hexagon-smp2p
+assert_device_present smp2p-wcnss-device-probed qcom_smp2p wcnss-smp2p
+
+# SMSM                           0/0/0/0 (0)
+assert_driver_present smsm-driver-present qcom-smsm
+assert_device_present smsm-device-probed qcom-smsm smsm
+
+# SPCOM                          0/0/0/0 (0)
+# CCI                            0/0/0/0 (0)
+# CPP                            0/0/0/0 (0)
+# CSID                           0/0/0/0 (0)
+# CSIPHY                         0/0/0/0 (0)
+# FaceDetect                     0/0/0/0 (0)
+# JPEG                           0/0/0/0 (0)
+# VFE                            0/0/0/0 (0)
+# FastRPC                        0/0/0/0 (0)
+# QCrypto                        0/0/0/0 (0)
+# PRNG                           0/0/0/0 (0)
+# Coresight                      0/0/0/0 (0)
+# CPU hand detect                0/0/0/0 (0)
+# DebugCC                        0/0/0/0 (0)
+# Gladiator hang detect          0/0/0/0 (0)
+# Watchdog                       0/0/0/0 (0)
+# ADSP PIL                       0/0/0/0 (0)
+# Compute PIL                    0/0/0/0 (0)
+# RMTFS memory                   0/0/0/0 (0)
+assert_driver_present rmtfs-mem-driver-present qcom_rmtfs_mem
+
+# Secure PIL                     0/0/0/0 (0)
+# Sensor PIL                     0/0/0/0 (0)
+# QMP (UFS)                      0/0/0/0 (0)
+# SDHCI                          0/0/0/0 (0)
+assert_driver_present sdhci-msm-driver-present sdhci_msm
+assert_device_present sdhci-msm-mmc0-probed sdhci_msm 7824900.*
+assert_device_present sdhci-msm-mmc1-probed sdhci_msm 7864900.*
+assert_mmc_present sdhci-msm-mmcblk0-probed mmc0:0001
+assert_partition_found sdhci-msm-has-userdata userdata
+
+# UFS                            0/0/0/0 (0)
+# UFS ICE                        0/0/0/0 (0)
+# Bluetooth                      0/1/0/0 (1)
+# WiFi                           1/0/0/0 (1)
+
+# Ensure /lib/firmware has firmware files
+ensure_lib_firmware sdhci-msm-mount-lib-firmware
+
+# Modem PIL                      1/1/0/0 (2)
+assert_driver_present mpss-rproc-driver-present qcom-q6v5-pil
+assert_device_present mpss-rproc-device-probed qcom-q6v5-pil 4080000.*
+
+# WCNSS PIL                      6/0/0/0 (6)
+assert_driver_present wcnss-rproc-driver-present qcom-wcnss-pil
+assert_device_present wcnss-rproc-device-probed qcom-wcnss-pil a204000.*
+
+rproc-start wcnss-rproc-start a204000.*
+sleep 2 #TODO give the following command a timeout instead
+assert_device_present wcnss-wcnss_ctrl-probed qcom_wcnss_ctrl *WCNSS_CTRL*
+assert_device_present wcnss-btqcomsmd-probed btqcomsmd a204000*
+assert_device_present wcnss-wcn36xx-probed wcn36xx a204000*
+rproc-stop wcnss-rproc-stop a204000.*
+
+rproc-start wcnss-rproc-start-again a204000.*
+sleep 2 #TODO give the following command a timeout instead
+rproc-stop wcnss-rproc-stop-again a204000.*

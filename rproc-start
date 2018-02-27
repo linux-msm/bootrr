@@ -1,0 +1,42 @@
+#!/bin/sh
+
+TEST_CASE_ID="$1"
+DEVICE="$2"
+
+test_report_exit()
+{
+	TEST_RESULT=$1
+	lava-test-case ${TEST_CASE_ID} --result ${TEST_RESULT}
+	exit 0
+}
+
+if [ -z "${TEST_CASE_ID}" -o -z "${DEVICE}" ]; then
+	echo "Usage: $0 <test-case-id> <rproc-device>"
+	exit 1
+fi
+
+if [ \! -d /sys/bus/*/devices/${DEVICE}/remoteproc ]; then
+	test_report_exit blocked
+fi
+
+RPROC_DIR=$(dirname /sys/bus/*/devices/${DEVICE}/remoteproc/remoteproc*/.)
+
+cat ${RPROC_DIR}/state
+
+if [ $(cat ${RPROC_DIR}/state) = "running" ]; then
+	test_report_exit skip
+fi
+
+if [ $(cat ${RPROC_DIR}/state) != "offline" ]; then
+	test_report_exit blocked
+fi
+
+echo start > ${RPROC_DIR}/state || test_report_exit fail
+
+cat ${RPROC_DIR}/state
+
+if [ $(cat ${RPROC_DIR}/state) != "running" ]; then
+	test_report_exit fail
+fi
+
+test_report_exit pass

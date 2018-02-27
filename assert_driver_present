@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TEST_CASE_ID="$1"
+DRIVER="$2"
+
+if [ -z "${DRIVER}" ]; then
+	echo "Usage: $0 <driver>"
+	exit 1
+fi
+
+if [ -d /sys/bus/*/drivers/${DRIVER} ]; then
+	TEST_RESULT="pass"
+else
+	TEST_RESULT="fail"
+fi
+
+lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}

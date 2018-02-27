@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TEST_CASE_ID="$1"
+DEVICE="$2"
+
+if [ -z "${TEST_CASE_ID}" -o -z "${DEVICE}" ]; then
+	echo "Usage: $0 <test-case-id> <mmc-device>"
+	exit 1
+fi
+
+if [ -L /sys/bus/mmc/devices/${DEVICE} ]; then
+	TEST_RESULT="pass"
+else
+	TEST_RESULT="fail"
+fi
+
+lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}

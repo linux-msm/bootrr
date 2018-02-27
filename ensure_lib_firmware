@@ -1,0 +1,25 @@
+#!/bin/sh
+
+TEST_CASE_ID="$1"
+PARTITION=/dev/disk/by-partlabel/userdata
+
+test_report_exit() {
+	TEST_RESULT=$1
+	lava-test-case ${TEST_CASE_ID} --result ${TEST_RESULT}
+	exit 0
+}
+
+if [ \! -L ${PARTITION} ]; then
+	test_report_exit blocked
+fi
+
+if [ -d /lib/firmware -o -L /lib/firmware ]; then
+	test_report_exit skip
+fi
+
+mkdir -p /mnt
+mount -t ext4 ${PARTITION} /mnt || test_report_exit failed
+
+ln -s /mnt/lib/firmware /lib/firmware
+
+test_report_exit pass
