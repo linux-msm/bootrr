@@ -38,7 +38,7 @@ assert_device_present qup-i2c-blsp-i2c6-probed i2c_qup 78ba000.*
 # msm_bus                        0/0/0/0 (0)
 # PSHOLD                         0/0/0/0 (0)
 assert_driver_present pshold-driver-present msm-restart
-assert_device_present pshold-device-probed 4ab000.*
+assert_device_present pshold-device-probed msm-restart 4ab000.*
 
 # QFPROM
 assert_driver_present qfprom-driver-present qcom,qfprom
