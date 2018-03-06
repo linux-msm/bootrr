@@ -16,15 +16,15 @@ BOARDS := arrow,apq8096-db820c \
 	  qcom,apq8016-sbc
 
 define add-scripts
-$(DESTDIR)$(prefix)/bin/$1: $1
+$(DESTDIR)$(prefix)/bin/$2: $1/$2
 	@echo "INSTALL $$<"
 	@install -D -m 755 $$< $$@
 
-all-install += $(DESTDIR)$(prefix)/bin/$1
+all-install += $(DESTDIR)$(prefix)/bin/$2
 endef
 
-$(foreach v,${BOARDS},$(eval $(call add-scripts,$v)))
-$(foreach v,${HELPERS},$(eval $(call add-scripts,$v)))
+$(foreach v,${BOARDS},$(eval $(call add-scripts,boards,$v)))
+$(foreach v,${HELPERS},$(eval $(call add-scripts,helpers,$v)))
 
 install: $(all-install)
 
