@@ -12,7 +12,8 @@ HELPERS := assert_device_present \
 	   rproc-start \
 	   rproc-stop
 
-BOARDS := qcom,apq8016-sbc
+BOARDS := arrow,apq8096-db820c \
+	  qcom,apq8016-sbc
 
 define add-scripts
 $(DESTDIR)$(prefix)/bin/$1: $1

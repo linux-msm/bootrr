@@ -1,0 +1,134 @@
+#!/bin/sh
+
+# APCS IPC
+assert_driver_present apcs-ipc-driver-present qcom_apcs_ipc
+assert_device_present apcs-ipc-device-probed qcom_apcs_ipc 9820000.*
+
+# BAM
+assert_driver_present bam-driver-present bam-dma-engine
+
+# GCC
+assert_driver_present gcc-driver-present gcc-msm8996
+assert_device_present gcc-device-probed gcc-msm8996 300000.*
+
+# GDSC
+assert_driver_present gdsc-driver-present mmcc-msm8996
+assert_device_present gdsc-device-probed mmcc-msm8996 8c0000.*
+
+# I2C QUP
+assert_driver_present qup-i2c-driver-present i2c_qup
+assert_device_present qup-i2c-blsp-i2c2-probed i2c_qup 7577000.*
+assert_device_present qup-i2c-blsp-i2c4-probed i2c_qup 75b5000.*
+assert_device_present qup-i2c-blsp-i2c6-probed i2c_qup 75b6000.*
+
+# MMCC
+assert_driver_present mmcc-driver-present mmcc-msm8996
+assert_device_present mmcc-device-probed mmcc-msm8996 8c0000.*
+
+# PSHOLD
+assert_driver_present pshold-driver-present msm-restart
+
+# QFPROM
+assert_driver_present qfprom-driver-present qcom,qfprom
+assert_device_present qfprom-device-probed qcom,qfprom 74000.*
+
+# RPM-clocks
+assert_driver_present rpm-clock-driver-present qcom-clk-smd-rpm
+assert_device_present rpm-clock-device-probed qcom-clk-smd-rpm *rpm-glink*
+
+# RPM-regulators
+assert_driver_present rpm-regulator-driver-present qcom_rpm_smd_regulator
+assert_device_present rpm-regulator-device-probed qcom_rpm_smd_regulator *rpm-glink*
+
+# SCM
+assert_driver_present scm-driver-present qcom_scm
+assert_device_present scm-device-probed qcom_scm firmware:scm
+
+# Serial
+assert_driver_present msm_serial-driver-present msm_serial
+assert_device_present msm_serial-uart2-probed msm_serial 7570000.*
+assert_device_present msm_serial-uart8-probed msm_serial 75b0000.*
+assert_device_present msm_serial-uart9-probed msm_serial 75b1000.*
+
+# SMD
+assert_driver_present smd-driver-present qcom-smd
+
+# SMEM
+assert_driver_present smem-driver-present qcom-smem
+assert_device_present smem-device-probed qcom-smem smem
+
+# SPI QUP
+assert_driver_present qup-spi-driver-present spi_qup
+assert_device_present qup-spi-spi1-probed spi_qup 7575000.*
+
+# TCSR mutex
+assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
+assert_device_present tcsr-mutex-device-probed qcom_hwspinlock hwlock
+
+# TLMM
+assert_driver_present tlmm-driver-present msm8996-pinctrl
+assert_device_present tlmm-device-probed msm8996-pinctrl 1010000.*
+
+# SMP2P
+assert_driver_present smp2p-driver-present qcom_smp2p
+assert_device_present smp2p-adsp-device-probed qcom_smp2p *adsp*
+assert_device_present smp2p-modem-device-probed qcom_smp2p *modem*
+assert_device_present smp2p-slpi-device-probed qcom_smp2p *slpi*
+
+# RMTFS memory
+assert_driver_present rmtfs-mem-driver-present qcom_rmtfs_mem
+
+# SDHCI
+assert_driver_present sdhci-msm-driver-present sdhci_msm
+assert_device_present sdhci-msm-mmc0-probed sdhci_msm 74a4900.*
+
+# GLINK RPM
+assert_driver_present glink-rpm-driver-present qcom_glink_rpm
+assert_device_present glink-rpm-device-probed qcom_glink_rpm rpm-glink
+assert_driver_present glink-rpm-rpm-probed qcom_smd_rpm *rpm-glink*
+
+# QRTR
+assert_driver_present qrtr-smd-driver-present qcom_smd_qrtr
+
+# GLINK SSR
+assert_driver_present glink-ssr-driver-present qcom_glink_ssr
+
+# PCIe
+assert_driver_present pcie-driver-present qcom-pcie
+assert_device_present pcie-device-probed qcom-pcie 610000.*
+
+# QMP phy
+assert_driver_present qmp-phy-driver-present qcom-qmp-phy
+assert_device_present qmp-phy-pcie-probed qcom-qmp-phy 34000.*
+assert_device_present qmp-phy-usb3-probed qcom-qmp-phy 7410000.*
+
+# Coincell charger
+assert_driver_present pmic-coincell-driver-present qcom-spmi-coincell
+
+# PMIC GPIO
+assert_driver_present pmic-gpio-driver-present qcom-spmi-gpio
+assert_device_present pmic-gpio-pm8994-probed qcom-spmi-gpio *pmic@0*
+assert_device_present pmic-gpio-pmi8994-probed qcom-spmi-gpio *pmic@2*
+
+# PMIC MPP
+assert_driver_present pmic-mpp-driver-present qcom-spmi-mpp
+assert_device_present pmic-mpp-pm8994-probed qcom-spmi-mpp *pmic@0*
+
+# PMIC regulators
+assert_driver_present pmic-regulator-driver-present qcom-spmi-regulator
+
+# PMIC RTC
+assert_driver_present pmic-rtc-driver-present rtc-pm8xxx
+assert_device_present pmic-rtc-device-probed rtc-pm8xxx *pmic@0*
+
+# SPMI PMIC arb
+assert_driver_present spmi-pmic-arb-driver-present spmi_pmic_arb
+assert_device_present spmi-pmic-arb-device-probed spmi_pmic_arb 400f000*
+
+# UFS HCD
+assert_driver_present ufs-hcd-driver-present ufshcd-qcom
+assert_device_present ufs-hcd-device-probed ufshcd-qcom 624000.*
+
+#UFS PHY
+assert_driver_present ufs-phy-driver-present ufs_qcom_phy_qmp_14nm
+assert_device_present ufs-phy-phy1-probed ufs_qcom_phy_qmp_14nm 627000.*
