@@ -1,17 +1,11 @@
 #!/bin/sh
 
+source /usr/bin/bootrr
+
 TEST_CASE_ID="$1"
 PARTITION=/dev/disk/by-partlabel/userdata
 
-test_report_exit() {
-	TEST_RESULT=$1
-	lava-test-case ${TEST_CASE_ID} --result ${TEST_RESULT}
-	exit 0
-}
-
-if [ \! -L ${PARTITION} ]; then
-	test_report_exit blocked
-fi
+timeout 10 [ -L ${PARTITION} ] || test_report_exit blocked
 
 if [ -d /lib/firmware -o -L /lib/firmware ]; then
 	test_report_exit skip
