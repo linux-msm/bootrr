@@ -1,18 +1,17 @@
 #!/bin/sh
 
+source /usr/bin/bootrr
+
 TEST_CASE_ID="$1"
 DRIVER="$2"
 DEVICE="$3"
+TIMEOUT="${4:-1}"
 
 if [ -z "${TEST_CASE_ID}" -o -z "${DRIVER}" -o -z "${DEVICE}" ]; then
-	echo "Usage: $0 <test-case-id> <driver> <device>"
+	echo "Usage: $0 <test-case-id> <driver> <device> [<timeout>]"
 	exit 1
 fi
 
-if [ -L /sys/bus/*/drivers/${DRIVER}/${DEVICE} ]; then
-	TEST_RESULT="pass"
-else
-	TEST_RESULT="fail"
-fi
+timeout ${TIMEOUT} [ -L /sys/bus/*/drivers/${DRIVER}/${DEVICE} ] || test_report_exit fail
 
-lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}
+test_report_exit pass
