@@ -8,6 +8,7 @@ HELPERS := assert_device_present \
            assert_driver_present \
 	   assert_mmc_present \
 	   assert_partition_found \
+	   bootrr \
 	   ensure_lib_firmware \
 	   rproc-start \
 	   rproc-stop
