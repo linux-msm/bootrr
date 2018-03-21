@@ -15,7 +15,7 @@ timeout() {
 
 test_report_exit() {
 	TEST_RESULT=$1
-	lava-test-case ${TEST_CASE_ID} --result ${TEST_RESULT}
+	echo "${TEST_CASE_ID}: ${TEST_RESULT}"
 	exit 0
 }
 

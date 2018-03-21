@@ -14,4 +14,4 @@ else
 	TEST_RESULT="fail"
 fi
 
-lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}
+echo "${TEST_CASE_ID}: ${TEST_RESULT}"
