@@ -1,0 +1,254 @@
+#!/bin/sh
+
+echo Infrastructure:
+echo   APCS IPC:
+echo   BAM:
+assert_driver_present bam-driver-present bam-dma-engine
+
+echo   CPU clock:
+echo   GCC:
+assert_driver_present gcc-msm8974-driver-present gcc-msm8974
+assert_device_present gcc-msm8974-device-probed gcc-msm8974 fc400000.*
+
+echo   GDSC:
+assert_driver_present mmcc-driver-present mmcc-msm8974
+assert_device_present mmcc-device-present mmcc-msm8974 fd8c0000.*
+
+echo   GIC:
+echo   CPR:
+echo   I2C QUP:
+assert_driver_present qup-i2c-driver-present i2c_qup
+
+echo   MMCC:
+assert_driver_present mmcc-driver-present mmcc-msm8974
+assert_device_present mmcc-device-present mmcc-msm8974 fd8c0000.*
+
+echo   msm_bus:
+echo   PSHOLD:
+echo   QFPROM:
+assert_driver_present qfprom-driver-present qcom,qfprom
+assert_device_present qfprom-device-probed qcom,qfprom fc4bc000.*
+
+echo   Restart:
+assert_driver_present restart-diver-present msm-restart
+assert_device_present restart-device-probed msm-restart fc4ab000.*
+
+echo   RPM-clocks:
+assert_driver_present rpm-clock-driver-present qcom-clk-smd-rpm
+assert_device_present rpm-clock-device-probed qcom-clk-smd-rpm smd:rpm*
+
+echo   RPM-regulators:
+assert_driver_present rpm-regulator-driver-present qcom_rpm_smd_regulator
+assert_device_present rpm-regulator-pm8841-probed qcom_rpm_smd_regulator *pm8841*
+assert_device_present rpm-regulator-pm8941-probed qcom_rpm_smd_regulator *pm8941*
+
+echo   SCM:
+assert_driver_present scm-driver-present qcom_scm
+assert_device_present scm-device-probed qcom_scm firmware:scm
+
+echo   Serial:
+assert_driver_present msm_serial-driver-present msm_serial
+assert_device_present msm_serial-blsp1_uart2-probed msm_serial f991e000.*
+
+echo   SMD:
+assert_driver_present smd-driver-present qcom-smd
+assert_device_present smd-device-probed qcom-smd smd
+
+echo   SMEM:
+assert_driver_present smem-driver-present qcom-smem
+assert_device_present smem-device-probed qcom-smem smem
+
+echo   SMMU:
+assert_driver_present smmu-driver-present qcom-iommu
+assert_driver_present smmu-ctx-driver-present qcom-iommu-ctx
+
+echo   SPI QUP:
+assert_driver_present qup-spi-driver-present spi_qup
+
+echo   TCSR mutex:
+assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
+assert_device_present tcsr-mutex-device-probed qcom_hwspinlock soc:tcsr-mutex
+
+echo   Timer:
+echo   TLMM:
+assert_driver_present tlmm-driver-present msm8x74-pinctrl
+assert_device_present tlmm-device-probed msm8x74-pinctrl fd510000.*
+
+echo IPC:
+echo   APR:
+echo   IPCROUTER:
+echo   SMP2P:
+assert_driver_present smp2p-driver-present qcom_smp2p
+assert_device_present smp2p-adsp-probed qcom_smp2p smp2p-adsp
+assert_device_present smp2p-mpss-probed qcom_smp2p smp2p-modem
+assert_device_present smp2p-wcnss-probed qcom_smp2p smp2p-wcnss
+
+echo   SMSM:
+assert_driver_present smsm-driver-present qcom-smsm
+assert_device_present smsm-device-probed qcom-smsm smsm
+
+echo Camera:
+echo   CCI:
+echo   CPP:
+echo   CSID:
+echo   CSIPHY:
+echo   FaceDetect:
+echo   JPEG:
+echo   VFE:
+
+echo Compute:
+echo   FastRPC:
+
+echo Crypto:
+echo   QCrypto:
+echo   PRNG:
+assert_driver_present prng-driver-present msm_rng
+assert_device_present prng-device-present msm_rng f9bff000.*
+
+echo Debug:
+echo   Coresight:
+echo   CPU hang detect:
+echo   DebugCC:
+echo   Gladiator hang detect:
+echo   Watchdog:
+
+echo Display:
+echo   DisplayPort:
+echo   DisplayPort PLL:
+echo   DSI:
+assert_driver_present dsi-driver-present msm_dsi
+assert_driver_present dsi-phy-driver-present msm_dsi_phy
+
+echo   DSI PLL:
+echo   GFXCC:
+echo   HDMI:
+echo   HDMI PLL:
+echo   KGSL:
+assert_driver_present adreno-driver-present adreno
+
+echo   MDP:
+assert_driver_present mdp-driver-present msm_mdp
+
+echo   OCMEM:
+
+echo Modem:
+echo   IPA:
+echo   memshare:
+echo   rmnet:
+
+echo PCI:
+echo   PCIe:
+echo   QMP phy:
+
+echo PMIC:
+echo   BMS:
+echo   Charger:
+assert_driver_present charger-driver-present qcom-smbb
+assert_device_present charger-smbb-probed qcom-smbb *pm8941@0:*@1000
+
+echo   clkdiv:
+echo   Coincell:
+assert_driver_present coincell-driver-present qcom-spmi-coincell
+
+echo   Fuelgauge:
+echo   GPIO:
+assert_driver_present pmic-gpio-driver-present qcom-spmi-gpio
+assert_device_present pmic-gpio-pm8941-gpios-probed qcom-spmi-gpio *pm8941@0:*@c000
+
+echo   Haptics:
+echo   IADC:
+echo   LABIBB:
+echo   LPG:
+echo   MPP:
+assert_driver_present pmic-mpp-driver-present qcom-spmi-mpp
+assert_device_present pmic-mpp-pm8841-probed qcom-spmi-mpp *pm8841@4:*@a000
+assert_device_present pmic-mpp-pm8941-probed qcom-spmi-mpp *pm8941@0:*@a000
+
+echo   PON:
+echo   QNovo:
+echo   Regulators:
+assert_driver_present pmic-regulator-driver-present qcom-spmi-regulator
+assert_device_present pmic-regulator-pm8941-probed qcom-spmi-regulator *pm8941@1:regulators
+
+echo   RTC:
+assert_driver_present rtc-pm8xxx-driver-present rtc-pm8xxx
+assert_device_present rtc-pm8xxx-device-probed rtc-pm8xxx *pm8941@0:*@6000
+
+echo   SPMI:
+assert_driver_present spmi-pmic-arb-driver-present spmi_pmic_arb
+assert_device_present spmi-pmic-arb-probed spmi_pmic_arb fc4cf000.*
+
+echo   temp-alarm:
+echo   VADC:
+echo   WLED:
+
+echo Power:
+echo   CPUfreq:
+echo   Current-limit:
+echo   MPM:
+echo   SPM:
+echo   Tsens:
+assert_driver_present tsens-driver-present qcom-tsens
+assert_device_present tsens-device-probed qcom-tsens fc4a8000.*
+
+echo Remoteproc:
+echo   ADSP PIL:
+assert_driver_present adsp-rproc-device-present qcom_adsp_pil
+
+echo   Modem PIL:
+assert_driver_present mpss-rproc-driver-present qcom-q6v5-pil
+
+echo   RMTFS memory:
+assert_driver_present rmtfs-mem qcom_rmtfs_mem
+
+echo Storage:
+echo   SDHCI:
+assert_driver_present sdhci-msm-driver-present sdhci_msm
+
+# eMMC
+assert_device_present sdhci-msm-sdcc1-probed sdhci_msm f9824900.* 10
+assert_mmc_present sdhci-msm-mmcblk0-probed mmc0:0001
+
+# microSD
+assert_device_present sdhci-msm-sdcc2-probed sdhci_msm f98a4900.*
+
+# WiFi SDIO
+assert_device_present sdhci-msm-sdcc3-probed sdhci_msm f9864900.*
+
+echo Sound:
+echo   QDSP drivers:
+echo   Slimbus:
+echo   Tasha:
+echo   Tavil:
+
+echo USB:
+echo   dwc3:
+echo   QUSB2:
+echo   QMP phy:
+echo   ssusb:
+echo   USB:
+assert_driver_present usb2-msm_hsusb-driver-present msm_hsusb
+assert_device_present usb2-msm_hsusb-device-probed msm_hsusb f9a55000.*
+
+assert_driver_present usb2-ci_hdrc-driver-present ci_hdrc
+assert_device_present usb2-ci_hdrc-device-probed ci_hdrc ci_hdrc.0
+
+assert_driver_present usb2-pm8941-misc-driver-present extcon-pm8941-misc
+assert_device_present usb2-pm8941-misc-device-probed extcon-pm8941-misc *pm8941@0:misc*
+
+echo Video:
+echo   TSPP:
+echo   Venus:
+echo   Video memory:
+
+echo Wireless:
+echo   Bluetooth:
+assert_driver_present hci_bcm-driver-present hci_bcm
+
+echo   WiFi:
+assert_driver_present brcmfmac-driver-present brcmfmac
+
+echo Misc:
+echo   Buttons:
+assert_driver_present gpio_keys-driver-present gpio-keys
+assert_device_present gpio_keys-device-probed gpio-keys gpio-keys
