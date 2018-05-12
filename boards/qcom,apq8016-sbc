@@ -123,8 +123,8 @@ assert_driver_present rmtfs-mem-driver-present qcom_rmtfs_mem
 # QMP (UFS)                      0/0/0/0 (0)
 # SDHCI                          0/0/0/0 (0)
 assert_driver_present sdhci-msm-driver-present sdhci_msm
-assert_device_present sdhci-msm-mmc0-probed sdhci_msm 7824900.*
-assert_device_present sdhci-msm-mmc1-probed sdhci_msm 7864900.*
+assert_device_present sdhci-msm-mmc0-probed sdhci_msm 7824900.* 10
+assert_device_present sdhci-msm-mmc1-probed sdhci_msm 7864900.* 10
 assert_mmc_present sdhci-msm-mmcblk0-probed mmc0:0001
 assert_partition_found sdhci-msm-has-userdata userdata
 
@@ -144,13 +144,11 @@ assert_device_present mpss-rproc-device-probed qcom-q6v5-pil 4080000.*
 assert_driver_present wcnss-rproc-driver-present qcom-wcnss-pil
 assert_device_present wcnss-rproc-device-probed qcom-wcnss-pil a204000.*
 
-rproc-start wcnss-rproc-start a204000.*
-sleep 2 #TODO give the following command a timeout instead
-assert_device_present wcnss-wcnss_ctrl-probed qcom_wcnss_ctrl *WCNSS_CTRL*
-assert_device_present wcnss-btqcomsmd-probed btqcomsmd a204000*
-assert_device_present wcnss-wcn36xx-probed wcn36xx a204000*
-rproc-stop wcnss-rproc-stop a204000.*
-
-rproc-start wcnss-rproc-start-again a204000.*
-sleep 2 #TODO give the following command a timeout instead
-rproc-stop wcnss-rproc-stop-again a204000.*
+for round in `seq 3`
+do
+	rproc-start wcnss-rproc-start-$round a204000.*
+	assert_device_present wcnss-wcnss_ctrl-probed-$round qcom_wcnss_ctrl *WCNSS_CTRL* 10
+	assert_device_present wcnss-btqcomsmd-probed-$round btqcomsmd a204000* 10
+	assert_device_present wcnss-wcn36xx-probed-$round wcn36xx a204000* 10
+	rproc-stop wcnss-rproc-stop-$round a204000.*
+done
