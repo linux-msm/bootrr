@@ -14,7 +14,10 @@ HELPERS := assert_device_present \
 	   rproc-stop
 
 BOARDS := arrow,apq8096-db820c \
-	  qcom,apq8016-sbc
+	  qcom,apq8016-sbc \
+	  qcom,msm8998-mtp \
+	  qcom,sdm845-mtp \
+	  sony,xperia-castor
 
 define add-scripts
 $(DESTDIR)$(prefix)/bin/$2: $1/$2
