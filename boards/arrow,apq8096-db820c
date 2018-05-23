@@ -95,7 +95,7 @@ assert_driver_present glink-ssr-driver-present qcom_glink_ssr
 
 # PCIe
 assert_driver_present pcie-driver-present qcom-pcie
-assert_device_present pcie-device-probed qcom-pcie 610000.*
+assert_device_present pcie2-device-probed qcom-pcie 610000.*
 
 # QMP phy
 assert_driver_present qmp-phy-driver-present qcom-qmp-phy
