@@ -98,6 +98,10 @@ assert_driver_present pcie-driver-present qcom-pcie
 assert_device_present pcie0-device-probed qcom-pcie 600000.*
 assert_device_present pcie2-device-probed qcom-pcie 610000.*
 
+# WiFi (via pcie0)
+assert_driver_present ath10k-driver-present ath10k_pci
+assert_device_present ath10k-device-probed ath10k_pci 0000*
+
 # QMP phy
 assert_driver_present qmp-phy-driver-present qcom-qmp-phy
 assert_device_present qmp-phy-pcie-probed qcom-qmp-phy 34000.*
