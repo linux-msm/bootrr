@@ -141,3 +141,7 @@ assert_device_present ufs-hcd-device-probed ufshcd-qcom 624000.*
 #UFS PHY
 assert_driver_present ufs-phy-driver-present ufs_qcom_phy_qmp_14nm
 assert_device_present ufs-phy-phy1-probed ufs_qcom_phy_qmp_14nm 627000.*
+
+# TSENS
+assert_driver_present qcom-tsens-driver-present qcom-tsens
+assert_device_present qcom-tsens0-device-probed qcom-tsens 4a8000.*
