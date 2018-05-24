@@ -184,7 +184,7 @@ assert_device_present pmic-temp-alarm-pm8005-probed spmi-temp-alarm *pmic@4:*@24
 # Tsens
 assert_driver_present tsens-driver-present qcom-tsens
 assert_device_present tsens0-device-probed qcom-tsens 10aa000.*
-assert_device_present tsens0-device-probed qcom-tsens 10ad000.*
+assert_device_present tsens1-device-probed qcom-tsens 10ad000.*
 
 # ADSP PIL
 
