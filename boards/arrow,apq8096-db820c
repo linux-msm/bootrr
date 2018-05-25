@@ -95,8 +95,14 @@ assert_driver_present glink-ssr-driver-present qcom_glink_ssr
 
 # PCIe
 assert_driver_present pcie-driver-present qcom-pcie
+
 assert_device_present pcie0-device-probed qcom-pcie 600000.*
+assert_driver_present pcie0-ath10k-driver-present ath10k_pci 5
+assert_device_present pcie0-ath10k-device-probed ath10k_pci 0000:01:00.0 2
+
 assert_device_present pcie2-device-probed qcom-pcie 610000.*
+assert_driver_present pcie2-atl1c-driver-present atl1c
+assert_device_present pcie2-atl1c-device-probed atl1c 0002:01:00.0 5
 
 # WiFi (via pcie0)
 assert_driver_present ath10k-driver-present ath10k_pci
