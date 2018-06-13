@@ -107,7 +107,11 @@ assert_device_present smsm-device-probed qcom-smsm smsm
 # VFE                            0/0/0/0 (0)
 # FastRPC                        0/0/0/0 (0)
 # QCrypto                        0/0/0/0 (0)
+
 # PRNG                           0/0/0/0 (0)
+assert_driver_present qcom-prng-driver-present msm_rng
+assert_device_present qcom-prng-device-probed msm_rng 22000.*
+
 # Coresight                      0/0/0/0 (0)
 # CPU hand detect                0/0/0/0 (0)
 # DebugCC                        0/0/0/0 (0)
