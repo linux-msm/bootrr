@@ -151,3 +151,7 @@ assert_device_present ufs-phy-phy1-probed ufs_qcom_phy_qmp_14nm 627000.*
 # TSENS
 assert_driver_present qcom-tsens-driver-present qcom-tsens
 assert_device_present qcom-tsens0-device-probed qcom-tsens 4a8000.*
+
+# PRNG
+assert_driver_present qcom-prng-driver-present msm-rng
+assert_device_present qcom-tsens0-device-probed msm-rng 83000.*
