@@ -77,8 +77,8 @@ assert_device_present smp2p-slpi-device-probed qcom_smp2p *dsps*
 # QCrypto
 
 # PRNG
-assert_driver_present msm-rng-driver-present msm-rng
-assert_device_present msm-rng-device-probed msm-rng 793000.*
+assert_driver_present msm-rng-driver-present msm_rng
+assert_device_present msm-rng-device-probed msm_rng 793000.*
 
 # Coresight
 
