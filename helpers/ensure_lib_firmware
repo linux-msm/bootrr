@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source bootrr
+. bootrr
 
 TEST_CASE_ID="$1"
 PARTITION=/dev/disk/by-partlabel/userdata
