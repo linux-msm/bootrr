@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. bootrr
+
+TEST_CASE_ID="$1"
+LOC="$2"
+STATE="$3"
+
+if [ -z "${TEST_CASE_ID}" -o -z "${LOC}" -o -z "${STATE}" ]; then
+	echo "Usage: $0 <test-case-id> <path> <desired state> [<timeout>]"
+	exit 1
+fi
+
+[ -r "${LOC}" ] || test_report_exit fail
+
+val=$(cat "$LOC")
+if [ "${val}" = "${STATE}" ]; then
+	test_report_exit pass
+else
+	test_report_exit fail
+fi
