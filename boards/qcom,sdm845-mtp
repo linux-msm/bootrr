@@ -132,6 +132,9 @@ assert_device_present spmi-pmic-arb-device-probed spmi_pmic_arb c440000.*
 # SPM
 
 # Tsens
+assert_driver_present tsens-driver-present qcom-tsens
+assert_device_present tsens0-device-probed qcom-tsens c263000.*
+assert_device_present tsens1-device-probed qcom-tsens c265000.*
 
 # ADSP PIL
 
