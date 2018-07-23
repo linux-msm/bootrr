@@ -12,6 +12,7 @@ HELPERS := assert_device_present \
 	   ensure_lib_firmware \
 	   rproc-start \
 	   rproc-stop \
+	   value_in_range \
 	   state_check
 
 BOARDS := arrow,apq8096-db820c \
