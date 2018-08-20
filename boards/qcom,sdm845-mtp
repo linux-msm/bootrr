@@ -135,6 +135,7 @@ assert_device_present spmi-pmic-arb-device-probed spmi_pmic_arb c440000.*
 assert_driver_present tsens-driver-present qcom-tsens
 assert_device_present tsens0-device-probed qcom-tsens c263000.*
 assert_device_present tsens1-device-probed qcom-tsens c265000.*
+# 8 thermal zones: cpu x 8
 for num in `seq 0 7`
 do
 	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
