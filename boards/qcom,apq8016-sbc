@@ -151,6 +151,12 @@ assert_device_present wcnss-rproc-device-probed qcom-wcnss-pil a204000.*
 # TSENS
 assert_driver_present qcom-tsens-driver-present qcom-tsens
 assert_device_present qcom-tsens0-device-probed qcom-tsens 4a8000.*
+# 4 thermal zones: cpu x 2, gpu, camera
+for num in `seq 0 3`
+do
+	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
+	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 40000
+done
 
 for round in `seq 3`
 do

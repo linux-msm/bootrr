@@ -143,6 +143,13 @@ assert_device_present ufs-phy-phy1-probed ufs_qcom_phy_qmp_14nm 627000.*
 # TSENS
 assert_driver_present qcom-tsens-driver-present qcom-tsens
 assert_device_present qcom-tsens0-device-probed qcom-tsens 4a8000.*
+# 4 thermal zones: cpu x 4
+for num in `seq 0 4`
+do
+	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
+	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 40000
+done
+
 
 # PRNG
 assert_driver_present qcom-prng-driver-present msm_rng
