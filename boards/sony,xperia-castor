@@ -188,8 +188,8 @@ echo   Current-limit:
 echo   MPM:
 echo   SPM:
 echo   Tsens:
-assert_driver_present tsens-driver-present qcom-tsens
-assert_device_present tsens-device-probed qcom-tsens fc4a8000.*
+assert_driver_present thermal-driver-tsens-present qcom-tsens
+assert_device_present thermal-device-tsens0-probed qcom-tsens fc4a8000.*
 
 echo Remoteproc:
 echo   ADSP PIL:
