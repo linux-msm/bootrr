@@ -150,7 +150,7 @@ assert_device_present wcnss-rproc-device-probed qcom-wcnss-pil a204000.*
 
 # TSENS
 assert_driver_present thermal-driver-tsens-present qcom-tsens
-assert_device_present thermal-device-tsens0-probed qcom-tsens 4a8000.*
+assert_device_present thermal-device-tsens0-probed qcom-tsens 4a9000.*
 # 4 thermal zones: cpu x 2, gpu, camera
 for num in `seq 0 3`
 do
