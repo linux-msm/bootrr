@@ -19,6 +19,7 @@ BOARDS := arrow,apq8096-db820c \
 	  qcom,apq8016-sbc \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \
+	  qcom,qcs404-evb \
 	  sony,xperia-castor
 
 define add-scripts
