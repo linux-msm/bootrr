@@ -16,6 +16,7 @@ HELPERS := assert_device_present \
 	   state_check
 
 BOARDS := arrow,apq8096-db820c \
+	  google,kevin \
 	  qcom,apq8016-sbc \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \

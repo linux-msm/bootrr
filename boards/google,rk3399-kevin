@@ -1,0 +1,109 @@
+#!/bin/sh
+
+assert_driver_present cros-ec-debugfs-driver-present cros-ec-debugfs
+assert_device_present cros-ec-debugfs-probed cros-ec-debugfs cros-ec-debugfs.*
+assert_sysfs_attr_present cros-ec-debugfs-attr-ec /sys/kernel/debug/cros_ec
+
+assert_driver_present cros-ec-dev-driver-present cros-ec-dev
+assert_device_present cros-ec-dev-probed cros-ec-dev cros-ec-dev.*
+
+assert_driver_present cros-ec-i2c-tunnel-driver-present cros-ec-i2c-tunnel
+assert_device_present cros-ec-i2c-tunnel-probed cros-ec-i2c-tunnel  ff200000.*
+
+assert_driver_present cros-ec-keyb-driver-present cros-ec-keyb
+assert_device_present cros-ec-keyb-probed cros-ec-keyb ff200000.*
+
+assert_driver_present cros-ec-lightbar-driver-present cros-ec-lightbar
+# assert_device_present cros-ec-lightbar-driver-present is expected to fail.
+
+assert_driver_present cros-ec-pwm-driver-present cros-ec-pwm
+assert_device_present cros-ec-pwm-probed cros-ec-pwm ff200000.*
+
+assert_driver_present cros-ec-rtc-driver-present cros-ec-rtc
+assert_device_present cros-ec-rtc-probed cros-ec-rtc cros-ec-rtc.*
+
+assert_driver_present cros-ec-sensors-driver-present cros-ec-sensors
+assert_device_present cros-ec-sensors-accel0-probed cros-ec-sensors cros-ec-accel.0
+assert_device_present cros-ec-sensors-accel1-probed cros-ec-sensors cros-ec-accel.1
+assert_device_present cros-ec-sensors-gyro0-probed cros-ec-sensors cros-ec-gyro.0
+
+assert_driver_present cros-ec-sysfs-driver-present cros-ec-sysfs
+assert_device_present cros-ec-sysfs-probed cros-ec-sysfs cros-ec-sysfs.*
+assert_sysfs_attr_present cros-ec-sysfs-attr-flashinfo /sys/class/chromeos/cros_ec/flashinfo
+assert_sysfs_attr_present cros-ec-sysfs-attr-kb_wake_angle /sys/class/chromeos/cros_ec/kb_wake_angle
+assert_sysfs_attr_present cros-ec-sysfs-attr-veresion /sys/class/chromeos/cros_ec/version
+
+assert_driver_present rk3399-gru-sound-driver-present rk3399-gru-sound
+
+assert_driver_present rk3x-i2c-driver-present rk3x-i2c
+assert_device_present rk3x-i2c0-probed rk3x-i2c ff3c0000.i2c
+assert_device_present rk3x-i2c1-probed rk3x-i2c ff110000.i2c
+assert_device_present rk3x-i2c2-probed rk3x-i2c ff120000.i2c
+assert_device_present rk3x-i2c3-probed rk3x-i2c ff130000.i2c
+assert_device_present rk3x-i2c5-probed rk3x-i2c ff140000.i2c
+assert_device_present rk3x-i2c8-probed rk3x-i2c ff3e0000.i2c
+
+assert_driver_present rk808-clkout-driver-present rk808-clkout
+
+assert_device_present rk_iommu-driver-present rk_iommu
+assert_device_present rk_iommu0-probed rk_iommu ff8f3f00.*
+assert_device_present rk_iommu1-probed rk_iommu ff903f00.*
+
+assert_driver_present rockchip-dp-driver-present rockchip-dp
+assert_device_present rockchip-dp-probed rockchip-dp ff970000.*
+
+assert_driver_present rockchip-drm-driver-present rockchip-drm
+
+assert_driver_present rockchip-efuse-driver-present rockchip-efuse
+assert_device_present ff690000.*
+
+assert_driver_present rockchip-emmc-phy-driver-present rockchip-emmc-phy
+assert_device_present rockchip-emmc-phy-probed ff770000.*
+
+assert_driver_present rockchip-i2s-driver-present rockchip-i2s
+assert_device_present rockchip-i2s0-probed rockchip-i2s ff880000.*
+assert_device_present rockchip-i2s1-probed rockchip-i2s ff8a0000.*
+
+assert_driver_present rockchip-iodomain-driver-present rockchip-iodomain
+assert_device_present rockchip-iodomain0-probed rockchip-iodomain ff320000.*
+assert_device_present rockchip-iodomain1-probed rockchip-iodomain ff770000.*
+
+assert_driver_present rockchip-pcie-driver-present rockchip-pcie
+assert_device_present rockchip-pcie-probed rockchip-pcie f8000000.*
+
+assert_driver_present rockchip-pcie-phy-driver-present rockchip-pcie-phy
+assert_device_present rockchip-pcie-phy-probed rockchip-pcie-phy ff770000.*
+
+assert_driver_present rockchip-pinctrl-driver-present rockchip-pinctrl
+
+assert_driver_present rockchip-pm-domain-driver-present rockchip-pm-domain
+
+assert_driver_present rockchip-pwm-driver-present rockchip-pwm
+assert_device_present rockchip-pwm0-probed rockchip-pwm ff420000.*
+assert_device_present rockchip-pwm1-probed rockchip-pwm ff420010.*
+assert_device_present rockchip-pwm2-probed rockchip-pwm ff420020.*
+assert_device_present rockchip-pwm3-probed rockchip-pwm ff420030.*
+
+assert_driver_present rockchip-saradc-driver-present rockchip-saradc
+assert_device_present rockchip-saradc-probed rockchip-saradc ff100000.*
+
+assert_driver_present rockchip-spi-driver-present rockchip-spi
+assert_device_present rockchip-spi0-probed rockchip-spi ff1d0000.*
+assert_device_present rockchip-spi1-probed rockchip-spi ff1e0000.*
+assert_device_present rockchip-spi2-probed rockchip-spi ff200000.*
+
+assert_driver_present rockchip-thermal-driver-present rockchip-thermal
+assert_device_present rockchip-thermal-probed rockchip-thermal ff260000.*
+
+assert_driver_present rockchip-typec-phy-driver-present rockchip-typec-phy
+assert_device_present rockchip-typec-phy0-probed rockchip-typec-phy ff7c0000.*
+assert_device_present rockchip-typec-phy1-probed rockchip-typec-phy ff800000.*
+
+assert_driver_present rockchip-usb2phy-driver-present rockchip-usb2phy
+assert_device_present rockchip-usb2phy0-probed rockchip-usb2phy ff770000.syscon:usb2-phy@e450
+assert_device_present rockchip-usb2phy1-probed rockchip-usb2phy ff770000.syscon:usb2-phy@e460
+
+assert_driver_present rockchip-vop-driver-present rockchip-vop
+assert_device_present rockchip-vop0-probed rockchip-vop ff8f0000.*
+assert_device_present rockchip-vop1-probed rockchip-vop ff900000.*
+
