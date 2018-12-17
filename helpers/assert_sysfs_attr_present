@@ -1,0 +1,16 @@
+#!/bin/sh
+
+. bootrr
+
+TEST_CASE_ID="$1"
+SYSFS_ATTRIBUTE="$2"
+TIMEOUT="${3:-1}"
+
+if [ -z "${TEST_CASE_ID}" -o -z "${SYSFS_ATTRIBUTE}" ]; then
+	echo "Usage: $0 <test-case-id> <sysfs attribute> [<timeout>]"
+	exit 1
+fi
+
+timeout ${TIMEOUT} [ -f ${SYSFS_ATTRIBUTE} ] || test_report_exit fail
+
+test_report_exit pass
