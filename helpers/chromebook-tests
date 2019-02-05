@@ -1,0 +1,15 @@
+#!/bin/sh
+
+try_then_test() {
+    if grep "${2}" < /sys/firmware/devicetree/base/model; then
+        echo "Running ${1} script ..."
+	sh "$(pwd)/boards/${1}"
+        exit $?
+    fi
+}
+
+try_then_test "google,exynos58000-peach-pi" "Google Peach Pi Rev 10+"
+try_then_test "google,rk3288-veyron-jaq" "Google Jaq"
+try_then_test "google,rk3399-kevin" "Google Kevin"
+
+exit 1
