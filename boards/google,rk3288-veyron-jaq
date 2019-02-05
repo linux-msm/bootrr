@@ -1,0 +1,95 @@
+#!/bin/sh
+
+# assert_driver_present cros-ec-debugfs-driver-present cros-ec-debugfs
+# assert_device_present cros-ec-debugfs-probed cros-ec-debugfs cros-ec-debugfs.*
+# assert_sysfs_attr_present cros-ec-debugfs-attr-ec /sys/kernel/debug/cros_ec
+
+# assert_driver_present cros-ec-dev-driver-present cros-ec-dev
+# assert_device_present cros-ec-dev-probed cros-ec-dev cros-ec-dev.*
+
+assert_driver_present cros-ec-i2c-tunnel-driver-present cros-ec-i2c-tunnel
+assert_device_present cros-ec-i2c-tunnel-probed cros-ec-i2c-tunnel ff110000.*
+
+assert_driver_present cros-ec-keyb-driver-present cros-ec-keyb
+assert_device_present cros-ec-keyb-probed cros-ec-keyb ff110000.*
+
+# assert_driver_present cros-ec-lightbar-driver-present cros-ec-lightbar
+# assert_device_present cros-ec-lightbar-driver-present is expected to fail.
+
+assert_driver_present dw-apb-uart-driver-present dw-apb-uart
+assert_device_present dw-apb-uart0-probed dw-apb-uart ff180000.*
+assert_device_present dw-apb-uart1-probed dw-apb-uart ff190000.*
+assert_device_present dw-apb-uart2-probed dw-apb-uart ff690000.*
+
+assert_driver_present dw_wdt-driver-present dw_wdt
+assert_device_present dw_wdt-probed dw_wdt ff800000.*
+
+assert_driver_present dwc2-driver-present dwc2
+assert_device_present dwc2-usb_host1-probed dwc2 ff540000.*
+assert_device_present dwc2-usb_otg-probed dwc2 ff580000.*
+
+assert_driver_present dwhdmi-rockchip-driver-present dwhdmi-rockchip
+assert_device_present dwhdmi-rockchip-probed dwhdmi-rockchip ff980000.*
+
+assert_driver_present dwmmc_rockchip-driver-present dwmmc_rockchip
+assert_device_present dwmmc_rockchip-sdmmc-probed dwmmc_rockchip ff0c0000.*
+assert_device_present dwmmc_rockchip-sdio0-probed dwmmc_rockchip ff0d0000.*
+assert_device_present dwmmc_rockchip-emmc-probed dwmmc_rockchip ff0f0000.*
+
+assert_driver_present ehci-platform-driver-present ehci-platform
+assert_device_present ehci-platform-usb_host0_ehci-probed ehci-platform ff500000.*
+
+assert_driver_present ramoops-driver-present ramoops
+assert_device_present ramoops-probed ramoops 7fedc000.*
+
+assert_driver_present rk3288-crypto-driver-present rk3288-crypto
+assert_device_present rk3288-crypto-probed rk3288-crypto ff8a0000.*
+
+assert_driver_present rk3x-i2c-driver-present rk3x-i2c
+assert_device_present rk3x-i2c0-probed rk3x-i2c ff650000.*
+assert_device_present rk3x-i2c1-probed rk3x-i2c ff140000.*
+assert_device_present rk3x-i2c2-probed rk3x-i2c ff660000.*
+assert_device_present rk3x-i2c4-probed rk3x-i2c ff160000.*
+assert_device_present rk3x-i2c5-probed rk3x-i2c ff170000.*
+
+assert_driver_present rk_iommu-driver-present rk_iommu
+assert_device_present rk_iommu-vopb_mmu-probed rk_iommu ff930300.*
+assert_device_present rk_iommu-vopl_mmu-probed rk_iommu ff940300.*
+assert_device_present rk_iommu-vpu_mmu-probed rk_iommu ff9a0800.*
+
+assert_driver_present rockchip-dp-driver-present rockchip-dp
+assert_device_present rockchip-dp-edp-probed rockchip-dp ff970000.*
+
+assert_driver_present rockchip-dp-phy-driver-present rockchip-dp-phy
+assert_device_present rockchip-dp-phy-grf-probed rockchip-dp-phy ff770000.*
+
+assert_driver_present rockcip-i2s-driver-present rockchip-i2s
+assert_device_present rockchip-i2s-probed rockchip-i2s ff890000.*
+
+assert_driver_present rockchip-iodomain-driver-present rockchip-iodomain
+assert_device_present rockchip-iodomain-grf-probed rockchip-iodomain ff770000.*
+
+assert_driver_present rockchip-pm-domain-driver-present rockchip-pm-domain
+assert_device_present rockchip-pm-domain-pmu-probed rockchip-pm-domain ff730000.*
+
+assert_driver_present rockchip-pwm-driver-present rockchip-pwm
+assert_device_present rockchip-pwm0-probed rockchip-pwm ff680000.*
+assert_device_present rockchip-pwm1-probed rockchip-pwm ff680010.*
+
+assert_driver_present rockchip-spi-driver-present rockchip-spi
+assert_device_present rockchip-spi0-probed rockchip-spi ff110000.*
+assert_device_present rockchip-spi2-probed rockchip-spi ff130000.*
+
+assert_driver_present rockchip-thermal-driver-present rockchip-thermal
+assert_device_present rockchip-thermal-tsadc-probed rockchip-thermal ff280000.*
+
+assert_driver_present rockchip-usb-phy-driver-present rockchip-usb-phy
+assert_device_present rockchip-usb-phy-grf-probed rockchip-usb-phy ff770000.*
+
+assert_driver_present rockchip-vop-driver-present rockchip-vop
+assert_device_present rockchip-vopb-probed rockchip-vop ff930000.*
+assert_device_present rockchip-vopl-probed rockchip-vop ff940000.*
+
+assert_driver_present sram-driver-present sram
+assert_device_present sram-probed sram ff720000.*
+
