@@ -1,0 +1,178 @@
+#!/bin/sh
+
+assert_driver_present cros-ec-i2c-tunnel-driver-present cros-ec-i2c-tunnel
+assert_device_present cros-ec-i2c-tunnel-probed cros-ec-i2c-tunnel 12d40000.*
+
+assert_driver_present cros-ec-keyb-driver-present cros-ec-keyb
+assert_device_present cros-ec-keyb-probed cros-ec-keyb 12d40000.*
+
+assert_driver_present dwc3-driver-present dwc3
+assert_device_present dwc3-usbdrd3_0-probed dwc3 12000000.*
+assert_device_present dwc3-usbdrd3_1-probed dwc3 12400000.*
+
+assert_driver_present dwmmc_exynos-driver-present dwmmc_exynos
+assert_device_present dwmmc_exynos-mmc_0-probed dwmmc_exynos 12200000.*
+assert_device_present dwmmc_exynos-mmc_1-probed dwmmc_exynos 12210000.*
+assert_device_present dwmmc_exynos-mmc_2-probed dwmmc_exynos 12220000.*
+
+assert_driver_present exynos-adc-driver-present exynos-adc
+assert_device_present exynos-adc-probed exynos-adc 12d10000.*
+
+assert_driver_present exynos-audss-clk-driver-present exynos-audss-clk
+assert_device_present exynos-audss-clk-clock_audss-probed exynos-audss-clk 3810000.*
+
+assert_driver_present exynos-dp-driver-present exynos-dp
+assert_device_present exynos-dp-probed exynos-dp 145b0000.*
+
+assert_driver_present exynos-dp-video-phy-driver-present exynos-dp-video-phy
+assert_device_present exynos-dp-video-phy-probed exynos-dp-video-phy soc:dp-video-phy
+
+assert_driver_present exynos-drm-driver-present exynos-drm
+assert_device_present exynos-drm-probed exynos-drm exynos-drm
+
+assert_driver_present exynos-dwc3-driver-present exynos-dwc3
+assert_device_present exynos-dwc3-0-probed exynos-dwc3 soc:usb3-0
+assert_device_present exynos-dwc3-1-probed exynos-dwc3 soc:usb3-1
+
+assert_driver_present exynos-ehci-driver-present exynos-ehci
+assert_device_present exynos-ehci-usbdrd_phy0-probed exynos-ehci 12110000.*
+
+assert_driver_present exynos-gsc-driver-present exynos-gsc
+assert_device_present exynos-gsc_0-probed exynos-gsc 13e00000.*
+assert_device_present exynos-gsc_1-probed exynos-gsc 13e10000.*
+
+assert_driver_present exynos-hdmi-driver-present exynos-hdmi
+assert_device_present exynos-hdmi-probed exynos-hdmi 14530000.*
+
+assert_driver_present exynos-mipi-video-phy-driver-present exynos-mipi-video-phy
+assert_device_present exynos-mipi-video-phy-probed exynos-mipi-video-phy soc:mipi-video-phy
+
+assert_driver_present exynos-mixer-driver-present exynos-mixer
+assert_device_present exynos-mixer-probed exynos-mixer 14450000.*
+
+assert_driver_present exynos-ohci-driver-present exynos-ohci
+assert_device_present exynos-ohci-usbhost1-probed exynos-ohci 12120000.*
+
+assert_driver_present exynos-pmu-driver-present exynos-pmu
+assert_device_present exynos-pmu-system_controller-probed exynos-pmu 10040000.*
+
+assert_driver_present exynos-rng-driver-present exynos-rng
+assert_device_present exynos-rng-prng-probed exynos-rng 10830400.*
+
+assert_driver_present exynos-srom-driver-present exynos-srom
+assert_device_present exynos-srom-probed exynos-srom 12250000.*
+
+assert_driver_present exynos-tmu-driver-present exynos-tmu
+assert_device_present exynos-tmu-cpu0-probed exynos-tmu 10060000.*
+assert_device_present exynos-tmu-cpu1-probed exynos-tmu 10068000.*
+assert_device_present exynos-tmu-cpu2-probed exynos-tmu 100a0000.*
+assert_device_present exynos-tmu-cpu3-probed exynos-tmu 10064000.*
+assert_device_present exynos-tmu-cpu4-probed exynos-tmu 1006c000.*
+
+assert_driver_present exynos-trng-driver-present exynos-trng
+assert_device_present exynos-trng-probed exynos-trng 10830600.*
+
+assert_driver_present exynos4-fb-driver-present exynos4-fb
+assert_device_present exynos4-fb-fimd-probed exynos4-fb 14400000.*
+
+assert_driver_present exynos5-clock-driver-present exynos5-clock
+assert_device_present exynos5-clock-probed exynos5-clock 10010000.*
+
+assert_driver_present exynos5-hsi2c-driver-present exynos5-hsi2c
+assert_device_present exynos5-hsi2c_4-probed exynos5-hsi2c 12ca0000.*
+assert_device_present exynos5-hsi2c_5-probed exynos5-hsi2c 12cd0000.*
+assert_device_present exynos5-hsi2c_6-probed exynos5-hsi2c 12e00000.*
+assert_device_present exynos5-hsi2c_7-probed exynos5-hsi2c 12e10000.*
+
+assert_driver_present exynos5-subcmu-driver-present exynos5-subcmu
+assert_device_present exynos5-subcmu-DISP-probed exynos5-subcmu DISP
+assert_device_present exynos5-subcmu-GSC-probed exynos5-subcmu GSC
+assert_device_present exynos5-subcmu-MFC-probed exynos5-subcmu MFC
+
+assert_driver_present exynos5_usb3drd_phy-driver-present exynos5_usb3drd_phy
+assert_device_present exynos5_usb3drd_usbdrd_phy0-probed exynos5_usb3drd_phy 12100000.*
+assert_device_present exynos5_usb3drd_usbdrd_phy1-probed exynos5_usb3drd_phy 12500000.*
+
+assert_driver_present hdmi-audio-codec-driver-present hdmi-audio-codec
+assert_device_present hdmi-audio-codec-probed hdmi-audio-codec hdmi-audio-codec.*
+
+assert_driver_present max77686-clk-driver-present max77686-clk
+assert_device_present max77686-clk-probed max77686-clk max77802-clk
+
+assert_driver_present max77686-rtc-driver-present max77686-rtc
+assert_device_present max77686-rtc-probed max77686-rtc max77802-rtc
+
+assert_driver_present max77802-pmic-driver-present max77802-pmic
+assert_device_present max77802-pmic-probed max77802-pmic max77802-pmic
+
+assert_driver_present ntc-thermistor-driver-present ntc-thermistor
+assert_device_present ntc-thermistor-3-probed ntc-thermistor 12d10000.adc:thermistor3
+assert_device_present ntc-thermistor-4-probed ntc-thermistor 12d10000.adc:thermistor4
+assert_device_present ntc-thermistor-5-probed ntc-thermistor 12d10000.adc:thermistor5
+assert_device_present ntc-thermistor-6-probed ntc-thermistor 12d10000.adc:thermistor6
+
+assert_driver_present pwm-backlight-driver-present pwm-backlight
+assert_device_present pwm-backlight-probed pwm-backlight backlight
+
+assert_driver_present reg-fixed-voltage-driver-present reg-fixed-voltage
+assert_device_present reg-fixed-voltage-probed reg-fixed-voltage fixed-regulator
+assert_device_present reg-usb300-probed reg-fixed-voltage regulator-usb300
+assert_device_present reg-usb301-probed reg-fixed-voltage regulator-usb301
+
+assert_driver_present s3c-i2c-driver-present s3c-i2c
+assert_device_present s3c-i2c_2-probed s3c-i2c 12c80000.*
+
+assert_driver_present s3c-rtc-driver-present s3c-rtc
+assert_device_present s3c-rtc-probed s3c-rtc 101e0000.*
+
+assert_driver_present s3c64xx-spi-driver-present s3c64xx-spi
+assert_device_present s3c64xx-spi_2-probed s3c64xx-spi 12d40000.*
+
+assert_driver_present s5p-jpeg-driver-present s5p-jpeg
+assert_device_present s5p-jpeg_0-probed s5p-jpeg 11f50000.*
+assert_device_present s5p-jpeg_1-probed s5p-jpeg 11f60000.*
+
+assert_driver_present s5p-mfc-driver-present s5p-mfc
+assert_device_present s5p-mfc-probed s5p-mfc 11000000.*
+
+assert_driver_present s5p-secss-driver-present s5p-secss
+assert_device_present s5p-secss-probed s5p-secss 10830000.*
+
+assert_driver_present samsung-i2s-driver-present samsung-i2s
+assert_device_present samsung-i2s0-probed samsung-i2s 3830000.*
+
+assert_driver_present samsung-pinctrl-driver-present samsung-pinctrl
+assert_device_present samsung-pinctrl_0-probed samsung-pinctrl 13400000.*
+assert_device_present samsung-pinctrl_1-probed samsung-pinctrl 13410000.*
+assert_device_present samsung-pinctrl_2-probed samsung-pinctrl 14000000.*
+assert_device_present samsung-pinctrl_3-probed samsung-pinctrl 14010000.*
+assert_device_present samsung-pinctrl_4-probed samsung-pinctrl 3860000.*
+
+assert_driver_present samsung-pwm-driver-present samsung-pwm
+assert_device_present samsung-pwm-probed samsung-pwm 12dd0000.*
+
+assert_driver_present samsung-uart-driver-present samsung-uart
+assert_device_present samsung-uart_serial_0-probed samsung-uart 12c00000.*
+assert_device_present samsung-uart-serial_1-probed samsung-uart 12c10000.*
+assert_device_present samsung-uart-serial_2-probed samsung-uart 12c20000.*
+assert_device_present samsung-uart-serial_3-probed samsung-uart 12c30000.*
+
+assert_driver_present samsung-usb2-phy-driver-present samsung-usb2-phy
+assert_device_present samsung-usb2-phy-probed samsung-usb2-phy 12130000.phy
+
+assert_driver_present syscon-poweroff-driver-present syscon-poweroff
+assert_device_present syscon-poweroff-probed syscon-poweroff 10040000.*
+
+assert_driver_present syscon-reboot-driver-present syscon-reboot
+assert_device_present syscon-reboot-probed syscon-reboot 10040000.*
+
+assert_driver_present tps65090-charger-driver-present tps65090-charger
+assert_device_present tps65090-charger-probed tps65090-charger tps65090-charger
+
+assert_driver_present tps65090-pmic-driver-present tps65090-pmic
+assert_device_present tps65090-pmic-probed tps65090-pmic tps65090-pmic
+
+assert_driver_present xhci-hcd-driver-present xhci-hcd
+assert_device_present xhci-hcd_0-probed xhci-hcd xhci-hcd.0.*
+assert_device_present xhci-hcd_1-probed xhci-hcd xhci-hcd.1.*
+
