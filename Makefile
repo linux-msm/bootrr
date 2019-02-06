@@ -8,6 +8,7 @@ HELPERS := assert_device_present \
            assert_driver_present \
 	   assert_mmc_present \
 	   assert_partition_found \
+	   assert_sysfs_attr_present \
 	   bootrr \
 	   ensure_lib_firmware \
 	   rproc-start \
@@ -16,7 +17,7 @@ HELPERS := assert_device_present \
 	   state_check
 
 BOARDS := arrow,apq8096-db820c \
-	  google,rk3399-kevin \
+	  google,kevin \
 	  qcom,apq8016-sbc \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \
