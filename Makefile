@@ -18,6 +18,7 @@ HELPERS := assert_device_present \
 
 BOARDS := arrow,apq8096-db820c \
 	  google,kevin \
+	  google,pi \
 	  qcom,apq8016-sbc \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \
