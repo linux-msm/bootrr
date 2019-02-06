@@ -4,6 +4,9 @@ all:
 
 all-install :=
 
+DESTDIR ?= dest
+CPIONAME ?= bootrr
+
 HELPERS := assert_device_present \
            assert_driver_present \
 	   assert_mmc_present \
@@ -37,4 +40,17 @@ $(foreach v,${HELPERS},$(eval $(call add-scripts,helpers,$v)))
 
 install: $(all-install)
 
+CPIO := $(PWD)/$(CPIONAME).cpio
+
+$(CPIO): $(all-install)
+	@cd $(DESTDIR) && find ./$(prefix)/bin | cpio -o -H newc > $(CPIO)
+
+%.cpio.gz: %.cpio
+	@gzip < $< > $@
+
+cpio: $(CPIO)
+
+cpio.gz: $(CPIO).gz
+
 clean:
+	@rm -f $(CPIO) $(CPIO).gz
