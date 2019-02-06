@@ -10,6 +10,7 @@ HELPERS := assert_device_present \
 	   assert_partition_found \
 	   assert_sysfs_attr_present \
 	   bootrr \
+	   bootrr-auto \
 	   ensure_lib_firmware \
 	   rproc-start \
 	   rproc-stop \
