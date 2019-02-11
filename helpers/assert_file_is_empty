@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. bootrr
+
+TEST_CASE_ID="$1"
+FILEPATH="$2"
+TIMEOUT="${4:-1}"
+
+if [ -z "${TEST_CASE_ID}" -o -z "${FILEPATH}" ]; then
+	echo "Usage: $0 <test-case-id> <file path> [<timeout>]"
+	exit 1
+fi
+
+if [ ! -e "${FILEPATH}" ]
+then
+	test_report_exit skip
+fi
+
+timeout ${TIMEOUT} [ -s "${FILEPATH}" ] || test_report_exit pass
+
+test_report_exit fail
