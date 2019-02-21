@@ -1,0 +1,9 @@
+
+- Steps to run bootrr locally (helpful while testing on local board or
+  creating new tests)
+
+	Clone the bootrr repo or use a tarball from repo
+	Run the below cmds for running tests for a given board locally
+
+	# export PATH=$PWD/helpers:$PATH
+	# ./boards/<file>
