@@ -45,7 +45,7 @@ assert_device_present rk3x-i2c8-probed rk3x-i2c ff3e0000.i2c
 
 assert_driver_present rk808-clkout-driver-present rk808-clkout
 
-assert_device_present rk_iommu-driver-present rk_iommu
+assert_driver_present rk_iommu-driver-present rk_iommu
 assert_device_present rk_iommu0-probed rk_iommu ff8f3f00.*
 assert_device_present rk_iommu1-probed rk_iommu ff903f00.*
 
@@ -55,10 +55,10 @@ assert_device_present rockchip-dp-probed rockchip-dp ff970000.*
 assert_driver_present rockchip-drm-driver-present rockchip-drm
 
 assert_driver_present rockchip-efuse-driver-present rockchip-efuse
-assert_device_present ff690000.*
+assert_device_present rockchip-efuse-probed rockchip-efuse ff690000.*
 
 assert_driver_present rockchip-emmc-phy-driver-present rockchip-emmc-phy
-assert_device_present rockchip-emmc-phy-probed ff770000.*
+assert_device_present rockchip-emmc-phy-probed rockchip-emmc-phy ff770000.*
 
 assert_driver_present rockchip-i2s-driver-present rockchip-i2s
 assert_device_present rockchip-i2s0-probed rockchip-i2s ff880000.*
