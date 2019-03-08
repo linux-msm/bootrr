@@ -2,7 +2,8 @@
 
 assert_driver_present cros-ec-debugfs-driver-present cros-ec-debugfs
 assert_device_present cros-ec-debugfs-probed cros-ec-debugfs cros-ec-debugfs.*
-assert_sysfs_attr_present cros-ec-debugfs-attr-ec /sys/kernel/debug/cros_ec
+assert_sysfs_attr_present cros-ec-debugfs-attr-console_log /sys/kernel/debug/cros_ec/console_log
+assert_sysfs_attr_present cros-ec-debugfs-attr-pdinfo /sys/kernel/debug/cros_ec/pdinfo
 
 assert_driver_present cros-ec-dev-driver-present cros-ec-dev
 assert_device_present cros-ec-dev-probed cros-ec-dev cros-ec-dev.*
