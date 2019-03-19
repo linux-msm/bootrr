@@ -1,0 +1,4 @@
+#!/bin/sh
+
+assert_file_is_empty deferred-probe-empty /sys/kernel/debug/devices_deferred
+
