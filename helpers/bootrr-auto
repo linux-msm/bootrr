@@ -3,9 +3,7 @@
 $(pwd)/helpers/bootrr-generic-tests
 
 for TEST in $(tr "\0" "\n" < /proc/device-tree/compatible); do
-	if [ -x "/usr/bin/${TEST}" ]; then
-		/usr/bin/${TEST}
-	elif [ -x "$(pwd)/boards/${TEST}" ]; then
+	if [ -x "$(pwd)/boards/${TEST}" ]; then
 		$(pwd)/boards/${TEST}
 	fi
 done
