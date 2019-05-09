@@ -12,6 +12,7 @@ HELPERS := assert_file_is_empty \
 	   assert_sysfs_attr_present \
 	   bootrr \
 	   bootrr-auto \
+	   bootrr-generic-tests \
 	   ensure_lib_firmware \
 	   rproc-start \
 	   rproc-stop \
