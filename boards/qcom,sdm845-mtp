@@ -1,5 +1,29 @@
 #!/bin/sh
 
+#RPMH
+assert_driver_present cmd-db-driver-present cmd-db
+assert_driver_present rpmh-driver-present rpmh
+assert_driver_present rpmh-clock-driver-present clk-rpmh
+assert_driver_present rpmh-regulator-driver-present qcom-rpmh-regulator
+assert_driver_present rpmh-pd-driver-present qcom-rpmhpd
+
+assert_device_present cmd-db-device-probed cmd-db 85fe0000.*
+assert_device_present rpmh-device-probed rpmh 179c0000.*
+assert_device_present rpmh-clock-device-probed clk-rpmh 179c0000.*
+assert_device_present rpmh-pm8998-regulator-device-probed qcom-rpmh-regulator *pm8998*
+assert_device_present rpmh-pmi8998-regulator-device-probed qcom-rpmh-regulator *pmi8998*
+
+# AOSS
+assert_driver_present aoss-reset-driver-present qcom_aoss_reset
+assert_driver_present aoss-qmp-driver-present qcom_aoss_qmp
+
+assert_device_present aoss-reset-device-probed qcom_aoss_reset c2a0000.*
+assert_device_present aoss-qmp-device-probed qcom_aoss_qmp c300000.*
+
+# PDC
+assert_driver_present pdc-reset-driver-present qcom_pdc_reset
+assert_device_present pdc-reset-device-probed qcom_pdc_reset b2e0000.*
+
 # APCS
 assert_driver_present apcs-ipc-driver-present qcom_apcs_ipc
 assert_device_present apcs-ipc-device-probed qcom_apcs_ipc 17990000.*
@@ -10,11 +34,11 @@ assert_device_present gcc-device-probed gcc-sdm845 100000.*
 
 # I2C GENI
 assert_driver_present i2c-geni-driver-present geni_i2c
-assert_device_present i2c-geni-geni1-i2c3-probed geni_i2c a88000.*
+assert_device_present i2c-geni-i2c10-probed geni_i2c a88000.*
 
 # QFPROM
 assert_driver_present qfprom-driver-present qcom,qfprom
-assert_device_present qfprom-device-probed qcom,qfprom 780000.*
+assert_device_present qfprom-device-probed qcom,qfprom 784000.*
 
 # SCM
 assert_driver_present scm-driver-present qcom_scm
@@ -22,13 +46,17 @@ assert_device_present scm-device-probed qcom_scm firmware:scm
 
 # Serial
 assert_driver_present geni-uart-driver-present qcom_geni_serial
-assert_device_present geni-uart-geni1-uart2-probed qcom_geni_serial a84000.*
+assert_device_present geni-uart-uart9-probed qcom_geni_serial a84000.*
 
 # SMEM
 assert_driver_present smem-driver-present qcom-smem
 assert_device_present smem-device-probed qcom-smem smem
+assert_driver_present smem-socinfo-driver-present qcom-socinfo
 
 # SMMU
+assert_driver_present arm-smmu-driver-present arm-smmu
+assert_device_present apps-smmu-device-probed arm-smmu 15000000.*
+assert_device_present adreno-smmu-device-probed arm-smmu 5040000.*
 
 # TCSR mutex
 assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
@@ -40,9 +68,6 @@ assert_device_present tcsr-mutex-device-probed qcom_hwspinlock hwlock
 assert_driver_present tlmm-driver-present sdm845-pinctrl
 assert_device_present tlmm-device-probed sdm845-pinctrl 3400000.*
 
-# APR
-assert_driver_present apr-bus-driver-present qcom,apr
-
 # GLINK/SMEM
 
 # GLINK/SPSS
@@ -51,10 +76,10 @@ assert_driver_present apr-bus-driver-present qcom,apr
 
 # SMP2P
 assert_driver_present smp2p-driver-present qcom_smp2p
-assert_device_present smp2p-adsp-device-probed qcom_smp2p *adsp*
-assert_device_present smp2p-modem-device-probed qcom_smp2p *modem*
 assert_device_present smp2p-slpi-device-probed qcom_smp2p *cdsp*
-assert_device_present smp2p-slpi-device-probed qcom_smp2p *dsps*
+assert_device_present smp2p-adsp-device-probed qcom_smp2p *lpass*
+assert_device_present smp2p-modem-device-probed qcom_smp2p *mpss*
+assert_device_present smp2p-slpi-device-probed qcom_smp2p *slpi*
 
 # SPCOM
 
@@ -77,18 +102,24 @@ assert_device_present smp2p-slpi-device-probed qcom_smp2p *dsps*
 # QCrypto
 
 # PRNG
-assert_driver_present msm-rng-driver-present msm_rng
-assert_device_present msm-rng-device-probed msm_rng 793000.*
+assert_driver_present qcom-rng-driver-present qcom_rng
+assert_device_present qcom-rng-device-probed qcom_rng 793000.*
 
 # Coresight
 
 # Watchdog
-assert_driver_present qcom-wdt-driver-present qcom-wdt
-assert_device_present qcom-wdt-device-probed qcom-wdt 17980000.*
+assert_driver_present qcom-wdt-driver-present qcom_wdt
+assert_device_present qcom-wdt-device-probed qcom_wdt 17980000.*
 
 # PCIe
+assert_driver_present qcom-pcie-driver-present qcom-pcie
+assert_device_present qcom-pcie-gen2-device-probed qcom-pcie 1c00000.*
+assert_device_present qcom-pcie-gen3-device-probed qcom-pcie 1c08000.*
 
 # QMP phy
+assert_driver_present qcom-qmp-driver-present qcom-qmp-phy
+assert_device_present qcom-qmp-pcie-probed qcom-qmp-phy 1c06000.*
+assert_device_present qcom-qhp-pcie-probed qcom-qmp-phy 1c0a000.*
 
 # PMIC
 ## Charger
@@ -126,6 +157,8 @@ assert_device_present spmi-pmic-arb-device-probed spmi_pmic_arb c440000.*
 ## WLED
 
 # CPUfreq
+assert_driver_present osm-driver-present qcom-cpufreq-hw
+assert_device_present osm-device-probed qcom-cpufreq-hw 17d43000.*
 
 # MPM
 
@@ -139,14 +172,21 @@ assert_device_present thermal-device-tsens1-probed qcom-tsens c265000.*
 for num in `seq 0 7`
 do
 	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
-	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 40000
+	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 60000
 done
 
-# ADSP PIL
+# PAS driver
+assert_driver_present qcom-pas-remoteproc-driver-present qcom_q6v5_pas
+assert_device_present emoteproc-adsp-device-probed qcom_q6v5_pas *adsp*
+assert_device_present emoteproc-cdsp-device-probed qcom_q6v5_pas *cdsp*
 
 # Modem PIL
+assert_driver_present qcom-mss-remoteproc-driver-present qcom-q6v5-mss
+assert_device_present qcom-mss-remoteproc-device-probed qcom-q6v5-mss 4080000.*
 
 # rmtfs memory
+assert_driver_present rmtfs-mem-driver-present qcom_rmtfs_mem
+assert_device_present rmtfs-mem-device-probed qcom_rmtfs_mem 88f00000.*
 
 # Secure PIL
 
@@ -157,6 +197,8 @@ assert_driver_present ufs-phy-driver-present qcom-qmp-phy
 assert_device_present ufs-phy-probed qcom-qmp-phy 1d87000.*
 
 # SDHCI
+assert_driver_present sdhci-msm-driver-present sdhci_msm
+assert_device_present sdhc_2-device-probed sdhci_msm 8804000.*
 
 # UFSHCD
 assert_driver_present ufs-hcd-driver-present ufshcd-qcom
