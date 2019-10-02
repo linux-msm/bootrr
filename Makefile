@@ -29,7 +29,8 @@ BOARDS := arrow,apq8096-db820c \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \
 	  qcom,qcs404-evb \
-	  sony,xperia-castor
+	  sony,xperia-castor \
+	  thundercomm,db845c
 
 define add-scripts
 $(DESTDIR)$(prefix)/bin/$2: $1/$2
