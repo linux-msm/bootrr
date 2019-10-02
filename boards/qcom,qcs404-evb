@@ -50,7 +50,7 @@ assert_device_present rpm-clock-device-probed qcom-clk-smd-rpm *clock-controller
 
 # RPM-regulators                 0/0/0/0 (0)
 assert_driver_present rpm-regulator-driver-present qcom_rpm_smd_regulator
-assert_device_present rpm-regulator-device-probed qcom_rpm_smd_regulator *smd*
+assert_device_present rpm-pms405-regulator-device-probed qcom_rpm_smd_regulator *pms405*
 
 # SCM
 assert_driver_present scm-driver-present qcom_scm
@@ -91,10 +91,6 @@ assert_driver_present smp2p-driver-present qcom_smp2p
 assert_device_present smp2p-hexagon-device-probed qcom_smp2p smp2p-adsp
 assert_device_present smp2p-hexagon-device-probed qcom_smp2p smp2p-cdsp
 assert_device_present smp2p-hexagon-device-probed qcom_smp2p smp2p-wcss
-
-# SMSM                           0/0/0/0 (0)
-assert_driver_present smsm-driver-present qcom-smsm
-assert_device_present smsm-device-probed qcom-smsm smsm
 
 # SPCOM                          0/0/0/0 (0)
 # CCI                            0/0/0/0 (0)
