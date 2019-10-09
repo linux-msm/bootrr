@@ -4,8 +4,8 @@
 # assert_device_present cros-ec-debugfs-probed cros-ec-debugfs cros-ec-debugfs.*
 # assert_sysfs_attr_present cros-ec-debugfs-attr-ec /sys/kernel/debug/cros_ec
 
-# assert_driver_present cros-ec-dev-driver-present cros-ec-dev
-# assert_device_present cros-ec-dev-probed cros-ec-dev cros-ec-dev.*
+assert_driver_present cros-ec-dev-driver-present cros-ec-dev
+assert_device_present cros-ec-dev-probed cros-ec-dev cros-ec-dev.*
 
 assert_driver_present cros-ec-i2c-tunnel-driver-present cros-ec-i2c-tunnel
 assert_device_present cros-ec-i2c-tunnel-probed cros-ec-i2c-tunnel ff110000.*
@@ -30,6 +30,8 @@ assert_device_present dwc2-usb_otg-probed dwc2 ff580000.*
 
 assert_driver_present dwhdmi-rockchip-driver-present dwhdmi-rockchip
 assert_device_present dwhdmi-rockchip-probed dwhdmi-rockchip ff980000.*
+assert_driver_present dwhdmi-rockchip-driver-audio-present dwhdmi-rockchip ff980000.hdmi/dw-hdmi-audio-*
+assert_driver_present dwhdmi-rockchip-driver-cec-present dwhdmi-rockchip ff980000.hdmi/dw-hdmi-cec.*
 assert_driver_present dwhdmi-rockchip-driver-i2c-present dwhdmi-rockchip ff980000.hdmi/i2c-*
 
 assert_driver_present dwmmc_rockchip-driver-present dwmmc_rockchip
