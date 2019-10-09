@@ -34,7 +34,14 @@ assert_sysfs_attr_present cros-ec-sysfs-attr-flashinfo /sys/class/chromeos/cros_
 assert_sysfs_attr_present cros-ec-sysfs-attr-kb_wake_angle /sys/class/chromeos/cros_ec/kb_wake_angle
 assert_sysfs_attr_present cros-ec-sysfs-attr-veresion /sys/class/chromeos/cros_ec/version
 
+assert_driver_present hdmi-audio-codec-driver-present hdmi-audio-codec
+assert_device_present hdmi-audio-codec-probed hdmi-audio-codec hdmi-audio-codec.*
+
 assert_driver_present rk3399-gru-sound-driver-present rk3399-gru-sound
+assert_driver_present rk3399-gru-sound-driver-da7219-present rk3399-gru-sound sound/DA7219
+assert_driver_present rk3399-gru-sound-driver-dp-present rk3399-gru-sound sound/DP
+assert_driver_present rk3399-gru-sound-driver-max98357A-present rk3399-gru-sound sound/MAX98357A
+assert_driver_present rk3399-gru-sound-driver-rt5514-present rk3399-gru-sound sound/RT5514
 
 assert_driver_present rk3x-i2c-driver-present rk3x-i2c
 assert_device_present rk3x-i2c0-probed rk3x-i2c ff3c0000.i2c
