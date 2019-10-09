@@ -30,6 +30,7 @@ assert_device_present dwc2-usb_otg-probed dwc2 ff580000.*
 
 assert_driver_present dwhdmi-rockchip-driver-present dwhdmi-rockchip
 assert_device_present dwhdmi-rockchip-probed dwhdmi-rockchip ff980000.*
+assert_driver_present dwhdmi-rockchip-driver-i2c-present dwhdmi-rockchip ff980000.hdmi/i2c-*
 
 assert_driver_present dwmmc_rockchip-driver-present dwmmc_rockchip
 assert_device_present dwmmc_rockchip-sdmmc-probed dwmmc_rockchip ff0c0000.*
@@ -50,7 +51,6 @@ assert_device_present rk3x-i2c0-probed rk3x-i2c ff650000.*
 assert_device_present rk3x-i2c1-probed rk3x-i2c ff140000.*
 assert_device_present rk3x-i2c2-probed rk3x-i2c ff660000.*
 assert_device_present rk3x-i2c4-probed rk3x-i2c ff160000.*
-assert_device_present rk3x-i2c5-probed rk3x-i2c ff170000.*
 
 assert_driver_present rk_iommu-driver-present rk_iommu
 assert_device_present rk_iommu-vopb_mmu-probed rk_iommu ff930300.*
