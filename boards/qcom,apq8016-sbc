@@ -25,8 +25,8 @@ assert_device_present gdsc-device-probed gcc-msm8916 1800000.*
 
 # GIC                            0/0/0/0 (0)
 # CPR                            0/0/0/0 (0)
-assert_driver_present cpr-driver-present qcom-cpr
-assert_device_present cpr-device-probed qcom-cpr b018000.*
+#assert_driver_present cpr-driver-present qcom-cpr
+#assert_device_present cpr-device-probed qcom-cpr b018000.*
 
 # I2C QUP                        0/0/0/0 (0)
 assert_driver_present qup-i2c-driver-present i2c_qup
@@ -109,8 +109,8 @@ assert_device_present smsm-device-probed qcom-smsm smsm
 # QCrypto                        0/0/0/0 (0)
 
 # PRNG                           0/0/0/0 (0)
-assert_driver_present qcom-prng-driver-present msm_rng
-assert_device_present qcom-prng-device-probed msm_rng 22000.*
+assert_driver_present qcom-rng-driver-present qcom_rng
+assert_device_present qcom-rng-device-probed qcom_rng 22000.*
 
 # Coresight                      0/0/0/0 (0)
 # CPU hand detect                0/0/0/0 (0)
@@ -137,9 +137,6 @@ assert_partition_found sdhci-msm-has-userdata userdata
 # Bluetooth                      0/1/0/0 (1)
 # WiFi                           1/0/0/0 (1)
 
-# Ensure /lib/firmware has firmware files
-ensure_lib_firmware sdhci-msm-mount-lib-firmware
-
 # Modem PIL                      1/1/0/0 (2)
 assert_driver_present mpss-rproc-driver-present qcom-q6v5-pil
 assert_device_present mpss-rproc-device-probed qcom-q6v5-pil 4080000.*
@@ -156,13 +153,4 @@ for num in `seq 0 3`
 do
 	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
 	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 40000
-done
-
-for round in `seq 3`
-do
-	rproc-start wcnss-rproc-start-$round a204000.*
-	assert_device_present wcnss-wcnss_ctrl-probed-$round qcom_wcnss_ctrl *WCNSS_CTRL* 10
-	assert_device_present wcnss-btqcomsmd-probed-$round btqcomsmd a204000* 10
-	assert_device_present wcnss-wcn36xx-probed-$round wcn36xx a204000* 10
-	rproc-stop wcnss-rproc-stop-$round a204000.*
 done
