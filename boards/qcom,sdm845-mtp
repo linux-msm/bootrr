@@ -32,6 +32,11 @@ assert_device_present apcs-ipc-device-probed qcom_apcs_ipc 17990000.*
 assert_driver_present gcc-driver-present gcc-sdm845
 assert_device_present gcc-device-probed gcc-sdm845 100000.*
 
+# GENI
+assert_driver_present geni-se-driver-present geni_se_qup
+assert_device_present geni-wrapper0-device-probed geni_se_qup 8c0000.*
+assert_device_present geni-wrapper1-device-probed geni_se_qup ac0000.*
+
 # I2C GENI
 assert_driver_present i2c-geni-driver-present geni_i2c
 assert_device_present i2c-geni-i2c10-probed geni_i2c a88000.*
@@ -112,14 +117,14 @@ assert_driver_present qcom-wdt-driver-present qcom_wdt
 assert_device_present qcom-wdt-device-probed qcom_wdt 17980000.*
 
 # PCIe
-assert_driver_present qcom-pcie-driver-present qcom-pcie
-assert_device_present qcom-pcie-gen2-device-probed qcom-pcie 1c00000.*
-assert_device_present qcom-pcie-gen3-device-probed qcom-pcie 1c08000.*
+#assert_driver_present qcom-pcie-driver-present qcom-pcie
+#assert_device_present qcom-pcie-gen2-device-probed qcom-pcie 1c00000.*
+#assert_device_present qcom-pcie-gen3-device-probed qcom-pcie 1c08000.*
 
 # QMP phy
-assert_driver_present qcom-qmp-driver-present qcom-qmp-phy
-assert_device_present qcom-qmp-pcie-probed qcom-qmp-phy 1c06000.*
-assert_device_present qcom-qhp-pcie-probed qcom-qmp-phy 1c0a000.*
+#assert_driver_present qcom-qmp-driver-present qcom-qmp-phy
+#assert_device_present qcom-qmp-pcie-probed qcom-qmp-phy 1c06000.*
+#assert_device_present qcom-qhp-pcie-probed qcom-qmp-phy 1c0a000.*
 
 # PMIC
 ## Charger
@@ -177,8 +182,8 @@ done
 
 # PAS driver
 assert_driver_present qcom-pas-remoteproc-driver-present qcom_q6v5_pas
-assert_device_present emoteproc-adsp-device-probed qcom_q6v5_pas *adsp*
-assert_device_present emoteproc-cdsp-device-probed qcom_q6v5_pas *cdsp*
+assert_device_present remoteproc-adsp-device-probed qcom_q6v5_pas *adsp*
+assert_device_present remoteproc-cdsp-device-probed qcom_q6v5_pas *cdsp*
 
 # Modem PIL
 assert_driver_present qcom-mss-remoteproc-driver-present qcom-q6v5-mss
