@@ -28,6 +28,7 @@ BOARDS := arrow,apq8096-db820c \
 	  qcom,apq8016-sbc \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \
+	  qcom,sm8150-mtp \
 	  qcom,qcs404-evb \
 	  sony,xperia-castor \
 	  thundercomm,db845c
