@@ -56,3 +56,27 @@ assert_device_present ufs-phy-probed qcom-qmp-phy 1d87000.*
 # UFSHCD
 assert_driver_present ufs-hcd-driver-present ufshcd-qcom
 assert_device_present ufs-hcd-device-probed ufshcd-qcom 1d84000.*
+
+# IPCC
+assert_driver_present ipcc-driver-present qcom-ipcc
+assert_device_present ipcc-device-probed qcom-ipcc 408000.*
+
+# PRNG
+assert_driver_present prng-driver-present qcom_rng
+assert_device_present prng-device-probed qcom_rng 793000.*
+
+# PCIE
+assert_driver_present pcie-driver-present qcom-pcie
+assert_device_present pcie-device0-probed qcom-pcie 1c00000.*
+assert_device_present pcie-device1-probed qcom-pcie 1c08000.*
+assert_device_present pcie-device2-probed qcom-pcie 1c10000.*
+
+# PCIE PHY
+assert_driver_present pcie-phy-driver-present qcom-qmp-phy
+assert_device_present pcie-phy-device0-probed qcom-qmp-phy 1c06000.*
+assert_device_present pcie-phy-device1-probed qcom-qmp-phy 1c0e000.*
+assert_device_present pcie-phy-device2-probed qcom-qmp-phy 1c16000.*
+
+# SDHC
+assert_driver_present sdhc-driver-present sdhci_msm
+assert_device_present sdhc-device2-probed sdhci_msm 8804000.*
