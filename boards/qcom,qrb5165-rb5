@@ -42,7 +42,7 @@ assert_device_present tlmm-device-probed sm8250-pinctrl f100000.*
 # SMP2P
 assert_driver_present smp2p-driver-present qcom_smp2p
 assert_device_present smp2p-slpi-device-probed qcom_smp2p *cdsp*
-assert_device_present smp2p-adsp-device-probed qcom_smp2p *lpass*
+assert_device_present smp2p-adsp-device-probed qcom_smp2p *adsp*
 assert_device_present smp2p-slpi-device-probed qcom_smp2p *slpi*
 
 # SPMI
