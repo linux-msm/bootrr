@@ -33,7 +33,7 @@ assert_driver_present smem-socinfo-driver-present qcom-socinfo
 
 # TCSR mutex
 assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
-assert_device_present tcsr-mutex-device-probed qcom_hwspinlock hwlock
+assert_device_present tcsr-mutex-device-probed qcom_hwspinlock 1f40000.*
 
 # TLMM
 assert_driver_present tlmm-driver-present sm8250-pinctrl
