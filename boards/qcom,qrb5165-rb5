@@ -30,6 +30,12 @@ assert_device_present geni-uart-uart9-probed qcom_geni_serial a90000.*
 assert_driver_present smem-driver-present qcom-smem
 assert_device_present smem-device-probed qcom-smem qcom,smem
 assert_driver_present smem-socinfo-driver-present qcom-socinfo
+assert_device_present smem-socinfo-device-probed qcom-socinfo qcom-socinfo
+
+# SMMU
+assert_driver_present arm-smmu-driver-present arm-smmu
+assert_device_present apps-smmu-device-probed arm-smmu 15000000.*
+assert_device_present adreno-smmu-device-probed arm-smmu 3da0000.*
 
 # TCSR mutex
 assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
@@ -57,6 +63,10 @@ assert_device_present ufs-phy-probed qcom-qmp-phy 1d87000.*
 assert_driver_present ufs-hcd-driver-present ufshcd-qcom
 assert_device_present ufs-hcd-device-probed ufshcd-qcom 1d84000.*
 
+# UFS device
+assert_driver_present scsi-disk-driver-present sd
+assert_device_present scsi-disk-device0-probed sd 0:0:0:0
+
 # IPCC
 assert_driver_present ipcc-driver-present qcom-ipcc
 assert_device_present ipcc-device-probed qcom-ipcc 408000.*
@@ -80,3 +90,83 @@ assert_device_present pcie-phy-device2-probed qcom-qmp-phy 1c16000.*
 # SDHC
 assert_driver_present sdhc-driver-present sdhci_msm
 assert_device_present sdhc-device2-probed sdhci_msm 8804000.*
+
+# CPUfreq
+assert_driver_present epss-driver-present qcom-cpufreq-hw
+assert_device_present epss-device-probed qcom-cpufreq-hw 18591000.*
+
+# Tsens
+assert_driver_present thermal-driver-tsens-present qcom-tsens
+assert_device_present thermal-device-tsens0-probed qcom-tsens c263000.*
+assert_device_present thermal-device-tsens1-probed qcom-tsens c265000.*
+# 8 thermal zones: cpu x 8
+for num in `seq 0 7`
+do
+	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
+	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 60000
+done
+
+# PAS driver
+assert_driver_present qcom-pas-remoteproc-driver-present qcom_q6v5_pas
+assert_device_present remoteproc-adsp-device-probed qcom_q6v5_pas 17300000.*
+assert_device_present remoteproc-cdsp-device-probed qcom_q6v5_pas 8300000.*
+
+# I2C
+assert_driver_present i2c-driver-present geni_i2c
+assert_device_present i2c-device4-probed geni_i2c 990000.*
+assert_device_present i2c-device5-probed geni_i2c 994000.*
+assert_device_present i2c-device15-probed geni_i2c 884000.*
+
+# SPI
+assert_driver_present spi-driver-present geni_spi
+assert_device_present spi-device0-probed geni_spi 980000.*
+
+# USB QCOM
+assert_driver_present usb-qcom-driver-present dwc3-qcom
+assert_device_present usb-qcom-device0-probed dwc3-qcom a6f8800.*
+assert_device_present usb-qcom-device1-probed dwc3-qcom a8f8800.*
+
+# USB DWC3
+assert_driver_present usb-driver-present dwc3
+assert_device_present usb-device0-probed dwc3 a600000.*
+assert_device_present usb-device1-probed dwc3 a800000.*
+
+# USB PHY
+assert_driver_present usb-phy-driver-present qcom-qmp-phy
+assert_device_present usb-phy-device0-probed qcom-qmp-phy 88e9000.*
+assert_device_present usb-phy-device1-probed qcom-qmp-phy 88eb000.*
+
+# USB net
+assert_driver_present usb-net-driver-present ax88179_178a
+assert_device_present usb-net-device-probed ax88179_178a 2-1.1:1.0
+
+# CAN
+assert_driver_present can-driver-present mcp251xfd
+assert_device_present can-device-probed mcp251xfd spi*.*
+
+# Display
+assert_driver_present msm-drm-driver-present msm
+assert_device_present msm-drm-device-probed msm ae00000.*
+
+assert_driver_present msm-mdp-driver-present msm_dpu
+assert_device_present msm-mdp-device-probed msm_dpu ae01000.*
+
+assert_driver_present dsi-driver-present msm_dsi
+assert_device_present dsi-device0-probed msm_dsi ae94000.*
+#assert_device_present dsi-device1-probed msm_dsi ae96000.*
+
+assert_driver_present dsi-phy-driver-present msm_dsi_phy
+assert_device_present dsi-phy-device0-probed msm_dsi_phy ae94400.*
+#assert_device_present dsi-phy-device1-probed msm_dsi_phy ae96400.*
+
+# lt9611uxc
+assert_driver_present hdmi-bridge-driver-present lt9611uxc
+assert_device_present hdmi-bridge-device-probed lt9611uxc 5-002b
+
+# GPU
+assert_driver_present gpu-driver-present adreno
+assert_device_present gpu-device-probed adreno 3d00000.gpu
+
+# Sound
+assert_driver_present sound-driver-present snd-sm8250
+assert_device_present sound-device-probed snd-sm8250 soc@0:sound
