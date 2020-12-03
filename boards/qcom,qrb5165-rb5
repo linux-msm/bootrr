@@ -68,8 +68,8 @@ assert_device_present prng-device-probed qcom_rng 793000.*
 # PCIE
 assert_driver_present pcie-driver-present qcom-pcie
 assert_device_present pcie-device0-probed qcom-pcie 1c00000.*
-assert_device_present pcie-device1-probed qcom-pcie 1c08000.*
-assert_device_present pcie-device2-probed qcom-pcie 1c10000.*
+#assert_device_present pcie-device1-probed qcom-pcie 1c08000.*
+#assert_device_present pcie-device2-probed qcom-pcie 1c10000.*
 
 # PCIE PHY
 assert_driver_present pcie-phy-driver-present qcom-qmp-phy
