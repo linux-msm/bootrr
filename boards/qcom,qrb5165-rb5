@@ -28,7 +28,7 @@ assert_device_present geni-uart-uart9-probed qcom_geni_serial a90000.*
 
 # SMEM
 assert_driver_present smem-driver-present qcom-smem
-assert_device_present smem-device-probed qcom-smem smem
+assert_device_present smem-device-probed qcom-smem qcom,smem
 assert_driver_present smem-socinfo-driver-present qcom-socinfo
 
 # TCSR mutex
