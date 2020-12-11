@@ -100,11 +100,16 @@ assert_driver_present thermal-driver-tsens-present qcom-tsens
 assert_device_present thermal-device-tsens0-probed qcom-tsens c263000.*
 assert_device_present thermal-device-tsens1-probed qcom-tsens c265000.*
 # 8 thermal zones: cpu x 8
+STATE=""
+RANGE=""
 for num in `seq 0 7`
 do
-	state_check thermal-zone"${num}"-enabled /sys/class/thermal/thermal_zone"${num}"/mode enabled
-	value_in_range thermal-zone"${num}"-temperature /sys/class/thermal/thermal_zone"${num}"/temp 25000 60000
+    STATE="$STATE /sys/class/thermal/thermal_zone"${num}"/mode"
+    RANGE="$RANGE /sys/class/thermal/thermal_zone"${num}"/temp"
 done
+
+state_check thermal-zone-enabled enabled "$STATE"
+value_in_range thermal-zone-temperature 25000 60000 "$RANGE"
 
 # PAS driver
 assert_driver_present qcom-pas-remoteproc-driver-present qcom_q6v5_pas
