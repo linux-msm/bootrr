@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. bootrr
+
 TEST_CASE_ID="$1"
 PARTITION="$2"
 
@@ -9,9 +11,7 @@ if [ -z "${TEST_CASE_ID}" -o -z "${PARTITION}" ]; then
 fi
 
 if [ -L /dev/disk/by-partlabel/${PARTITION} ]; then
-	TEST_RESULT="pass"
-else
-	TEST_RESULT="fail"
+	test_report_exit pass
 fi
 
-lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}
+test_report_exit fail
