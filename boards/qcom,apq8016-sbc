@@ -159,3 +159,18 @@ done
 
 state_check thermal-zone-enabled enabled "$STATE"
 value_in_range thermal-zone-temperature 25000 40000 "$RANGE"
+
+# Sound cards
+assert_driver_present sound-driver-wcd-spmi-present qcom,pm8916-wcd-spmi-codec
+assert_device_present sound-driver-wcd-spmi-probed qcom,pm8916-wcd-spmi-codec 200f000.spmi:pmic@1:audio-codec@f000
+
+assert_driver_present sound-driver-wcd-digital-codec-present msm8916-wcd-digital-codec
+assert_device_present sound-driver-wcd-digital-codec-probed msm8916-wcd-digital-codec 771c000.audio-codec
+
+assert_driver_present sound-driver-adv7511-present adv7511
+assert_driver_present sound-driver-hdmi-audio-codec-present hdmi-audio-codec
+assert_device_present sound-driver-hdmi-audio-codec-probed hdmi-audio-codec hdmi-audio-codec.1.auto
+
+assert_soundcard_present sound-card-adv-playback-present DB410c pcm0p
+assert_soundcard_present sound-card-wcd-playback-present DB410c pcm1p
+assert_soundcard_present sound-card-wcd-capture-present DB410c pcm2c
