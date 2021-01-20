@@ -12,6 +12,7 @@ HELPERS := assert_file_is_empty \
            assert_driver_present \
 	   assert_mmc_present \
 	   assert_partition_found \
+	   assert_soundcard_present \
 	   assert_sysfs_attr_present \
 	   bootrr \
 	   bootrr-auto \
