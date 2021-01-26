@@ -90,8 +90,8 @@ assert_device_present tlmm-device-probed msm8916-pinctrl 1000000.*
 # IPCROUTER                      0/0/0/0 (0)
 # SMP2P                          0/0/0/0 (0)
 assert_driver_present smp2p-driver-present qcom_smp2p
-assert_device_present smp2p-hexagon-device-probed qcom_smp2p hexagon-smp2p
-assert_device_present smp2p-wcnss-device-probed qcom_smp2p wcnss-smp2p
+assert_device_present smp2p-hexagon-device-probed qcom_smp2p smp2p-hexagon
+assert_device_present smp2p-wcnss-device-probed qcom_smp2p smp2p-wcnss
 
 # SMSM                           0/0/0/0 (0)
 assert_driver_present smsm-driver-present qcom-smsm
