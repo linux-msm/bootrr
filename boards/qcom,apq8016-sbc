@@ -130,7 +130,7 @@ assert_driver_present sdhci-msm-driver-present sdhci_msm
 assert_device_present sdhci-msm-mmc0-probed sdhci_msm 7824900.* 10
 assert_device_present sdhci-msm-mmc1-probed sdhci_msm 7864900.* 10
 assert_mmc_present sdhci-msm-mmcblk0-probed mmc0:0001
-assert_partition_found sdhci-msm-has-userdata userdata
+assert_partition_found sdhci-msm-has-boot boot
 
 # UFS                            0/0/0/0 (0)
 # UFS ICE                        0/0/0/0 (0)
