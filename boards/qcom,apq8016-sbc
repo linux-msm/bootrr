@@ -77,7 +77,7 @@ assert_device_present qup-spi-spi5-probed spi_qup 78b9000.*
 
 # TCSR mutex                     0/0/0/0 (0)
 assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
-assert_device_present tcsr-mutex-device-probed qcom_hwspinlock soc:hwlock
+assert_device_present tcsr-mutex-device-probed qcom_hwspinlock 1905000.hwlock
 
 # Timer                          0/0/0/0 (0)
 # TLMM                           0/0/0/0 (0)
