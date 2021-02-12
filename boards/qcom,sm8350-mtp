@@ -1,0 +1,90 @@
+#!/bin/sh
+
+#RPMH
+assert_driver_present cmd-db-driver-present cmd-db
+assert_driver_present rpmh-driver-present rpmh
+assert_driver_present rpmh-clock-driver-present clk-rpmh
+assert_driver_present rpmh-regulator-driver-present qcom-rpmh-regulator
+assert_driver_present rpmh-pd-driver-present qcom-rpmhpd
+
+assert_device_present cmd-db-device-probed cmd-db 80860000.*
+assert_device_present rpmh-device-probed rpmh 18200000.*
+assert_device_present rpmh-clock-device-probed clk-rpmh 18200000.*
+assert_device_present rpmh-pm8350-regulator-device-probed qcom-rpmh-regulator *pm8350-*
+assert_device_present rpmh-pm8350c-regulator-device-probed qcom-rpmh-regulator *pm8350c-*
+
+# AOSS
+assert_driver_present aoss-qmp-driver-present qcom_aoss_qmp
+assert_device_present aoss-qmp-device-probed qcom_aoss_qmp c300000.*
+
+# AOSS
+# PDC
+
+# GCC
+assert_driver_present gcc-driver-present sm8350-gcc
+assert_device_present gcc-device-probed sm8350-gcc 100000.*
+
+# GENI
+# I2C
+# SPI
+# QFPROM
+
+# SCM
+assert_driver_present scm-driver-present qcom_scm
+assert_device_present scm-device-probed qcom_scm firmware:scm
+
+# Serial
+assert_driver_present geni-uart-driver-present qcom_geni_serial
+assert_device_present geni-uart-uart9-probed qcom_geni_serial 98c000.*
+
+# SMEM
+assert_driver_present smem-driver-present qcom-smem
+assert_device_present smem-device-probed qcom-smem *smem
+assert_driver_present smem-socinfo-driver-present qcom-socinfo
+
+# SMMU
+assert_driver_present arm-smmu-driver-present arm-smmu
+assert_device_present apps-smmu-device-probed arm-smmu 15000000.*
+
+# TCSR mutex
+assert_driver_present tcsr-mutex-driver-present qcom_hwspinlock
+assert_device_present tcsr-mutex-device-probed qcom_hwspinlock 1f40000.*
+
+# TLMM
+assert_driver_present tlmm-driver-present sm8350-tlmm
+assert_device_present tlmm-device-probed sm8350-tlmm f100000.*
+
+# SMP2P
+assert_driver_present smp2p-driver-present qcom_smp2p
+assert_device_present smp2p-cdsp-device-probed qcom_smp2p *cdsp*
+assert_device_present smp2p-adsp-device-probed qcom_smp2p *adsp*
+assert_device_present smp2p-mss-device-probed qcom_smp2p *modem*
+assert_device_present smp2p-slpi-device-probed qcom_smp2p *slpi*
+
+# SPMI
+assert_driver_present spmi-pmic-arb-driver-present spmi_pmic_arb
+#assert_device_present spmi-pmic-arb-device-probed spmi_pmic_arb c440000.*
+
+# UFS QMP
+assert_driver_present ufs-phy-driver-present qcom-qmp-phy
+assert_device_present ufs-phy-probed qcom-qmp-phy 1d87000.*
+
+# UFSHCD
+assert_driver_present ufs-hcd-driver-present ufshcd-qcom
+assert_device_present ufs-hcd-device-probed ufshcd-qcom 1d84000.*
+
+# SPMI
+# Tsens
+
+# PAS driver
+assert_driver_present qcom-pas-remoteproc-driver-present qcom_q6v5_pas
+assert_device_present remoteproc-adsp-device-probed qcom_q6v5_pas 17300000.*
+assert_device_present remoteproc-cdsp-device-probed qcom_q6v5_pas 98900000.*
+assert_device_present remoteproc-slpi-device-probed qcom_q6v5_pas 5c00000.*
+assert_device_present remoteproc-mss-device-probed qcom_q6v5_pas 4080000.*
+
+# rmtfs memory
+assert_driver_present rmtfs-mem-driver-present qcom_rmtfs_mem
+assert_device_present rmtfs-mem-device-probed qcom_rmtfs_mem 9b800000.*
+
+# interconnect
