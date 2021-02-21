@@ -14,6 +14,8 @@ HELPERS := assert_file_is_empty \
 	   assert_partition_found \
 	   assert_soundcard_present \
 	   assert_sysfs_attr_present \
+	   assert_cpufreq_enabled \
+	   assert_cpuidle_enabled \
 	   bootrr \
 	   bootrr-auto \
 	   ensure_lib_firmware \

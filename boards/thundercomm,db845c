@@ -172,6 +172,10 @@ assert_device_present spmi-pmic-arb-device-probed spmi_pmic_arb c440000.*
 # CPUfreq
 assert_driver_present osm-driver-present qcom-cpufreq-hw
 assert_device_present osm-device-probed qcom-cpufreq-hw 17d43000.*
+assert_cpufreq_enabled cpufreq-cpu-enabled 7
+
+#CPUidle
+assert_cpuidle_enabled cpuidle-cpu-enabled 7
 
 # MPM
 

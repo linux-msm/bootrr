@@ -1,0 +1,19 @@
+#!/bin/sh
+
+. bootrr
+
+TEST_CASE_ID="$1"
+NUM_CPUS="$2"
+
+if [ -z "${TEST_CASE_ID}" -o -z "${NUM_CPUS}" ]; then
+	echo "Usage: $0 <test-case-id> <#cpus>"
+	exit 1
+fi
+
+CPU=0
+
+while [  $CPU -le $NUM_CPUS ]; do
+	[ -d /sys/devices/system/cpu/cpu${CPU}/cpuidle ] || test_report_exit fail
+	let CPU=CPU+1
+done
+test_report_exit pass
