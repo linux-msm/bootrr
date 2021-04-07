@@ -32,6 +32,7 @@ BOARDS := arrow,apq8096-db820c \
 	  qcom,msm8998-mtp \
 	  qcom,sdm845-mtp \
 	  qcom,sm8150-mtp \
+	  qcom,sa8155p-adp \
 	  qcom,sm8250-mtp \
 	  qcom,sm8350-mtp \
 	  qcom,qrb5165-rb5 \
