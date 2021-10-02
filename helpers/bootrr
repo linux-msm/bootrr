@@ -1,18 +1,5 @@
 #!/bin/sh
 
-timeout() {
-	attempts="$1"; shift
-	cmd="$@"
-
-	for i in `seq ${attempts}`
-	do
-		$cmd && return 0 
-		sleep 1
-	done
-
-	return 1
-}
-
 test_report_exit() {
 	TEST_RESULT=$1
 	command -v lava-test-case
