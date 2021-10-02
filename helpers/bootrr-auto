@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 $(pwd)/helpers/bootrr-generic-tests
 
