@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $# -lt 2 ]; then
+	echo "Usage: $0 <seconds> <command> <args>...."
+	exit 1
+fi
+
+attempts="$1"; shift
+cmd="$@"
+
+for i in `seq ${attempts}`
+do
+	$cmd && exit 0 
+	sleep 1
+done
+
+exit 1
