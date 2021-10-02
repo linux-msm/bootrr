@@ -1,14 +1,9 @@
 #!/bin/sh
 
+. bootrr
+
 TEST_CASE_ID="$1"
 DEVICE="$2"
-
-test_report_exit()
-{
-	TEST_RESULT=$1
-	lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}
-	exit 0
-}
 
 if [ -z "${TEST_CASE_ID}" -o -z "${DEVICE}" ]; then
 	echo "Usage: $0 <test-case-id> <rproc-device>"
