@@ -1,0 +1,13 @@
+#!/bin/sh
+
+BOOTRR_DIR=@BOOTRR@
+
+PATH=${BOOTRR_DIR}/helpers:${PATH}
+
+bootrr-generic-tests
+
+for TEST in $(tr "\0" "\n" < /proc/device-tree/compatible); do
+	if [ -x "${BOOTRR_DIR}/boards/${TEST}" ]; then
+		${BOOTRR_DIR}/boards/${TEST}
+	fi
+done

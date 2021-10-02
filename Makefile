@@ -11,23 +11,33 @@ HELPERS := $(wildcard helpers/*)
 
 BOARDS := $(wildcard boards/*)
 
+BINS := bin/bootrr
+
+LIBEXEC_DIR ?= $(prefix)/libexec
+BOOTRR_DIR = $(LIBEXEC_DIR)/bootrr
+
 define add-scripts
-$(DESTDIR)$(prefix)/bin/$(notdir $1): $1
+$(DESTDIR)$1/$2: $2
 	@echo "INSTALL $$<"
 	@install -D -m 755 $$< $$@
 
-all-install += $(DESTDIR)$(prefix)/bin/$(notdir $1)
+all-install += $(DESTDIR)$1/$2
 endef
 
-$(foreach v,${BOARDS},$(eval $(call add-scripts,$v)))
-$(foreach v,${HELPERS},$(eval $(call add-scripts,$v)))
+$(foreach v,${BOARDS},$(eval $(call add-scripts,$(BOOTRR_DIR),$v)))
+$(foreach v,${HELPERS},$(eval $(call add-scripts,$(BOOTRR_DIR),$v)))
+$(foreach v,${BINS},$(eval $(call add-scripts,$(prefix),$v)))
+
+bin/bootrr: bin/bootrr.in Makefile
+	@sed -e 's!@BOOTRR@!$(BOOTRR_DIR)!g' $< > $@.tmp
+	@mv $@.tmp $@
 
 install: $(all-install)
 
 CPIO := $(PWD)/$(CPIONAME).cpio
 
 $(CPIO): $(all-install)
-	@cd $(DESTDIR) && find ./$(prefix)/bin | cpio -o -H newc > $(CPIO)
+	@cd $(DESTDIR) && find ./$(prefix) | cpio -o -H newc > $(CPIO)
 
 %.cpio.gz: %.cpio
 	@gzip < $< > $@
@@ -37,4 +47,4 @@ cpio: $(CPIO)
 cpio.gz: $(CPIO).gz
 
 clean:
-	@rm -f $(CPIO) $(CPIO).gz
+	@rm -f $(CPIO) $(CPIO).gz bin/bootrr
