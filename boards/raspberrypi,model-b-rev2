@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# UART
+assert_driver_present pl011-driver-present uart-pl011
+assert_device_present ttyAMA0-probed uart-pl011 20201000.*
+
+# RNG
+assert_driver_present bcm2835-rng-driver-present bcm2835-rng
+assert_device_present rng-probed bcm2835-rng 20104000.*
+
+# I2C
+assert_driver_present bcm2835-i2c-driver-present i2c-bcm2835
+assert_device_present i2c0-probed i2c-bcm2835-i2c 20205000.*
+assert_device_present i2c1-probed i2c-bcm2835-i2c 20804000.*
+assert_device_present i2c2-probed i2c-bcm2835-i2c 20805000.*
+
+# Watchdog
+assert_driver_present bcm2835-wdt-driver-present bcm2835-wdt
+assert_device_present watchdog-probed bcm2835-wdt bcm2835-wdt
+
+# Hardware monitoring
+assert_driver_present bcm2835-thermal-driver-probed bcm2835_thermal
+assert_device_present thermal-probed bcm2835_thermal 20212000.*
+
+assert_driver_present raspberrypi-hwmon-driver-present raspberrypi-hwmon
+assert_device_present raspberrypi-hwmon-probed raspberrypi-hwmon raspberrypi-hwmon
+
+# SDHCI
+assert_driver_present sdhost-bcm2835-driver-probed sdhost-bcm2835
+assert_device_present mmc0-probed sdhost-bcm2835 20202000.*
+
+# USB
+assert_driver_present dwc2-driver-present dwc2
+assert_device_present usbotg-probed dwc2 20980000.*
+
+# Ethernet
+assert_driver_present smsc95xx-driver-present smsc95xx
+assert_device_present eth0-probed smsc95xx 1-1.1:1.0
+
+# LEDs
+assert_driver_present leds-gpio-driver-present leds-gpio
+assert_device_present leds-probed leds-gpio leds
+
+# Display
+assert_driver_present vc4-crtc-driver-present vc4_crtc
+assert_device_present pixelvalve0-probed vc4_crtc 20206000.*
+assert_device_present pixelvalve1-probed vc4_crtc 20207000.*
+assert_device_present pixelvalve2-probed vc4_crtc 20807000.*
+
+assert_driver_present vc4-txp-driver-present vc4_txp
+assert_device_present vc4-txp-probed vc4_txp 20004000.*
+
+assert_driver_present vc4-hvs-driver-present vc4_hvs
+assert_device_present vc4-hvs-probed vc4_hvs 20400000.*
+
+assert_driver_present vc4-drm-driver-present vc4-drm
+assert_device_present vc4-drm-probed vc4-drm soc:gpu
+
+# PMU
+assert_driver_present armv6-pmu-driver-present armv6-pmu
+assert_device_present arm-pmu-probed armv6-pmu arm-pmu
+
+# Core SoC functionality
+assert_driver_present bcm2835-clk-driver-present bcm2835-clk
+assert_device_present 20101000.cprman-probed bcm2835-clk 20101000.*
+
+assert_driver_present bcm2835-dma-driver-present bcm2835-dma
+assert_device_present 20007000.dma-probed bcm2835-dma 20007000.*
+
+assert_driver_present bcm2835-mbox-driver-present bcm2835-mbox
+assert_device_present 2000b880.mailbox-probed bcm2835-mbox 2000b880.*
+
+assert_driver_present bcm2835-aux-clk-driver-present bcm2835-aux-clk
+assert_device_present 20215000.aux-probed bcm2835-aux-clk 20215000.*
+
+assert_driver_present pinctrl-bcm2835-driver-present pinctrl-bcm2835
+assert_device_present 20200000.gpio-probed pinctrl-bcm2835 20200000.*
+
+assert_driver_present raspberrypi-cpufreq-driver-present raspberrypi-cpufreq
+assert_device_present raspberrypi-cpufreq-probed raspberrypi-cpufreq raspberrypi-cpufreq
+assert_cpufreq_enabled cpufreq-enabled 1
+
+assert_driver_present raspberrypi-firmware-driver-present raspberrypi-firmware
+assert_device_present soc:firmware-probed raspberrypi-firmware soc:firmware
