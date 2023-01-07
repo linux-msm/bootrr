@@ -1,0 +1,85 @@
+#!/bin/sh
+
+# Serial ports - there's a MFD used to select UART or SPI functionality
+assert_driver_present at91-usart-mode-driver-present at91_usart_mode
+assert_driver_present atmel-usart-serial-driver-present atmel_usart_serial
+assert_device_present uart0-probed at91_usart_mode fffff200.*
+assert_device_present uart1-probed at91_usart_mode fffb0000.*
+assert_device_present uart2-probed at91_usart_mode fffb4000.*
+
+# Ethernet
+assert_driver_present macb-driver-present macb
+assert_device_present ethernet-probed macb fffc4000.*
+
+# NAND connected via EBI
+assert_driver_present atmel-ebi-driver-present atmel-ebi
+assert_device_present atmel-ebi-probed atmel-ebi 10000000.*
+assert_driver_present atmel-nand-driver-present atmel-nand-controller
+assert_device_present nand-device-probed atmel-nand-controller 10000000.ebi:nand-controller
+
+# MMC
+assert_driver_present mmc-driver-present atmel_mci
+assert_device_present mmc0-probed atmel_mci fffa8000.*
+
+# CPU power management
+assert_driver_present cpuidle-at91-driver-present cpuidle-at91
+assert_device_present cpuidle-at91-probed cpuidle-at91 cpuidle-at91.*
+
+# Misc SoC features
+assert_driver_present at91-poweroff-driver-present at91-poweroff
+assert_device_present poweroff-probed at91-poweroff fffffd10.*
+
+assert_driver_present at91-reset-driver-present at91-reset
+assert_device_present reset-controller-probed at91-reset fffffd00.*
+
+assert_driver_present at91-adc-driver-present at91_adc
+assert_device_present adc-probed at91_adc fffe0000.*
+
+assert_driver_present at91-rtc-driver-present rtc-at91sam9
+assert_device_present rtc0-probed rtc-at91sam9 fffffd20.*
+
+assert_driver_present atmel-ramc-driver-present atmel-ramc
+assert_device_present ramc-probed atmel-ramc ffffea00.*
+
+assert_driver_present sram-driver-present sram
+assert_device_present sram-probed sram 2fc000.*
+
+assert_driver_present gpio-at91-driver-present gpio-at91
+assert_device_present gpio0-probed gpio-at91 fffff800.*
+assert_device_present gpio1-probed gpio-at91 fffff600.*
+assert_device_present gpio2-probed gpio-at91 fffff400.*
+
+# I2C host
+assert_driver_present i2c-gpio-present i2c-gpio
+assert_device_present i2c0-probed i2c-gpio i2c-gpio-0
+
+# I2C EEPROM
+assert_driver_present at24-driver-present at24
+assert_device_present eeprom-probed at24 1-0050
+
+# Audio is a WM8731 on I2C connected to SSC0
+assert_driver_present wm8731-driver-present wm8731
+assert_device_present wm8731-probed wm8731 1-001b
+
+assert_driver_present atmel-ssc-driver-present ssc
+assert_device_present ssc0-probed ssc fffbc000.*
+
+assert_driver_present sam9g20ek-audio-driver-present at91sam9g20ek-audio
+assert_device_present audio-card-probed at91sam9g20ek-audio sound
+
+assert_soundcard_present sound-card AT91SAMG20EK pcm0p
+
+# USB
+assert_driver_present atmel-ohci-driver-present at91_ohci
+assert_device_present usb1-probed at91_ohci 500000.*
+
+assert_driver_present at91-udc-driver-present at91_udc
+assert_device_present gadget-probed at91_udc fffa4000.*
+
+# Buttons
+assert_driver_present gpio-keys-driver-present gpio-keys
+assert_device_present gpio-keys-probed gpio-keys gpio-keys
+
+# LEDs
+assert_driver_present leds-gpio-driver-present leds-gpio
+assert_device_present leds-probed leds-gpio leds
