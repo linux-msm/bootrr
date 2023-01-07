@@ -1,0 +1,89 @@
+#!/bin/sh
+
+# UART
+assert_driver_present omap8240-driver-present omap8250
+assert_device_present ttyS0-probed omap8250 44e09000.*
+
+# I2C controllers
+assert_driver_present omap-i2c-driver-present omap_i2c
+assert_device_present i2c0-probed omap_i2c 44e0b000.*
+assert_device_present i2c2-probed omap_i2c 4819c000.*
+
+# PMIC
+assert_driver_present tps65217-driver-present tps65217
+assert_device_present pmic-probed tps65217 0-0024
+
+assert_driver_present pwrbutton-driver-present tps6521x_pwrbutton
+assert_device_present pwrbutton-probed tps6521x_pwrbutton tps65217-pwrbutton
+
+# CPU power management
+assert_cpufreq_enabled cpufreq-enabled 1
+assert_cpuidle_enabled cpuidle-enabled 1
+
+# Baseboard ID EEPROM
+assert_driver_present at24-driver-present at24
+assert_device_present baseboard-eeprom-probed at24 0-0050
+
+# Mass storage
+assert_driver_present sdhci-omap-driver-present sdhci-omap
+assert_device_present mmc0-probed sdhci-omap 48060000.*
+assert_device_present mmc1-probed sdhci-omap 481d8000.*
+
+# USB
+assert_driver_present musb-dsps-driver-present musb-dsps
+assert_device_present usb0-musb-dsps-probed musb-dsps 47401400.*
+assert_device_present usb1-musb-dsps-probed musb-dsps 47401c00.*
+
+assert_driver_present am335x-phy-driver-present am335x-phy-driver
+assert_device_present am335x-phy-probed am335x-phy-driver 47401b00.*
+
+# Ethernet
+assert_driver_present davinci-mdio-present davinci_mdio
+assert_device_present mdio-probed davinci_mdio 4a101000.*
+
+assert_driver_present cpsw-switch-driver-present cpsw-switch
+assert_device_present cpsw-switch-probed cpsw-switch 4a100000.*
+
+assert_driver_present phy-gmii-sel-driver-present phy-gmii-sel
+assert_device_present phy-gmii-sel-probed phy-gmii-sel 44e10650.*
+
+# LEDs
+assert_driver_present gpio-leds-driver-present leds-gpio
+assert_device_present leds-probed leds-gpio leds
+
+# Crypto engines
+assert_driver_present omap-aes-driver-present omap-aes
+assert_device_present aes-probed omap-aes 53500000.*
+
+assert_driver_present omap-rng-driver-present omap_rng
+assert_device_present rng-probed omap_rng 48310000.*
+
+assert_driver_present omap-sham-driver-present omap-sham
+assert_device_present sham-probed omap-sham 53100000.*
+
+# RTC
+assert_driver_present omap-rtc-driver-present omap_rtc
+assert_device_present rtc-probed omap_rtc 44e3e000.*
+
+# Watchdog
+assert_driver_present omap-wdt-driver-present omap_wdt
+assert_device_present watchdog-probed omap_wdt 44e35000.*
+
+# HDMI display, TDA19988 connected to the LCD controller
+assert_driver_present tilcdc-driver-probed tilcdc
+assert_device_present lcdc-probed tilcdc 4830e000.*
+
+assert_driver_present tda19988-driver-present tda998x
+assert_device_present tda19988-probed tda998x 0-0070
+
+# HDMI audio, TDA19988 connected to McASP0
+assert_driver_present mcasp-driver-loaded davinci-mcasp
+assert_device_present mcasp0-probed davinci-mcasp 48038000.*
+
+assert_driver_present hdmi-codec-driver-present hdmi-audio-codec
+assert_device-present hdmi-codec-probed hdmi-audio-codec hdmi-audio-codec.*
+
+assert_driver_present simple-audio-driver-present asoc-simple-card
+assert_device_present hdmi-audio-probed asoc-simple-card sound
+
+assert_soundcard_present hdmi-audio Black pcm0p
