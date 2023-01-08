@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# This will output a list of template bootrr rules for the
+# current system based on what is currently found in sysfs.  Some
+# editing will be required for usability and maintainability,
+# this is just a helper to get started.
+
+ncpus=$(cat /proc/cpuinfo | grep ^processor | wc -l)
+max_cpu=$(expr ${ncpus} - 1)
+
+if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_driver ]; then
+	echo assert_cpufreq_enabled cpufreq-enabled ${max_cpu}
+fi
+if [ -f /sys/devices/system/cpu/cpuidle/current_driver ]; then
+	echo assert_cpuidle_enabled cpuidle-enabled ${max_cpu}
+fi
+
+# Find drivers with bound devices
+for bus in $(ls /sys/bus) ; do
+	for driver in $(ls /sys/bus/${bus}/drivers) ; do
+		devs=$(find /sys/bus/${bus}/drivers/${driver} -type l |
+			grep -v module$)
+		if [ "${devs}" = "" ]; then
+			continue
+		fi
+
+		# Check for the driver
+		echo assert_driver_present ${driver}-driver-present ${driver}
+
+		# Check for each instance of the driver
+		for dev in ${devs} ; do
+			d=$(cd ${dev} ; pwd -P | sed s,.*/,,)
+			echo assert_device_present ${d}-probed ${driver} ${d}
+		done
+
+		echo
+	done
+done
+
+# Sound card display names are symbolic links to their numbered
+# directories
+for card in $(find /proc/asound -type l | sed s,/proc/asound/,,g) ; do
+	# Check for the first playback and capture PCM only for
+	# now
+	if [ -d /proc/asound/${card}/pcm0p ]; then
+		echo assert_soundcard_present ${card}-playback ${card} pcm0p
+	fi
+	if [ -d /proc/asound/${card}/pcm0c ]; then
+		echo assert_soundcard_present ${card}-capture ${card} pcm0c
+	fi
+done

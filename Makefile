@@ -11,7 +11,7 @@ HELPERS := $(wildcard helpers/*)
 
 BOARDS := $(wildcard boards/*)
 
-BINS := bin/bootrr
+BINS := bin/bootrr bin/bootrr-generate-template
 
 LIBEXEC_DIR ?= $(prefix)/libexec
 BOOTRR_DIR = $(LIBEXEC_DIR)/bootrr
