@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# UART
+assert_driver_present meson-uart-driver-present meson_uart
+assert_device_present console-probed meson_uart c81004c0.*
+
+# MMC
+assert_driver_present meson-gx-mmc-driver-present meson-gx-mmc
+assert_device_present sd-probed meson-gx-mmc d0072000.*
+assert_device_present emmc-probed meson-gx-mmc d0074000.*
+
+# CPU power management
+assert_driver_present scpi-cpufreq-driver-present scpi-cpufreq
+assert_device_present cpufreq-probed scpi-cpufreq scpi-cpufreq
+
+assert_cpufreq_enabled cpufreq-enabled 4
+assert_cpuidle_enabled cpuidle-enabled 4
+
+# Ethernet
+assert_driver_present meson8b-dwmac-driver-present meson8b-dwmac
+assert_device_present eth0-probed meson8b-dwmac c9410000.*
+
+# USB
+assert_driver_present dwc3-driver-probed dwc3
+assert_device_present xhci-probed dwc3 c9000000.*
+
+assert_driver_present dwc3-meson-g12a-driver-present dwc3-meson-g12a
+assert_device_present dwc3-meson3-g12a-probed dwc3-meson-g12a d0078080.*
+
+assert_driver_present dwc2-driver-probed dwc2
+assert_device_present dwc2-probed dwc2 c9100000.*
+
+assert_driver_present phy-meson-gxl-usb2-driver-present phy-meson-gxl-usb2
+assert_device_present usb2-phy-present phy-meson-gxl-usb2 d0078020.*
+
+# Crypto
+assert_driver_present gxl-crypto-driver-present gxl-crypto
+assert_device_present crypto-probed gxl-crypto c883e000.*
+
+assert_driver_present meson-rng-driver-present meson-rng
+assert_device_present rng-probed meson-rng c8834000.*
+
+# ADC
+assert_driver_present meson-sradc-driver-present meson-saradc
+assert_device_present adc-probed meson-saradc c1108680.*
+
+# Watchdog
+assert_driver_present meson-gxbb-wdt-driver-present meson-gxbb-wdt
+assert_device_present watchdog-probed meson-gxbb-wdt c11098d0.*
+
+# LEDs
+assert_driver_present leds-gpio-driver-present leds-gpio
+assert_device_present leds-probed leds-gpio leds
+
+# Display
+assert_driver_present meson-dw-hdmi-driver-present meson-dw-hdmi
+assert_device_present hdmi-tx-present meson-dw-hdmi c883a000.*
+
+assert_driver_present meson-drm-driver-present meson-drm
+assert_device_present drm-probed meson-drm d0100000.*
+
+assert_driver_present lima-driver-present lima
+assert_device_present lima-probed lima d00c0000.*
+
+assert_driver_present amlogic-canvas-driver-present amlogic-canvas
+assert_device_present video-lut-probed amlogic-canvas c8838048.*
+
+# Audio
+assert_driver_present dw-hdmi-i2s-audio-driver-present dw-hdmi-i2s-audio
+assert_device_present hdmi-audio-probed dw-hdmi-i2s-audio dw-hdmi-i2s-audio.*
+
+assert_driver_present simple-amplifier-driver-present simple-amplifier
+assert_device_present analog-amp-probed simple-amplifier analog-amplifier
+
+assert_driver_present t9015-codec-driver-probed t9015-codec
+assert_device_present t9015-codec-probed t9015-codec c8832000.*
+
+assert_driver_present meson-aiu-driver-probed meson-aiu
+assert_device_present aiu-probed meson-aiu c1105400.*
+
+assert_driver_present gx-sound-card-driver-present gx-sound-card
+assert_device_present sound-card-probed gx-sound-card sound
+
+assert_soundcard_present sound-card LIBRETECHCC pcm0p
