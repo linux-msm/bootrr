@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# CPU power management
+assert_cpufreq_enabled cpufreq-enabled 4
+assert_cpuidle_enabled cpuidle-enabled 4
+
+# System ID EEPROM
+assert_driver_present eeprom-sunxi-sid-driver-present eeprom-sunxi-sid
+assert_device_present sid-probed eeprom-sunxi-sid 1c14000.*
+
+# Crypto
+assert_driver_present sun8i-ce-driver-present sun8i-ce
+assert_device_present soc-crypto-probed sun8i-ce 1c15000.*
+
+# Watchdog
+assert_driver_present sunxi-wdt-driver-present sunxi-wdt
+assert_device_present soc-watchdog-probed sunxi-wdt 1c20ca0.*
+
+# RTC
+assert_driver_present sun6i-rtc-driver-present sun6i-rtc
+assert_device_present soc-rtc-probed sun6i-rtc 1f00000.*
+
+# Video
+assert_driver_present sun8i-hdmi-phy-driver-present sun8i-hdmi-phy
+assert_device_present hdmi-phy-probed sun8i-hdmi-phy 1ef0000.*
+
+assert_driver_present sun8i-mixer-driver-present sun8i-mixer
+assert_driver_present video-mixer0-probed sun8i-mixer 1100000.*
+assert_driver_present video-mixer1-probed sun8i-mixer 1200000.*
+
+assert_driver_present lima-driver-present lima
+assert_device_present gpu-probed lima 1c40000.*
