@@ -1,0 +1,10 @@
+#!/bin/sh
+
+assert_driver_present rk3288-crypto-driver-present rk3288-crypto
+assert_device_present rk3288-crypto-probed rk3288-crypto ff8a0000.*
+
+assert_driver_present rockchip-pm-domain-driver-present rockchip-pm-domain
+assert_device_present rockchip-pm-domain-pmu-probed rockchip-pm-domain ff730000.*
+
+assert_driver_present sram-driver-present sram
+assert_device_present sram-probed sram ff720000.*
