@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Serial
+assert_driver_present dw-apb-uart-driver-present dw-apb-uart
+assert_device_present serial-probed dw-apb-uart 1c28000.*
+
+# MMC
+assert_driver_present sunxi-mmc-driver-present sunxi-mmc
+assert_device_present mmc-probed sunxi-mmc 1c0f000.*
+
+# Ethernet
+assert_driver_present dwmac-sun8i-driver-present dwmac-sun8i
+assert_device_present ethernet-probed dwmac-sun8i 1c30000.*
+
+# USB
+assert_driver_present ehci-platform-driver-present ehci-platform
+assert_device_present usb2-probed ehci-platform 1c1a000.*
+assert_device_present usb4-probed ehci-platform 1c1b000.*
+
+assert_driver_present ohci-patform-driver-present ohci-platform
+assert_device_present usb1-probed ohci-platform 1c1a400.*
+assert_device_present usb3-probed ohci-platform 1c1b400.*
+
+assert_driver_present sun4i-usb-phy-driver-present sun4i-usb-phy
+assert_device_present usb-phy-probed sun4i-usb-phy 1c19400.*
+
+assert_driver_present musb-sunxi-driver-present musb-sunxi
+assert_device_present usbotg-probed musb-sunxi 1c19000.*
+
+# Audio
+assert_driver_present sun50i-codec-analog-driver-present sun50i-codec-analog
+assert_device_present codec-analog-probed sun50i-codec-analog 1f015c0.*
+
+assert_driver_present sun8i-codec-driver-present sun8i-codec
+assert_device_present codec-digital-probed sun8i-codec 1c22e00.*
+
+assert_driver_present sun4i-i2s-driver-present sun4i-i2s
+assert_device_present i2s-probed sun4i-i2s 1c22c00.*
+
+assert_soundcard_present sound-card sun50ia64audio pcm0p
+
+# Video
+assert_driver_present sun8i-dw-hdmi-driver-present sun8i-dw-hdmi
+assert_device_present hdmi-probed sun8i-dw-hdmi 1ee0000.*
