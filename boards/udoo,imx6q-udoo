@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Serial
+assert_driver_present imx-uart-driver-present imx-uart
+assert_device_present ttymxc1-probed imx-uart 21e8000.*
+assert_device_present ttymxc3-probed imx-uart 21f0000.*
+
+# CPU power management
+assert_cpufreq_enabled cpufreq-enabled 4
+assert_cpuidle_enabled cpuidle-enabled 4
+
+# Ethernet
+assert_driver_present fec-driver-present fec
+assert_device_present ethernet-probed fec 2188000.*
+
+# MMC
+assert_driver_present sdhci-esdhc-imx-driver-probed sdhci-esdhc-imx
+assert_device_present mmc-probed sdhci-esdhc-imx 2198000.*
+
+# Watchdog
+assert_driver_present imx2-wdt-driver-present imx2-wdt
+assert_device_present watchdog-probed imx2-wdt 20bc000.*
+
+# Crypto
+assert_driver_present caam-driver-present caam
+assert_device_present caam-probed caam 2100000.*
+
+assert_driver_present caam-jr-driver-present caam_jr
+assert_device_present caam-jr0-probed caam_jr 2101000.*
+assert_device_present caam-jr1-probed caam_jr 2102000.*
+
+# Audio
+assert_driver_present fsl-ssi-driver-present fsl-ssi-dai
+assert_device_present ssi-probed fsl-ssi-dai 2028000.*
+
+assert_driver_present fsl-asoc-card-driver-present fsl-asoc-card
+assert_device_present sound-card-probed fsl-asoc-card sound
+
+assert_soundcard_present sound-card fslimx6qudooac9 pcm0p
+
+# Video
+assert_driver_present dwhdmi-imx-driver-present dwhdmi-imx
+assert_device_present hdmi-probed dwhdmi-imx 120000.*
+
+assert_driver_present imx-ipuv3-driver-present imx-ipuv3
+assert_device_present ipu-probed imxipu-v3 2400000.*
+
+assert_driver_present entnaviv-gpu-driver-present etnaviv-gpu
+assert_device_present gpu0-probed etnaviv-gpu 130000.*
+assert_device_present gpu1-probed etnaviv-gpu 134000.*
