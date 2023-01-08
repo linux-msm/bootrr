@@ -14,6 +14,6 @@ CPU=0
 
 while [  $CPU -le $NUM_CPUS ]; do
 	[ -d /sys/devices/system/cpu/cpu${CPU}/cpuidle ] || test_report_exit fail
-	let CPU=CPU+1
+	CPU=$(expr ${CPU} + 1)
 done
 test_report_exit pass
