@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Serial
+assert_driver_present dw-apb-uart-driver-present dw-apb-uart
+assert_device_present ttyS0-probed dw-apb-uart 1c28000.*
+
+# MMC
+assert_driver_present sunxi-mmc-driver-present sunxi-mmc
+assert_device_present mmc0-probed sunxi-mmc 1c0f000.*
+assert_device_present mmc2-probed sunxi-mmc 1c11000.*
+
+# Ethernet
+assert_driver_present dwmac-sun8i-driver-present dwmac-sun8i
+assert_device_present eth0-probed dwmac-sun8i 1c30000.*
+
+# USB
+assert_driver_present ehci-platform-driver-present ehci-platform
+assert_device_present usb0-probed ehci-platform 1c1a000.*
+assert_device_present usb1-probed ehci-platform 1c1b000.*
+assert_device_present usb2-probed ehci-platform 1c1c000.*
+assert_device_present usb3-probed ehci-platform 1c1d000.*
+
+assert_driver_present musb-sunxi-driver-present musb-sunxi
+assert_device_present usbotg-probed musb-sunxi 1c19000.*
+
+assert_driver_present sun4i-usb-phy-driver-present sun4i-usb-phy
+assert_device_present usbotg-phy-probed sun4i-usb-phy 1c19400.*
+
+# System ID EEPROM
+assert_driver_present eeprom-sunxi-sid-driver-present eeprom-sunxi-sid
+assert_device_present sid-probed eeprom-sunxi-sid 1c14000.*
+
+# Watchdog
+assert_driver_present sunxi-wdt-driver-present sunxi-wdt
+assert_device_present watchdog-probed sunxi-wdt 1c20ca0.*
+
+# RTC
+assert_driver_present sun6i-rtc-driver-present sun6i-rtc
+assert_device_present rtc-probed sun6i-rtc 1f00000.*
+
+# Infrared
+assert_driver_present sunxi-ir-driver-present sunxi-ir
+assert_device_present ir-probed sunxi-ir 1f02000.*
+
+# Crypto
+assert_driver_present sun8i-ce-driver-present sun8i-ce
+assert_device_present crypto-probed sun8i-ce 1c15000.*
+
+# Audio
+assert_driver_present sun8-codec-analog-driver-present sun8i-codec-analog
+assert_device_present analog-audio-probed sun8i-codec-analog 1f015c0.*
+
+# Video
+assert_driver_present sun8i-mixer-driver-present sun8i-mixer
+assert_device_present sun8i-mixer-probed sun8i-mixer 1100000.*
+
+assert_driver_present sun8i-dw-hdmi-driver-present sun8i-dw-hdmi
+assert_device_present hdmi-probed sun8i-dw-hdmi 1ee0000.*
+
+assert_driver_present sun8i-hdmi-phy-driver-present sun8i-hdmi-phy
+assert_device_present hdmi-phy-probed sun8i-hdmi-phy 1ef0000.*
+
+assert_driver_present lima-driver-present lima
+assert_device_present lima-probed lima 1e80000.*
