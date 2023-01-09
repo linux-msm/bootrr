@@ -1,0 +1,85 @@
+#!/bin/sh
+
+# Serial
+assert_driver_present uart-pl011-driver-present uart-pl011
+assert_device_present serial-probed uart-pl011 7ff80000.*
+
+# Ethernet
+assert_driver_present smsc911x-driver-present smsc911x
+assert_device_present ethernet-probed smsc911x 18000000.*
+
+# MMC
+assert_driver_present mmci-pl18x-driver-present mmci-pl18x
+assert_device_present 1c050000.mmc-probed mmci-pl18x 1c050000.mmc
+
+# Base system functionality
+assert_cpuidle_enabled cpuidle-enabled 5
+
+assert_driver_present psci-cpuidle-driver-present psci-cpuidle
+assert_device_present psci-cpuidle-probed psci-cpuidle psci-cpuidle
+
+assert_driver_present armv8-pmu-driver-present armv8-pmu
+assert_device_present pmu-a57-probed armv8-pmu pmu-a57
+assert_device_present pmu-a53-probed armv8-pmu pmu-a53
+
+assert_driver_present dma-pl330-driver-present dma-pl330
+assert_device_present dma-controller-probed dma-pl330 7ff00000.*
+
+assert_driver_present mhu-driver-present mhu
+assert_device_present mhu-probed mhu 2b1f0000.*
+
+assert_driver_present arm-smmu-driver-present arm-smmu
+assert_device_present iommu0-probed arm-smmu 7fb20000.*
+assert_device_present iommu1-probed arm-smmu 7fb00000.*
+assert_device_present iommu2-probed arm-smmu 7fb30000.*
+assert_device_present iommu3-probed arm-smmu 7fb10000.*
+
+assert_driver_present sram-driver-present sram
+assert_device_present sram-probed sram 2e000000.*
+
+# SoC features
+assert_driver_present rtc-pl031-driver-present rtc-pl031
+assert_device_present rtc-probed rtc-pl031 1c170000.*
+
+assert_driver_present sp805-wdt-driver-present sp805-wdt
+assert_device_present watchdog-probed sp805-wdt 1c0f0000.*
+
+assert_driver_present pl061_gpio-driver-present pl061_gpio
+assert_device_present gpio-probed pl061_gpio 1c1d0000.*
+
+assert_driver_present i2c_designware-driver-present i2c_designware
+assert_device_present i2c-probed i2c_designware 7ffa0000.*
+
+# Display
+assert_driver_present tda998x-driver-present tda998x
+assert_device_present tda998x-video-probed tda998x 0-0070
+assert_device_present tda998x-audio-probed tda998x 0-0071
+
+# Motherboard features
+assert_driver_present gpio-keys-driver-present gpio-keys
+assert_device_present gpio-keys-probed gpio-keys gpio-keys
+
+assert_driver_present leds-syscon-driver-present leds-syscon
+assert_device_present led0-probed leds-syscon 1c010008.0.*
+assert_device_present led1-probed leds-syscon 1c010008.1.*
+assert_device_present led2-probed leds-syscon 1c010008.2.*
+assert_device_present led3-probed leds-syscon 1c010008.3.*
+assert_device_present led4-probed leds-syscon 1c010008.4.*
+assert_device_present led5-probed leds-syscon 1c010008.5.*
+assert_device_present led6-probed leds-syscon 1c010008.6.*
+assert_device_present led7-probed leds-syscon 1c010008.7.*
+
+assert_driver_present kmi-pl050-driver-present kmi-pl050
+assert_device_present kmi0-probed kmi-pl050 1c060000.*
+assert_device_present kmi1-probed kmi-pl050 1c070000.*
+
+assert_driver_present psmouse-driver-present psmouse
+assert_device_present serio0-probed psmouse serio0
+assert_device_present serio1-probed psmouse serio1
+
+# USB
+assert_driver_present ehci-platform-driver-present ehci-platform
+assert_device_present ehci-probed ehci-platform 7ffc0000.*
+assert_driver_present ohci-platform-driver-present ohci-platform
+assert_device_present ohci-probed ohci-platform 7ffb0000.*
+
