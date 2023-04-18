@@ -1,0 +1,48 @@
+assert_driver_present psci-cpuidle-driver-present psci-cpuidle
+assert_device_present psci-cpuidle-probed psci-cpuidle psci-cpuidle
+assert_cpuidle_enabled cpuidle-enabled 23
+assert_driver_present psci-cpuidle-domain-driver-present psci-cpuidle-domain
+assert_device_present psci-probed psci-cpuidle-domain psci
+assert_driver_present uart-pl011-driver-present uart-pl011
+assert_device_present 2a400000.uart-probed uart-pl011 2a400000.uart
+assert_driver_present armv8-pmu-driver-present armv8-pmu
+assert_device_present pmu-probed armv8-pmu pmu
+assert_driver_present dw-apb-uart-driver-present dw-apb-uart
+assert_device_present 51040000.uart-probed dw-apb-uart 51040000.uart
+assert_driver_present f_sdh30-driver-present f_sdh30
+assert_device_present 52300000.sdhci-probed f_sdh30 52300000.sdhci
+assert_driver_present mmcblk-driver-present mmcblk
+assert_device_present mmc0:0001-probed mmcblk mmc0:0001
+assert_driver_present ahci-driver-present ahci
+assert_device_present 0000:02:00.0-probed ahci 0000:02:00.0
+assert_driver_present pcieport-driver-present pcieport
+assert_device_present 0000:01:01.0-probed pcieport 0000:01:01.0
+assert_device_present 0000:01:07.0-probed pcieport 0000:01:07.0
+assert_device_present 0000:01:03.0-probed pcieport 0000:01:03.0
+assert_device_present 0000:00:00.0-probed pcieport 0000:00:00.0
+assert_device_present 0000:01:05.0-probed pcieport 0000:01:05.0
+assert_driver_present xhci_hcd-driver-present xhci_hcd
+assert_device_present 0000:04:00.0-probed xhci_hcd 0000:04:00.0
+assert_device_present 522d0000.ethernet-probed netsec 522d0000.ethernet
+assert_driver_present pci-host-generic-driver-present pci-host-generic
+assert_device_present 70000000.pcie-probed pci-host-generic 70000000.pcie
+assert_device_present 60000000.pcie-probed pci-host-generic 60000000.pcie
+assert_driver_present rtc-efi-driver-present rtc-efi
+assert_device_present rtc-efi.0-probed rtc-efi rtc-efi.0
+assert_driver_present mb86s70-gpio-driver-present mb86s70-gpio
+assert_device_present 51000000.gpio-probed mb86s70-gpio 51000000.gpio
+assert_device_present ctrl.2a400000.uart.0-probed ctrl ctrl.2a400000.uart.0
+assert_device_present ctrl.serial8250.0-probed ctrl ctrl.serial8250.0
+assert_device_present ctrl.51040000.uart.0-probed ctrl ctrl.51040000.uart.0
+assert_driver_present port-driver-present port
+assert_device_present port.serial8250.2-probed port port.serial8250.2
+assert_device_present port.2a400000.uart.0-probed port port.2a400000.uart.0
+assert_device_present port.serial8250.0-probed port port.serial8250.0
+assert_device_present port.serial8250.3-probed port port.serial8250.3
+assert_device_present port.51040000.uart.1-probed port port.51040000.uart.1
+assert_driver_present hub-driver-present hub
+assert_device_present 1-0:1.0-probed hub 1-0:1.0
+assert_device_present 2-0:1.0-probed hub 2-0:1.0
+assert_driver_present usb-driver-present usb
+assert_device_present usb1-probed usb usb1
+assert_device_present usb2-probed usb usb2
