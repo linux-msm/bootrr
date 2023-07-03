@@ -1,0 +1,73 @@
+assert_driver_present nxp-pca9450-driver-present nxp-pca9450
+assert_device_present 0-0025-probed nxp-pca9450 0-0025
+assert_driver_present pca953x-driver-present pca953x
+assert_device_present 2-0020-probed pca953x 2-0020
+assert_driver_present mmcblk-driver-present mmcblk
+assert_device_present mmc2:0001-probed mmcblk mmc2:0001
+assert_device_present mmc1:0001-probed mmcblk mmc1:0001
+assert_driver_present pcieport-driver-present pcieport
+assert_device_present 0000:00:00.0-probed pcieport 0000:00:00.0
+assert_driver_present aer-driver-present aer
+assert_device_present 0000:00:00.0:pcie002-probed aer 0000:00:00.0:pcie002
+assert_driver_present pcie_pme-driver-present pcie_pme
+assert_device_present 0000:00:00.0:pcie001-probed pcie_pme 0000:00:00.0:pcie001
+assert_driver_present dwc3-driver-present dwc3
+assert_device_present 38200000.usb-probed dwc3 38200000.usb
+assert_driver_present fec-driver-present fec
+assert_device_present 30be0000.ethernet-probed fec 30be0000.ethernet
+assert_driver_present flexcan-driver-present flexcan
+assert_device_present 308c0000.can-probed flexcan 308c0000.can
+assert_driver_present imx-dwmac-driver-present imx-dwmac
+assert_device_present 30bf0000.ethernet-probed imx-dwmac 30bf0000.ethernet
+assert_driver_present imx-i2c-driver-present imx-i2c
+assert_device_present 30a30000.i2c-probed imx-i2c 30a30000.i2c
+assert_device_present 30a20000.i2c-probed imx-i2c 30a20000.i2c
+assert_device_present 30a40000.i2c-probed imx-i2c 30a40000.i2c
+assert_driver_present imx-uart-driver-present imx-uart
+assert_device_present 30860000.serial-probed imx-uart 30860000.serial
+assert_device_present 30890000.serial-probed imx-uart 30890000.serial
+assert_device_present 30880000.serial-probed imx-uart 30880000.serial
+assert_driver_present imx6q-pcie-driver-present imx6q-pcie
+assert_device_present 33800000.pcie-probed imx6q-pcie 33800000.pcie
+assert_driver_present imx8-pcie-phy-driver-present imx8-pcie-phy
+assert_device_present 32f00000.pcie-phy-probed imx8-pcie-phy 32f00000.pcie-phy
+assert_driver_present imx8mp-dwc3-driver-present imx8mp-dwc3
+assert_device_present 32f10108.usb-probed imx8mp-dwc3 32f10108.usb
+assert_driver_present imx8mq-usb-phy-driver-present imx8mq-usb-phy
+assert_device_present 382f0040.usb-phy-probed imx8mq-usb-phy 382f0040.usb-phy
+assert_driver_present leds-gpio-driver-present leds-gpio
+assert_device_present gpio-leds-probed leds-gpio gpio-leds
+assert_driver_present nxp-fspi-driver-present nxp-fspi
+assert_device_present 30bb0000.spi-probed nxp-fspi 30bb0000.spi
+assert_driver_present optee-driver-present optee
+assert_device_present firmware:optee-probed optee firmware:optee
+assert_driver_present pwm-imx27-driver-present pwm-imx27
+assert_device_present 30670000.pwm-probed pwm-imx27 30670000.pwm
+assert_device_present 30690000.pwm-probed pwm-imx27 30690000.pwm
+assert_device_present 30660000.pwm-probed pwm-imx27 30660000.pwm
+assert_driver_present reg-fixed-voltage-driver-present reg-fixed-voltage
+assert_device_present regulator-pcie-probed reg-fixed-voltage regulator-pcie
+assert_device_present regulator-can2-stby-probed reg-fixed-voltage regulator-can2-stby
+assert_device_present regulator-can1-stby-probed reg-fixed-voltage regulator-can1-stby
+assert_device_present regulator-usdhc2-probed reg-fixed-voltage regulator-usdhc2
+assert_driver_present sdhci-esdhc-imx-driver-present sdhci-esdhc-imx
+assert_device_present 30b50000.mmc-probed sdhci-esdhc-imx 30b50000.mmc
+assert_device_present 30b60000.mmc-probed sdhci-esdhc-imx 30b60000.mmc
+assert_driver_present serial8250-driver-present serial8250
+assert_device_present serial8250-probed serial8250 serial8250
+assert_driver_present snvs_lpgpr-driver-present snvs_lpgpr
+assert_device_present 30370000.snvs:snvs-lpgpr-probed snvs_lpgpr 30370000.snvs:snvs-lpgpr
+assert_driver_present snvs_pwrkey-driver-present snvs_pwrkey
+assert_device_present 30370000.snvs:snvs-powerkey-probed snvs_pwrkey 30370000.snvs:snvs-powerkey
+assert_driver_present snvs_rtc-driver-present snvs_rtc
+assert_device_present 30370000.snvs:snvs-rtc-lp-probed snvs_rtc 30370000.snvs:snvs-rtc-lp
+assert_driver_present xhci-hcd-driver-present xhci-hcd
+assert_device_present xhci-hcd.0.auto-probed xhci-hcd xhci-hcd.0.auto
+assert_driver_present spi-nor-driver-present spi-nor
+assert_device_present spi0.0-probed spi-nor spi0.0
+assert_driver_present hub-driver-present hub
+assert_device_present 1-0:1.0-probed hub 1-0:1.0
+assert_device_present 2-0:1.0-probed hub 2-0:1.0
+assert_driver_present usb-driver-present usb
+assert_device_present usb1-probed usb usb1
+assert_device_present usb2-probed usb usb2
