@@ -1,0 +1,175 @@
+assert_cpufreq_enabled cpufreq-enabled 1
+assert_cpuidle_enabled cpuidle-enabled 1
+assert_driver_present at24-driver-present at24
+assert_device_present 0-0050-probed at24 0-0050
+assert_device_present 0-0059-probed dummy 0-0059
+assert_device_present 0-005a-probed dummy 0-005a
+assert_driver_present palmas-driver-present palmas
+assert_device_present 0-0058-probed palmas 0-0058
+assert_driver_present rtc-ds1307-driver-present rtc-ds1307
+assert_device_present 2-006f-probed rtc-ds1307 2-006f
+assert_driver_present mmcblk-driver-present mmcblk
+assert_device_present mmc1:0001-probed mmcblk mmc1:0001
+assert_driver_present pcieport-driver-present pcieport
+assert_device_present 0000:00:00.0-probed pcieport 0000:00:00.0
+assert_driver_present pcie_pme-driver-present pcie_pme
+assert_device_present 0000:00:00.0:pcie001-probed pcie_pme 0000:00:00.0:pcie001
+assert_driver_present armv7-pmu-driver-present armv7-pmu
+assert_device_present pmu-probed armv7-pmu pmu
+assert_driver_present cpsw-switch-driver-present cpsw-switch
+assert_device_present 48484000.switch-probed cpsw-switch 48484000.switch
+assert_driver_present cpufreq-dt-driver-present cpufreq-dt
+assert_device_present cpufreq-dt-probed cpufreq-dt cpufreq-dt
+assert_driver_present davinci-mcasp-driver-present davinci-mcasp
+assert_device_present 48468000.mcasp-probed davinci-mcasp 48468000.mcasp
+assert_driver_present davinci_mdio-driver-present davinci_mdio
+assert_device_present 48485000.mdio-probed davinci_mdio 48485000.mdio
+assert_driver_present display-connector-driver-present display-connector
+assert_device_present connector-probed display-connector connector
+assert_driver_present dwc3-driver-present dwc3
+assert_device_present 48890000.usb-probed dwc3 48890000.usb
+assert_driver_present edma-driver-present edma
+assert_device_present 43300000.dma-probed edma 43300000.dma
+assert_driver_present edma3-tptc-driver-present edma3-tptc
+assert_device_present 43400000.dma-probed edma3-tptc 43400000.dma
+assert_device_present 43500000.dma-probed edma3-tptc 43500000.dma
+assert_driver_present etnaviv-driver-present etnaviv
+assert_device_present etnaviv-probed etnaviv etnaviv
+assert_driver_present etnaviv-gpu-driver-present etnaviv-gpu
+assert_device_present 59000000.gpu-probed etnaviv-gpu 59000000.gpu
+assert_driver_present leds-gpio-driver-present leds-gpio
+assert_device_present leds-probed leds-gpio leds
+assert_driver_present omap-dma-engine-driver-present omap-dma-engine
+assert_device_present 4a056000.dma-controller-probed omap-dma-engine 4a056000.dma-controller
+assert_driver_present omap-dwc3-driver-present omap-dwc3
+assert_device_present 48880000.omap_dwc3_1-probed omap-dwc3 48880000.omap_dwc3_1
+assert_driver_present omap-ocp2scp-driver-present omap-ocp2scp
+assert_device_present 4a090000.ocp2scp-probed omap-ocp2scp 4a090000.ocp2scp
+assert_device_present 4a080000.ocp2scp-probed omap-ocp2scp 4a080000.ocp2scp
+assert_driver_present omap-usb2-driver-present omap-usb2
+assert_device_present 4a085000.phy-probed omap-usb2 4a085000.phy
+assert_device_present 4a084000.phy-probed omap-usb2 4a084000.phy
+assert_driver_present omap8250-driver-present omap8250
+assert_device_present 48020000.serial-probed omap8250 48020000.serial
+assert_driver_present omap_gpio-driver-present omap_gpio
+assert_device_present 4ae10000.gpio-probed omap_gpio 4ae10000.gpio
+assert_device_present 48055000.gpio-probed omap_gpio 48055000.gpio
+assert_device_present 48059000.gpio-probed omap_gpio 48059000.gpio
+assert_device_present 4805d000.gpio-probed omap_gpio 4805d000.gpio
+assert_device_present 48053000.gpio-probed omap_gpio 48053000.gpio
+assert_device_present 48057000.gpio-probed omap_gpio 48057000.gpio
+assert_device_present 4805b000.gpio-probed omap_gpio 4805b000.gpio
+assert_device_present 48051000.gpio-probed omap_gpio 48051000.gpio
+assert_driver_present omap_i2c-driver-present omap_i2c
+assert_device_present 48060000.i2c-probed omap_i2c 48060000.i2c
+assert_device_present 48070000.i2c-probed omap_i2c 48070000.i2c
+assert_driver_present omap_l3_noc-driver-present omap_l3_noc
+assert_device_present 44000000.l3-noc-probed omap_l3_noc 44000000.l3-noc
+assert_driver_present omap_prm-driver-present omap_prm
+assert_device_present 4ae07100.prm-probed omap_prm 4ae07100.prm
+assert_device_present 4ae07b00.prm-probed omap_prm 4ae07b00.prm
+assert_device_present 4ae07400.prm-probed omap_prm 4ae07400.prm
+assert_device_present 4ae07c80.prm-probed omap_prm 4ae07c80.prm
+assert_device_present 4ae06400.prm-probed omap_prm 4ae06400.prm
+assert_device_present 4ae06700.prm-probed omap_prm 4ae06700.prm
+assert_device_present 4ae07200.prm-probed omap_prm 4ae07200.prm
+assert_device_present 4ae07c00.prm-probed omap_prm 4ae07c00.prm
+assert_device_present 4ae07b40.prm-probed omap_prm 4ae07b40.prm
+assert_device_present 4ae07c60.prm-probed omap_prm 4ae07c60.prm
+assert_device_present 4ae06500.prm-probed omap_prm 4ae06500.prm
+assert_device_present 4ae06f00.prm-probed omap_prm 4ae06f00.prm
+assert_device_present 4ae07000.prm-probed omap_prm 4ae07000.prm
+assert_device_present 4ae06628.prm-probed omap_prm 4ae06628.prm
+assert_device_present 4ae07300.prm-probed omap_prm 4ae07300.prm
+assert_device_present 4ae07600.prm-probed omap_prm 4ae07600.prm
+assert_device_present 4ae07b80.prm-probed omap_prm 4ae07b80.prm
+assert_device_present 4ae07724.prm-probed omap_prm 4ae07724.prm
+assert_device_present 4ae06300.prm-probed omap_prm 4ae06300.prm
+assert_device_present 4ae07bc0.prm-probed omap_prm 4ae07bc0.prm
+assert_driver_present omap_rng-driver-present omap_rng
+assert_device_present 48090000.rng-probed omap_rng 48090000.rng
+assert_driver_present omap_timer-driver-present omap_timer
+assert_device_present 48828000.timer-probed omap_timer 48828000.timer
+assert_device_present 48086000.timer-probed omap_timer 48086000.timer
+assert_device_present 48822000.timer-probed omap_timer 48822000.timer
+assert_device_present 48036000.timer-probed omap_timer 48036000.timer
+assert_device_present 4882a000.timer-probed omap_timer 4882a000.timer
+assert_device_present 4803e000.timer-probed omap_timer 4803e000.timer
+assert_device_present 48826000.timer-probed omap_timer 48826000.timer
+assert_device_present 48820000.timer-probed omap_timer 48820000.timer
+assert_device_present 48034000.timer-probed omap_timer 48034000.timer
+assert_device_present 48088000.timer-probed omap_timer 48088000.timer
+assert_device_present 48824000.timer-probed omap_timer 48824000.timer
+assert_device_present 48032000.timer-probed omap_timer 48032000.timer
+assert_device_present 4ae20000.timer-probed omap_timer 4ae20000.timer
+assert_driver_present palmas-gpio-driver-present palmas-gpio
+assert_device_present 48070000.i2c:tps659038@58:tps659038_gpio-probed palmas-gpio 48070000.i2c:tps659038@58:tps659038_gpio
+assert_driver_present palmas-pmic-driver-present palmas-pmic
+assert_device_present 48070000.i2c:tps659038@58:tps659038_pmic-probed palmas-pmic 48070000.i2c:tps659038@58:tps659038_pmic
+assert_driver_present palmas-rtc-driver-present palmas-rtc
+assert_device_present 48070000.i2c:tps659038@58:tps659038_rtc-probed palmas-rtc 48070000.i2c:tps659038@58:tps659038_rtc
+assert_driver_present pbias-regulator-driver-present pbias-regulator
+assert_device_present 4a002e00.pbias_regulator-probed pbias-regulator 4a002e00.pbias_regulator
+assert_driver_present phy-gmii-sel-driver-present phy-gmii-sel
+assert_device_present 4a002554.phy-gmii-sel-probed phy-gmii-sel 4a002554.phy-gmii-sel
+assert_driver_present pinctrl-single-driver-present pinctrl-single
+assert_device_present 4a003400.pinmux-probed pinctrl-single 4a003400.pinmux
+assert_driver_present reg-fixed-voltage-driver-present reg-fixed-voltage
+assert_device_present fixedregulator-main_12v0-probed reg-fixed-voltage fixedregulator-main_12v0
+assert_device_present fixedregulator-aic_dvdd-probed reg-fixed-voltage fixedregulator-aic_dvdd
+assert_device_present fixedregulator-vtt-probed reg-fixed-voltage fixedregulator-vtt
+assert_device_present fixedregulator-evm_5v0-probed reg-fixed-voltage fixedregulator-evm_5v0
+assert_device_present fixedregulator-vdd_3v3-probed reg-fixed-voltage fixedregulator-vdd_3v3
+assert_driver_present sdhci-omap-driver-present sdhci-omap
+assert_device_present 4809c000.mmc-probed sdhci-omap 4809c000.mmc
+assert_device_present 480b4000.mmc-probed sdhci-omap 480b4000.mmc
+assert_driver_present serial8250-driver-present serial8250
+assert_device_present serial8250-probed serial8250 serial8250
+assert_device_present 4ae00000.interconnect:segment@20000-probed simple-pm-bus 4ae00000.interconnect:segment@20000
+assert_device_present 48400000.interconnect-probed simple-pm-bus 48400000.interconnect
+assert_device_present 48800000.interconnect:segment@0-probed simple-pm-bus 48800000.interconnect:segment@0
+assert_device_present 48000000.interconnect:segment@200000-probed simple-pm-bus 48000000.interconnect:segment@200000
+assert_device_present 4a000000.interconnect:segment@200000-probed simple-pm-bus 4a000000.interconnect:segment@200000
+assert_device_present 4ae00000.interconnect:segment@30000-probed simple-pm-bus 4ae00000.interconnect:segment@30000
+assert_device_present 4a000000.interconnect-probed simple-pm-bus 4a000000.interconnect
+assert_device_present 4a000000.interconnect:segment@100000-probed simple-pm-bus 4a000000.interconnect:segment@100000
+assert_device_present 48000000.interconnect-probed simple-pm-bus 48000000.interconnect
+assert_device_present ocp-probed simple-pm-bus ocp
+assert_device_present 48400000.interconnect:segment@0-probed simple-pm-bus 48400000.interconnect:segment@0
+assert_device_present 4ae00000.interconnect:segment@0-probed simple-pm-bus 4ae00000.interconnect:segment@0
+assert_device_present 48800000.interconnect-probed simple-pm-bus 48800000.interconnect
+assert_device_present 4ae00000.interconnect:segment@10000-probed simple-pm-bus 4ae00000.interconnect:segment@10000
+assert_device_present 4ae00000.interconnect-probed simple-pm-bus 4ae00000.interconnect
+assert_device_present 4a000000.interconnect:segment@0-probed simple-pm-bus 4a000000.interconnect:segment@0
+assert_device_present 48000000.interconnect:segment@0-probed simple-pm-bus 48000000.interconnect:segment@0
+assert_driver_present sram-driver-present sram
+assert_device_present 40300000.ocmcram-probed sram 40300000.ocmcram
+assert_driver_present ti-cpufreq-driver-present ti-cpufreq
+assert_device_present ti-cpufreq-probed ti-cpufreq ti-cpufreq
+assert_driver_present ti-dma-crossbar-driver-present ti-dma-crossbar
+assert_device_present 4a002b78.dma-router-probed ti-dma-crossbar 4a002b78.dma-router
+assert_device_present 4a002c78.dma-router-probed ti-dma-crossbar 4a002c78.dma-router
+assert_driver_present ti-iodelay-driver-present ti-iodelay
+assert_device_present 4844a000.padconf-probed ti-iodelay 4844a000.padconf
+assert_driver_present ti-pipe3-driver-present ti-pipe3
+assert_device_present 4a094000.pciephy-probed ti-pipe3 4a094000.pciephy
+assert_device_present 4a096000.phy-probed ti-pipe3 4a096000.phy
+assert_device_present 4a084400.phy-probed ti-pipe3 4a084400.phy
+assert_driver_present ti-sysc-driver-present ti-sysc
+assert_device_present ocp:target-module@51000000-probed ti-sysc ocp:target-module@51000000
+assert_device_present ocp:target-module@48210000-probed ti-sysc ocp:target-module@48210000
+assert_driver_present ti_abb-driver-present ti_abb
+assert_device_present 4ae07e34.regulator-abb-ivahd-probed ti_abb 4ae07e34.regulator-abb-ivahd
+assert_device_present 4ae07ddc.regulator-abb-mpu-probed ti_abb 4ae07ddc.regulator-abb-mpu
+assert_driver_present xhci-hcd-driver-present xhci-hcd
+assert_device_present xhci-hcd.1.auto-probed xhci-hcd xhci-hcd.1.auto
+assert_driver_present hub-driver-present hub
+assert_device_present 2-1:1.0-probed hub 2-1:1.0
+assert_device_present 1-0:1.0-probed hub 1-0:1.0
+assert_device_present 1-1:1.0-probed hub 1-1:1.0
+assert_device_present 2-0:1.0-probed hub 2-0:1.0
+assert_driver_present usb-driver-present usb
+assert_device_present 2-1-probed usb 2-1
+assert_device_present usb1-probed usb usb1
+assert_device_present 1-1-probed usb 1-1
+assert_device_present usb2-probed usb usb2
