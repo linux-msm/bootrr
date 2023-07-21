@@ -1,5 +1,10 @@
 assert_cpufreq_enabled cpufreq-enabled 3
 assert_cpuidle_enabled cpuidle-enabled 3
+assert_driver_present coresight-dynamic-funnel-driver-present coresight-dynamic-funnel
+assert_device_present 28c03000.funnel-probed coresight-dynamic-funnel 28c03000.funnel
+assert_driver_present coresight-tmc-driver-present coresight-tmc
+assert_device_present 28c06000.etr-probed coresight-tmc 28c06000.etr
+assert_device_present 28c04000.etf-probed coresight-tmc 28c04000.etf
 assert_driver_present armv8-pmu-driver-present armv8-pmu
 assert_driver_present caam-driver-present caam
 assert_device_present 30900000.crypto-probed caam 30900000.crypto
