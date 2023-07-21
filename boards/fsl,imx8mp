@@ -1,0 +1,73 @@
+assert_cpufreq_enabled cpufreq-enabled 3
+assert_cpuidle_enabled cpuidle-enabled 3
+assert_driver_present armv8-pmu-driver-present armv8-pmu
+assert_driver_present caam-driver-present caam
+assert_device_present 30900000.crypto-probed caam 30900000.crypto
+assert_driver_present caam_jr-driver-present caam_jr
+assert_device_present 30902000.jr-probed caam_jr 30902000.jr
+assert_driver_present cpufreq-dt-driver-present cpufreq-dt
+assert_device_present cpufreq-dt-probed cpufreq-dt cpufreq-dt
+assert_driver_present etnaviv-driver-present etnaviv
+assert_device_present etnaviv-probed etnaviv etnaviv
+assert_driver_present etnaviv-gpu-driver-present etnaviv-gpu
+assert_device_present 38008000.gpu-probed etnaviv-gpu 38008000.gpu
+assert_device_present 38000000.gpu-probed etnaviv-gpu 38000000.gpu
+assert_driver_present gpio-mxc-driver-present gpio-mxc
+assert_device_present 30220000.gpio-probed gpio-mxc 30220000.gpio
+assert_device_present 30230000.gpio-probed gpio-mxc 30230000.gpio
+assert_device_present 30240000.gpio-probed gpio-mxc 30240000.gpio
+assert_device_present 30200000.gpio-probed gpio-mxc 30200000.gpio
+assert_device_present 30210000.gpio-probed gpio-mxc 30210000.gpio
+assert_driver_present hantro-vpu-driver-present hantro-vpu
+assert_device_present 38310000.video-codec-probed hantro-vpu 38310000.video-codec
+assert_device_present 38300000.video-codec-probed hantro-vpu 38300000.video-codec
+assert_driver_present i.mx8mm_thermal-driver-present i.mx8mm_thermal
+assert_device_present 30260000.tmu-probed i.mx8mm_thermal 30260000.tmu
+assert_driver_present imx-bus-devfreq-driver-present imx-bus-devfreq
+assert_device_present 32700000.interconnect-probed imx-bus-devfreq 32700000.interconnect
+assert_driver_present imx-cpufreq-dt-driver-present imx-cpufreq-dt
+assert_device_present imx-cpufreq-dt-probed imx-cpufreq-dt imx-cpufreq-dt
+assert_driver_present imx-ddr-pmu-driver-present imx-ddr-pmu
+assert_device_present 3d800000.ddr-pmu-probed imx-ddr-pmu 3d800000.ddr-pmu
+assert_driver_present imx-gpcv2-driver-present imx-gpcv2
+assert_device_present 303a0000.gpc-probed imx-gpcv2 303a0000.gpc
+assert_driver_present imx-pgc-driver-present imx-pgc
+assert_device_present imx-pgc-domain.2-probed imx-pgc imx-pgc-domain.2
+assert_device_present imx-pgc-domain.10-probed imx-pgc imx-pgc-domain.10
+assert_device_present imx-pgc-domain.0-probed imx-pgc imx-pgc-domain.0
+assert_device_present imx-pgc-domain.9-probed imx-pgc imx-pgc-domain.9
+assert_device_present imx-pgc-domain.17-probed imx-pgc imx-pgc-domain.17
+assert_device_present imx-pgc-domain.7-probed imx-pgc imx-pgc-domain.7
+assert_device_present imx-pgc-domain.13-probed imx-pgc imx-pgc-domain.13
+assert_device_present imx-pgc-domain.3-probed imx-pgc imx-pgc-domain.3
+assert_device_present imx-pgc-domain.11-probed imx-pgc imx-pgc-domain.11
+assert_device_present imx-pgc-domain.1-probed imx-pgc imx-pgc-domain.1
+assert_device_present imx-pgc-domain.18-probed imx-pgc imx-pgc-domain.18
+assert_device_present imx-pgc-domain.8-probed imx-pgc imx-pgc-domain.8
+assert_device_present imx-pgc-domain.16-probed imx-pgc imx-pgc-domain.16
+assert_device_present imx-pgc-domain.6-probed imx-pgc imx-pgc-domain.6
+assert_device_present imx-pgc-domain.4-probed imx-pgc imx-pgc-domain.4
+assert_device_present imx-pgc-domain.12-probed imx-pgc imx-pgc-domain.12
+assert_driver_present imx-sdma-driver-present imx-sdma
+assert_device_present 30bd0000.dma-controller-probed imx-sdma 30bd0000.dma-controller
+assert_driver_present imx2-wdt-driver-present imx2-wdt
+assert_device_present 30280000.watchdog-probed imx2-wdt 30280000.watchdog
+assert_driver_present imx8m-blk-ctrl-driver-present imx8m-blk-ctrl
+assert_device_present 32ec0000.blk-ctrl-probed imx8m-blk-ctrl 32ec0000.blk-ctrl
+assert_device_present 38330000.blk-ctrl-probed imx8m-blk-ctrl 38330000.blk-ctrl
+assert_driver_present imx8mp-blk-ctrl-driver-present imx8mp-blk-ctrl
+assert_device_present 32f10000.blk-ctrl-probed imx8mp-blk-ctrl 32f10000.blk-ctrl
+assert_driver_present imx8mp-ccm-driver-present imx8mp-ccm
+assert_device_present 30380000.clock-controller-probed imx8mp-ccm 30380000.clock-controller
+assert_driver_present imx8mp-interconnect-driver-present imx8mp-interconnect
+assert_device_present imx8mp-interconnect-probed imx8mp-interconnect imx8mp-interconnect
+assert_driver_present imx8mp-pinctrl-driver-present imx8mp-pinctrl
+assert_device_present 30330000.pinctrl-probed imx8mp-pinctrl 30330000.pinctrl
+assert_driver_present imx_mu-driver-present imx_mu
+assert_device_present 30aa0000.mailbox-probed imx_mu 30aa0000.mailbox
+assert_driver_present imx_ocotp-driver-present imx_ocotp
+assert_device_present 30350000.efuse-probed imx_ocotp 30350000.efuse
+assert_driver_present psci-cpuidle-domain-driver-present psci-cpuidle-domain
+assert_device_present psci-probed psci-cpuidle-domain psci
+assert_driver_present reset_imx7-driver-present reset_imx7
+assert_device_present 30390000.reset-controller-probed reset_imx7 30390000.reset-controller
