@@ -256,9 +256,7 @@ assert_driver_present panfrost-driver-present panfrost
 assert_device_present panfrost-probed panfrost 13000000.*
 
 # Camera
-assert_driver_present uvcvideo-driver-present uvcvideo
-assert_device_present uvcvideo0-probed uvcvideo 1-1.4.1:1.0
-assert_device_present uvcvideo1-probed uvcvideo 1-1.4.1:1.1
+assert_usb_probed usb-camera-probed 1 \* \* \* \* \* \* 0e 01 00 \*
 
 # Audio
 assert_driver_present mt8192-audio-driver-present mt8192-audio
@@ -277,9 +275,7 @@ assert_driver_present mt8192_mt6359-driver-present mt8192_mt6359
 assert_device_present mt8192_mt6359-probed mt8192_mt6359 sound
 
 # Bluetooth
-assert_driver_present btusb-driver-present btusb
-assert_device_present btusb0-probed btusb 1-1.4.2:1.0
-assert_device_present btusb1-probed btusb 1-1.4.2:1.1
+assert_usb_probed bluetooth-probed 1 \* \* \* \* \* \* e0 01 01 00
 
 # Watchdog
 assert_driver_present mtk-wdt-driver-present mtk-wdt
