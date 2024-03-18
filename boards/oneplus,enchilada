@@ -1,0 +1,6 @@
+#!/bin/sh
+
+source $(dirname $0)/oneplus,oneplus6
+
+assert_driver_present max98927-driver-present max98927
+assert_device_present 4-003a-probed max98927 4-003a
