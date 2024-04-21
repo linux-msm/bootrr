@@ -2,7 +2,7 @@
 
 test_report_exit() {
 	TEST_RESULT=$1
-	command -v lava-test-case
+	command -v lava-test-case > /dev/null
 	if [ "$?" -eq 0 ]; then
 		lava-test-case "${TEST_CASE_ID}" --result ${TEST_RESULT}
 	else
