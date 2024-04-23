@@ -37,7 +37,7 @@ install: $(all-install)
 CPIO := $(PWD)/$(CPIONAME).cpio
 
 $(CPIO): $(all-install)
-	@cd $(DESTDIR) && find ./$(prefix) | cpio -o -H newc > $(CPIO)
+	@cd $(DESTDIR) && find ./$(prefix) | cpio -o -H newc -R +0:+0 > $(CPIO)
 
 %.cpio.gz: %.cpio
 	@gzip < $< > $@
