@@ -1,0 +1,19 @@
+name: generate-cpio-archive
+on:
+  push:
+    branches: master
+
+jobs:
+  generate-cpio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout master
+        uses: actions/checkout@v4
+      - name: make cpio.gz
+        run: |
+          make cpio.gz
+      - name: archive bootrr.cpio.gz
+        uses: actions/upload-artifact@v4
+        with:
+          name: bootrr.cpio.gz
+          path: bootrr.cpio.gz
