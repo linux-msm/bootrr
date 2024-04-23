@@ -1,0 +1,188 @@
+#!/bin/sh
+
+assert_cpuidle_enabled cpuidle-enabled 11
+assert_driver_present hid-multitouch-driver-present hid-multitouch
+assert_device_present 0018:04F3:40F3.0001-probed hid-multitouch 0018:04F3:40F3.0001
+assert_device_present 0018:04F3:31AC.0002-probed hid-multitouch 0018:04F3:31AC.0002
+
+assert_driver_present i2c_hid_of-driver-present i2c_hid_of
+assert_device_present keyboard-probed i2c_hid_of 0-003a
+assert_device_present touchpad-probed i2c_hid_of 1-0015
+assert_device_present touchscreen-probed i2c_hid_of 0-0010
+
+assert_driver_present nvme-driver-present nvme
+assert_device_present 0007:01:00.0-probed nvme 0007:01:00.0
+
+assert_driver_present pcieport-driver-present pcieport
+assert_device_present 0005:00:00.0-probed pcieport 0005:00:00.0
+assert_device_present 0007:00:00.0-probed pcieport 0007:00:00.0
+
+assert_driver_present aer-driver-present aer
+assert_device_present 0005:00:00.0:pcie002-probed aer 0005:00:00.0:pcie002
+assert_device_present 0007:00:00.0:pcie002-probed aer 0007:00:00.0:pcie002
+
+assert_driver_present pcie_pme-driver-present pcie_pme
+assert_device_present 0007:00:00.0:pcie001-probed pcie_pme 0007:00:00.0:pcie001
+assert_device_present 0005:00:00.0:pcie001-probed pcie_pme 0005:00:00.0:pcie001
+
+assert_driver_present arm-smmu-driver-present arm-smmu
+assert_device_present apps-iommu-probed arm-smmu 15000000.iommu
+
+assert_driver_present bcm_voter-driver-present bcm_voter
+assert_device_present bcm-voter-probed bcm_voter 17500000.rsc:bcm-voter
+
+assert_driver_present clk-rpmh-driver-present clk-rpmh
+assert_device_present rpmh-clock-controller-probed clk-rpmh 17500000.rsc:clock-controller
+
+assert_driver_present cmd-db-driver-present cmd-db
+assert_device_present cmd-db-probed cmd-db 81c60000.aop-cmd-db
+
+assert_driver_present dispcc-x1e80100-driver-present dispcc-x1e80100
+assert_device_present dispcc-clock-controller-probed dispcc-x1e80100 af00000.clock-controller
+
+assert_driver_present dwc3-qcom-driver-present dwc3-qcom
+assert_device_present usb1-ss0-probed dwc3-qcom a6f8800.usb
+assert_device_present usb1-ss1-probed dwc3-qcom a8f8800.usb
+assert_device_present usb1-ss2-probed dwc3-qcom a0f8800.usb
+
+assert_driver_present efi-framebuffer-driver-present efi-framebuffer
+assert_device_present efi-framebuffer.0-probed efi-framebuffer efi-framebuffer.0
+
+assert_driver_present gcc-x1e80100-driver-present gcc-x1e80100
+assert_device_present gcc-clock-controller-probed gcc-x1e80100 100000.clock-controller
+
+assert_driver_present geni_i2c-driver-present geni_i2c
+assert_device_present geni-i2c0-probed geni_i2c b80000.i2c
+assert_device_present geni-i2c8-probed geni_i2c a80000.i2c
+
+assert_driver_present geni_se_qup-driver-present geni_se_qup
+assert_device_present geniqup0-probed geni_se_qup bc0000.geniqup
+assert_device_present geniqup1-probed geni_se_qup ac0000.geniqup
+assert_device_present geniqup2-probed geni_se_qup 8c0000.geniqup
+
+assert_driver_present msm-mdss-driver-present msm-mdss
+assert_device_present mdss-probed msm-mdss ae00000.display-subsystem
+
+assert_driver_present msm_dpu-driver-present msm_dpu
+assert_device_present dpu-probed msm_dpu ae01000.display-controller
+
+assert_driver_present psci-cpuidle-driver-present psci-cpuidle
+assert_device_present psci-cpuidle-probed psci-cpuidle psci-cpuidle
+
+assert_driver_present psci-cpuidle-domain-driver-present psci-cpuidle-domain
+assert_device_present psci-probed psci-cpuidle-domain psci
+
+assert_driver_present qcom-ipcc-driver-present qcom-ipcc
+assert_device_present ipcc-probed qcom-ipcc 408000.mailbox
+
+assert_driver_present qcom-llcc-driver-present qcom-llcc
+assert_device_present llcc-probed qcom-llcc 25000000.system-cache-controller
+
+assert_driver_present qcom-pcie-driver-present qcom-pcie
+assert_device_present pci4-probed qcom-pcie 1c08000.pci
+assert_device_present pci6a-probed qcom-pcie 1bf8000.pci
+
+assert_driver_present qcom-qmp-combo-phy-driver-present qcom-qmp-combo-phy
+assert_device_present usb1_ss0-qmpphy-probed qcom-qmp-combo-phy fd5000.phy
+assert_device_present usb1_ss1_qmpphy-probed qcom-qmp-combo-phy fda000.phy
+assert_device_present usb1_ss2-qmpphy-probed qcom-qmp-combo-phy fdf000.phy
+
+assert_driver_present qcom-qmp-pcie-phy-driver-present qcom-qmp-pcie-phy
+assert_device_present pcie4-phy-probed qcom-qmp-pcie-phy 1c0e000.phy
+assert_device_present pcie6a-phy-probed qcom-qmp-pcie-phy 1bfc000.phy
+
+assert_driver_present qcom-rpmh-regulator-driver-present qcom-rpmh-regulator
+assert_device_present rpmh-pm8550-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-0
+assert_device_present rpmh-pm8550ve-c-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-1
+assert_device_present rpmh-pmc8380_d-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-2
+assert_device_present rpmh-pmc8380-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-3
+assert_device_present rpmh-pmc8380_f-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-4
+assert_device_present rpmh-pm8550ve-i-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-6
+assert_device_present rpmh-pm8550ve-j-regulators-probed qcom-rpmh-regulator 17500000.rsc:regulators-7
+
+assert_driver_present qcom-rpmhpd-driver-present qcom-rpmhpd
+assert_device_present rpmhpd-probed qcom-rpmhpd 17500000.rsc:power-controller
+
+assert_driver_present qcom-smem-driver-present qcom-smem
+assert_device_present smem-probed qcom-smem ffe00000.smem
+
+assert_driver_present qcom-socinfo-driver-present qcom-socinfo
+assert_device_present qcom-socinfo-probed qcom-socinfo qcom-socinfo
+
+assert_driver_present qcom_aoss_qmp-driver-present qcom_aoss_qmp
+assert_device_present aoss-qmp-probed qcom_aoss_qmp c300000.power-management
+
+assert_driver_present qcom_geni_serial-driver-present qcom_geni_serial
+assert_device_present uart21-probed qcom_geni_serial 894000.serial
+
+assert_driver_present qcom_hwspinlock-driver-present qcom_hwspinlock
+assert_device_present tcsr-mutex-probed qcom_hwspinlock 1f40000.hwlock
+
+assert_driver_present qcom_pdc-driver-present qcom_pdc
+assert_device_present qcom-pdc-probed qcom_pdc b220000.interrupt-controller
+
+assert_driver_present qcom_q6v5_pas-driver-present qcom_q6v5_pas
+assert_device_present remoteproc-adsp-probed qcom_q6v5_pas 30000000.remoteproc
+assert_device_present remoteproc-cdsp-probed qcom_q6v5_pas 32300000.remoteproc
+
+assert_driver_present qcom_scm-driver-present qcom_scm
+assert_device_present scm-probed qcom_scm firmware:scm
+
+assert_driver_present qcom_smp2p-driver-present qcom_smp2p
+assert_device_present smp2p-adsp-probed qcom_smp2p smp2p-adsp
+assert_device_present smp2p-cdsp-probed qcom_smp2p smp2p-cdsp
+
+assert_driver_present qnoc-x1e80100-driver-present qnoc-x1e80100
+assert_device_present aggre1-interconnect-probed qnoc-x1e80100 16e0000.interconnect
+assert_device_present aggre2-interconnect-probed qnoc-x1e80100 1700000.interconnect
+assert_device_present clk-virt-interconnect-probed qnoc-x1e80100 interconnect-0
+assert_device_present cnoc-interconnect-probed qnoc-x1e80100 1500000.interconnect
+assert_device_present config-interconnect-probed qnoc-x1e80100 1600000.interconnect
+assert_device_present gem-interconnect-probed qnoc-x1e80100 26400000.interconnect
+assert_device_present lpass-ag-interconnect-probed qnoc-x1e80100 7e40000.interconnect
+assert_device_present lpass-lpicx-interconnect-probed qnoc-x1e80100 7430000.interconnect
+assert_device_present mc-virt-interconnect-probed qnoc-x1e80100 interconnect-1
+assert_device_present mmss-interconnect-probed qnoc-x1e80100 1780000.interconnect
+assert_device_present nsp-interconnect-probed qnoc-x1e80100 320c0000.interconnect
+assert_device_present pcie-center-interconnect-probed qnoc-x1e80100 16d0000.interconnect
+assert_device_present pcie-north-interconnect-probed qnoc-x1e80100 7400000.interconnect
+assert_device_present pcie-noth-interconnect-probed qnoc-x1e80100 1740000.interconnect
+assert_device_present pcie-south-interconnect-probed qnoc-x1e80100 16c0000.interconnect
+assert_device_present system-interconnect-probed qnoc-x1e80100 1680000.interconnect
+assert_device_present usb-center-interconnect-probed qnoc-x1e80100 1750000.interconnect
+assert_device_present usb-north-interconnect-probed qnoc-x1e80100 1760000.interconnect
+assert_device_present usb-south-interconnect-probed qnoc-x1e80100 1770000.interconnect
+
+assert_driver_present reg-dummy-driver-present reg-dummy
+assert_device_present reg-dummy-probed reg-dummy reg-dummy
+
+assert_driver_present reg-fixed-voltage-driver-present reg-fixed-voltage
+assert_device_present regulator-edp-3p3-probed reg-fixed-voltage regulator-edp-3p3
+assert_device_present vph-pwr-regulator-probed reg-fixed-voltage vph-pwr-regulator
+
+assert_driver_present rpmh-driver-present rpmh
+assert_device_present rpmh-probed rpmh 17500000.rsc
+
+assert_driver_present simple-pm-bus-driver-present simple-pm-bus
+assert_device_present soc-bus-probed simple-pm-bus soc@0
+
+assert_driver_present smccc_trng-driver-present smccc_trng
+assert_device_present smccc_trng-probed smccc_trng smccc_trng
+
+assert_driver_present snd-soc-dummy-driver-present snd-soc-dummy
+assert_device_present snd-soc-dummy-probed snd-soc-dummy snd-soc-dummy
+
+assert_driver_present tcsrcc-x1e80100-driver-present tcsrcc-x1e80100
+assert_device_present tcsrcc-clock-controller-probed tcsrcc-x1e80100 1fc0000.clock-controller
+
+assert_driver_present wcd938x_codec-driver-present wcd938x_codec
+assert_device_present wcd9385-codec-probed wcd938x_codec audio-codec
+
+assert_driver_present x1e80100-tlmm-driver-present x1e80100-tlmm
+assert_device_present tlmm-probed x1e80100-tlmm f100000.pinctrl
+
+assert_driver_present ctrl-driver-present ctrl
+assert_device_present uart21-ctrl-probed ctrl 894000.serial:0
+
+assert_driver_present port-driver-present port
+assert_device_present uart21-port-probed port 894000.serial:0.0
