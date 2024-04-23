@@ -1,0 +1,61 @@
+#!/bin/sh
+
+. bootrr
+
+TEST_CASE_ID="$1"
+COUNT="$2"
+VENDOR="$3"
+PRODUCT="$4"
+DEVICE="$5"
+DEV_CLASS="$6"
+DEV_SUBCLASS="$7"
+DEV_PROTOCOL="$8"
+INTF_CLASS="$9"
+INTF_SUBCLASS="${10}"
+INTF_PROTOCOL="${11}"
+INTF_NUM="${12}"
+
+if [ -z "${TEST_CASE_ID}" -o -z "${COUNT}" -o -z "${VENDOR}" ]; then
+	echo "Usage: $0 <test-case-id> <count> <vendor> [<product> <device> <device-class> <device-subclass> <device-protocol> <interface-class> <interface-subclass> <interface-protocol> <interface-number>]"
+	echo "Note: '*' can be used as wildcard for any field"
+	exit 1
+fi
+
+match()
+{
+	FILE="$1"
+	ID="$2"
+
+	[ ! -f "$FILE" ] && return 1
+	[ "$ID" = "*" -o "$ID" = "" ] && return 0
+	[ $(cat "$FILE") != "$ID" ] && return 1
+	return 0
+}
+
+cur_count=0
+
+for dev in $(find /sys/bus/usb/devices -maxdepth 1); do
+	match "$dev"/idVendor "$VENDOR" || continue
+	match "$dev"/idProduct "$PRODUCT" || continue
+	match "$dev"/bcdDevice "$DEVICE" || continue
+	match "$dev"/bDeviceClass "$DEV_CLASS" || continue
+	match "$dev"/bDeviceSubClass "$DEV_SUBCLASS" || continue
+	match "$dev"/bDeviceProtocol "$DEV_PROTOCOL" || continue
+
+	# Matched device. Now search through interfaces
+	for intf in $(find "$dev"/ -maxdepth 1 -type d); do
+		match "$intf"/bInterfaceClass "$INTF_CLASS" || continue
+		match "$intf"/bInterfaceSubClass "$INTF_SUBCLASS" || continue
+		match "$intf"/bInterfaceProtocol "$INTF_PROTOCOL" || continue
+		match "$intf"/bInterfaceNumber "$INTF_NUM" || continue
+
+		# Matched interface. Add to count if it was probed by driver.
+		[ -d "$intf"/driver ] && cur_count=$((cur_count+1))
+	done
+done
+
+if [ "$cur_count" -eq "$COUNT" ]; then
+	test_report_exit pass
+else
+	test_report_exit fail
+fi
