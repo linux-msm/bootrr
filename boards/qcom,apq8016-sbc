@@ -169,7 +169,7 @@ assert_device_present sound-driver-wcd-digital-codec-probed msm8916-wcd-digital-
 
 assert_driver_present sound-driver-adv7511-present adv7511
 assert_driver_present sound-driver-hdmi-audio-codec-present hdmi-audio-codec
-assert_device_present sound-driver-hdmi-audio-codec-probed hdmi-audio-codec hdmi-audio-codec.1.auto
+assert_device_present sound-driver-hdmi-audio-codec-probed hdmi-audio-codec hdmi-audio-codec.*.auto
 
 assert_soundcard_present sound-card-adv-playback-present DB410c pcm0p
 assert_soundcard_present sound-card-wcd-playback-present DB410c pcm1p
