@@ -13,7 +13,7 @@ assert_device_present bam-blsp-dma-device-probed bam-dma-engine 7884000.*
 
 # CPU clock                      0/0/0/0 (0)
 assert_driver_present cpu-clock-driver-present qcom-apcs-msm8916-clk
-assert_device_present cpu-clock-device-probed qcom-apcs-msm8916-clk qcom-apcs-msm8916-clk
+assert_device_present cpu-clock-device-probed qcom-apcs-msm8916-clk qcom-apcs-msm8916-clk.*
 
 # GCC                            0/0/0/0 (0)
 assert_driver_present gcc-driver-present gcc-msm8916
@@ -62,12 +62,12 @@ assert_device_present msm_serial-uart1-probed msm_serial 78af000.*
 assert_device_present msm_serial-uart2-probed msm_serial 78b0000.*
 
 # SMD                            0/0/0/0 (0)
-assert_driver_present smd-driver-present qcom-smd
-assert_device_present smd-device-present qcom-smd smd
+assert_driver_present rpm-proc-driver-present qcom-rpm-proc
+assert_device_present rpm-proc-device-present qcom-rpm-proc remoteproc
 
 # SMEM                           0/0/0/0 (0)
 assert_driver_present smem-driver-present qcom-smem
-assert_device_present smem-device-probed qcom-smem smem
+assert_device_present smem-device-probed qcom-smem 86300000.smem
 
 # SMMU                           0/0/0/0 (0)
 # SPI QUP                        0/0/0/0 (0)
