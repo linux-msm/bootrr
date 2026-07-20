@@ -1,0 +1,1442 @@
+#!/bin/sh
+
+assert_cpuidle_enabled cpuidle-enabled 17
+assert_driver_present coresight-cti-driver-present coresight-cti
+assert_device_present cti0-probed coresight-cti 11193000.cti
+assert_device_present cti1-probed coresight-cti 111ab000.cti
+
+assert_driver_present coresight-dynamic-funnel-driver-present coresight-dynamic-funnel
+assert_device_present funnel0-probed coresight-dynamic-funnel 11189000.funnel
+assert_device_present funnel1-probed coresight-dynamic-funnel 11c04000.funnel
+assert_device_present funnel2-probed coresight-dynamic-funnel 10041000.funnel
+
+assert_driver_present coresight-dynamic-replicator-driver-present coresight-dynamic-replicator
+assert_device_present replicator-probed coresight-dynamic-replicator 11c06000.replicator
+
+assert_driver_present coresight-stm-driver-present coresight-stm
+assert_device_present stm-probed coresight-stm 10002000.stm
+
+assert_driver_present coresight-tmc-driver-present coresight-tmc
+assert_device_present tmc-probed coresight-tmc 11c05000.tmc
+
+assert_driver_present qcom-apm-driver-present qcom-apm
+assert_device_present q6apm-service-probed qcom-apm gprsvc:service:2:1
+
+assert_driver_present qcom-prm-driver-present qcom-prm
+assert_device_present q6prm-service-probed qcom-prm gprsvc:service:2:2
+
+assert_driver_present aux_bridge.aux_bridge-driver-present aux_bridge.aux_bridge
+assert_device_present aux-bridge0-probed aux_bridge.aux_bridge aux_bridge.aux_bridge.0
+assert_device_present aux-bridge1-probed aux_bridge.aux_bridge aux_bridge.aux_bridge.1
+
+assert_driver_present aux_hpd_bridge.aux_hpd_bridge-driver-present aux_hpd_bridge.aux_hpd_bridge
+assert_device_present dp-hpd-bridge1-probed aux_hpd_bridge.aux_hpd_bridge aux_hpd_bridge.dp_hpd_bridge.1
+assert_device_present dp-hpd-bridge0-probed aux_hpd_bridge.aux_hpd_bridge aux_hpd_bridge.dp_hpd_bridge.0
+
+assert_driver_present gpio_shared_proxy-driver-present gpio_shared_proxy
+assert_device_present gpio-shared-proxy15-probed gpio_shared_proxy gpiolib_shared.proxy.15
+assert_device_present gpio-shared-proxy18-probed gpio_shared_proxy gpiolib_shared.proxy.18
+assert_device_present gpio-shared-proxy16-probed gpio_shared_proxy gpiolib_shared.proxy.16
+assert_device_present gpio-shared-proxy20-probed gpio_shared_proxy gpiolib_shared.proxy.20
+assert_device_present gpio-shared-proxy19-probed gpio_shared_proxy gpiolib_shared.proxy.19
+assert_device_present gpio-shared-proxy17-probed gpio_shared_proxy gpiolib_shared.proxy.17
+
+assert_driver_present pmic_glink_altmode.pmic_glink_altmode-driver-present pmic_glink_altmode.pmic_glink_altmode
+assert_device_present pmic-glink-altmode-probed pmic_glink_altmode.pmic_glink_altmode pmic_glink.altmode.0
+
+assert_driver_present qcom_battmgr.pmic_glink_power_supply-driver-present qcom_battmgr.pmic_glink_power_supply
+assert_device_present pmic-glink-power-supply-probed qcom_battmgr.pmic_glink_power_supply pmic_glink.power-supply.0
+
+assert_driver_present qcom_pd_mapper.qcom-pdm-mapper-driver-present qcom_pd_mapper.qcom-pdm-mapper
+assert_device_present pd-mapper1-probed qcom_pd_mapper.qcom-pdm-mapper qcom_common.pd-mapper.1
+assert_device_present pd-mapper2-probed qcom_pd_mapper.qcom-pdm-mapper qcom_common.pd-mapper.2
+assert_device_present pd-mapper0-probed qcom_pd_mapper.qcom-pdm-mapper qcom_common.pd-mapper.0
+
+assert_driver_present qcom_qseecom_uefisecapp-driver-present qcom_qseecom_uefisecapp
+assert_device_present uefisecapp-probed qcom_qseecom_uefisecapp qcom_qseecom.uefisecapp.0
+
+assert_driver_present reset_gpio-driver-present reset_gpio
+assert_device_present reset-gpio0-probed reset_gpio reset.gpio.0
+assert_device_present reset-gpio1-probed reset_gpio reset.gpio.1
+
+assert_driver_present ucsi_glink.pmic_glink_ucsi-driver-present ucsi_glink.pmic_glink_ucsi
+assert_device_present pmic-glink-ucsi-probed ucsi_glink.pmic_glink_ucsi pmic_glink.ucsi.0
+
+assert_driver_present samsung_atana33xc20-driver-present samsung_atana33xc20
+assert_device_present dp-panel-probed samsung_atana33xc20 aux-af6c000.displayport-controller
+
+assert_driver_present faux_driver-driver-present faux_driver
+assert_device_present reg-dummy-probed faux_driver reg-dummy
+assert_device_present regulatory-probed faux_driver regulatory
+assert_device_present snd-soc-dummy-probed faux_driver snd-soc-dummy
+assert_device_present psci-cpuidle-probed faux_driver psci-cpuidle
+
+assert_driver_present genpd_provider-driver-present genpd_provider
+assert_device_present power-domain-cpu11-probed genpd_provider power-domain-cpu11
+assert_device_present gcc_usb30_prim_gdsc-probed genpd_provider gcc_usb30_prim_gdsc
+assert_device_present gcc_usb_1_phy_gdsc-probed genpd_provider gcc_usb_1_phy_gdsc
+assert_device_present gcc_pcie_4_phy_gdsc-probed genpd_provider gcc_pcie_4_phy_gdsc
+assert_device_present gpu_cc_cx_gdsc-probed genpd_provider gpu_cc_cx_gdsc
+assert_device_present video_cc_mvs1_gdsc-probed genpd_provider video_cc_mvs1_gdsc
+assert_device_present power-domain-cpu8-probed genpd_provider power-domain-cpu8
+assert_device_present gcc_pcie_3b_gdsc-probed genpd_provider gcc_pcie_3b_gdsc
+assert_device_present mx_ao-probed genpd_provider mx_ao
+assert_device_present power-domain-cpu-cluster1-probed genpd_provider power-domain-cpu-cluster1
+assert_device_present cam_cc_bps_gdsc-probed genpd_provider cam_cc_bps_gdsc
+assert_device_present power-domain-cpu6-probed genpd_provider power-domain-cpu6
+assert_device_present video_cc_mvs0c_gdsc-probed genpd_provider video_cc_mvs0c_gdsc
+assert_device_present video_cc_mvs0_gdsc-probed genpd_provider video_cc_mvs0_gdsc
+assert_device_present gcc_pcie_1_tunnel_gdsc-probed genpd_provider gcc_pcie_1_tunnel_gdsc
+assert_device_present gcc_usb30_sec_gdsc-probed genpd_provider gcc_usb30_sec_gdsc
+assert_device_present eva_cc_mvs0_gdsc-probed genpd_provider eva_cc_mvs0_gdsc
+assert_device_present gcc_pcie_3a_gdsc-probed genpd_provider gcc_pcie_3a_gdsc
+assert_device_present gcc_usb_2_phy_gdsc-probed genpd_provider gcc_usb_2_phy_gdsc
+assert_device_present gcc_pcie_6_gdsc-probed genpd_provider gcc_pcie_6_gdsc
+assert_device_present gcc_pcie_5_phy_gdsc-probed genpd_provider gcc_pcie_5_phy_gdsc
+assert_device_present power-domain-cpu16-probed genpd_provider power-domain-cpu16
+assert_device_present power-domain-cpu4-probed genpd_provider power-domain-cpu4
+assert_device_present gcc_usb4_2_gdsc-probed genpd_provider gcc_usb4_2_gdsc
+assert_device_present mss-probed genpd_provider mss
+assert_device_present gfx-probed genpd_provider gfx
+assert_device_present nsp2-probed genpd_provider nsp2
+assert_device_present power-domain-cpu14-probed genpd_provider power-domain-cpu14
+assert_device_present power-domain-cpu2-probed genpd_provider power-domain-cpu2
+assert_device_present cam_cc_ife_1_gdsc-probed genpd_provider cam_cc_ife_1_gdsc
+assert_device_present gcc_pcie_5_gdsc-probed genpd_provider gcc_pcie_5_gdsc
+assert_device_present mxc_ao-probed genpd_provider mxc_ao
+assert_device_present gcc_usb3_mp_ss0_phy_gdsc-probed genpd_provider gcc_usb3_mp_ss0_phy_gdsc
+assert_device_present gcc_usb4_1_gdsc-probed genpd_provider gcc_usb4_1_gdsc
+assert_device_present power-domain-cpu12-probed genpd_provider power-domain-cpu12
+assert_device_present power-domain-cpu0-probed genpd_provider power-domain-cpu0
+assert_device_present gcc_pcie_6_phy_gdsc-probed genpd_provider gcc_pcie_6_phy_gdsc
+assert_device_present gcc_ufs_phy_gdsc-probed genpd_provider gcc_ufs_phy_gdsc
+assert_device_present disp_cc_mdss_core_gdsc-probed genpd_provider disp_cc_mdss_core_gdsc
+assert_device_present mxc-probed genpd_provider mxc
+assert_device_present mmcx_ao-probed genpd_provider mmcx_ao
+assert_device_present power-domain-cpu9-probed genpd_provider power-domain-cpu9
+assert_device_present cam_cc_ife_0_gdsc-probed genpd_provider cam_cc_ife_0_gdsc
+assert_device_present power-domain-cpu10-probed genpd_provider power-domain-cpu10
+assert_device_present cx_ao-probed genpd_provider cx_ao
+assert_device_present gcc_pcie_4_gdsc-probed genpd_provider gcc_pcie_4_gdsc
+assert_device_present lmx-probed genpd_provider lmx
+assert_device_present gcc_usb4_0_gdsc-probed genpd_provider gcc_usb4_0_gdsc
+assert_device_present gcc_usb20_prim_gdsc-probed genpd_provider gcc_usb20_prim_gdsc
+assert_device_present power-domain-cpu-cluster2-probed genpd_provider power-domain-cpu-cluster2
+assert_device_present gcc_pcie_3a_phy_gdsc-probed genpd_provider gcc_pcie_3a_phy_gdsc
+assert_device_present mx-probed genpd_provider mx
+assert_device_present power-domain-cpu7-probed genpd_provider power-domain-cpu7
+assert_device_present nsp-probed genpd_provider nsp
+assert_device_present gcc_usb30_tert_gdsc-probed genpd_provider gcc_usb30_tert_gdsc
+assert_device_present eva_cc_mvs0c_gdsc-probed genpd_provider eva_cc_mvs0c_gdsc
+assert_device_present power-domain-system-probed genpd_provider power-domain-system
+assert_device_present gcc_usb3_mp_ss1_phy_gdsc-probed genpd_provider gcc_usb3_mp_ss1_phy_gdsc
+assert_device_present disp_cc_mdss_core_int2_gdsc-probed genpd_provider disp_cc_mdss_core_int2_gdsc
+assert_device_present gcc_pcie_2_tunnel_gdsc-probed genpd_provider gcc_pcie_2_tunnel_gdsc
+assert_device_present power-domain-cpu-cluster0-probed genpd_provider power-domain-cpu-cluster0
+assert_device_present power-domain-cpu17-probed genpd_provider power-domain-cpu17
+assert_device_present gx_clkctl_gx_gdsc-probed genpd_provider gx_clkctl_gx_gdsc
+assert_device_present power-domain-cpu5-probed genpd_provider power-domain-cpu5
+assert_device_present cam_cc_ipe_0_gdsc-probed genpd_provider cam_cc_ipe_0_gdsc
+assert_device_present gcc_pcie_0_tunnel_gdsc-probed genpd_provider gcc_pcie_0_tunnel_gdsc
+assert_device_present power-domain-cpu15-probed genpd_provider power-domain-cpu15
+assert_device_present gcc_usb_0_phy_gdsc-probed genpd_provider gcc_usb_0_phy_gdsc
+assert_device_present power-domain-cpu3-probed genpd_provider power-domain-cpu3
+assert_device_present gcc_pcie_3b_phy_gdsc-probed genpd_provider gcc_pcie_3b_phy_gdsc
+assert_device_present ebi-probed genpd_provider ebi
+assert_device_present mmcx-probed genpd_provider mmcx
+assert_device_present gmxc-probed genpd_provider gmxc
+assert_device_present lcx-probed genpd_provider lcx
+assert_device_present gcc_usb30_mp_gdsc-probed genpd_provider gcc_usb30_mp_gdsc
+assert_device_present cam_cc_titan_top_gdsc-probed genpd_provider cam_cc_titan_top_gdsc
+assert_device_present cx-probed genpd_provider cx
+assert_device_present power-domain-cpu13-probed genpd_provider power-domain-cpu13
+assert_device_present power-domain-cpu1-probed genpd_provider power-domain-cpu1
+
+assert_driver_present gpio_stub_drv-driver-present gpio_stub_drv
+assert_device_present gpiochip18-probed gpio_stub_drv gpiochip18
+assert_device_present gpiochip16-probed gpio_stub_drv gpiochip16
+assert_device_present gpiochip14-probed gpio_stub_drv gpiochip14
+assert_device_present gpiochip19-probed gpio_stub_drv gpiochip19
+assert_device_present gpiochip17-probed gpio_stub_drv gpiochip17
+assert_device_present gpiochip15-probed gpio_stub_drv gpiochip15
+
+assert_driver_present hid-generic-driver-present hid-generic
+assert_device_present elan-keyboard-probed hid-generic 0018:0416:0401.0002
+
+assert_driver_present hid-multitouch-driver-present hid-multitouch
+assert_device_present touchpad-probed hid-multitouch 0018:06CB:CEC0.0001
+assert_device_present touchscreen-probed hid-multitouch 0018:2808:56D2.0003
+
+assert_driver_present i2c_hid_of-driver-present i2c_hid_of
+assert_device_present touchpad-controller-probed i2c_hid_of 0-002c
+assert_device_present keyboard-probed i2c_hid_of 0-003a
+
+assert_driver_present i2c_hid_of_elan-driver-present i2c_hid_of_elan
+assert_device_present elan-i2c-hid-probed i2c_hid_of_elan 3-0038
+
+assert_driver_present ptn3222-driver-present ptn3222
+assert_device_present ptn3222-retimer0-probed ptn3222 2-0043
+assert_device_present ptn3222-retimer1-probed ptn3222 2-0047
+
+assert_driver_present mhi_net-driver-present mhi_net
+assert_device_present mhi0-ip-hw-probed mhi_net mhi0_IP_HW0
+assert_device_present mhi0-ip-sw-probed mhi_net mhi0_IP_SW0
+
+assert_driver_present mhi_wwan_ctrl-driver-present mhi_wwan_ctrl
+assert_device_present mhi0-diag-probed mhi_wwan_ctrl mhi0_DIAG
+assert_device_present mhi0-qmi-probed mhi_wwan_ctrl mhi0_QMI
+assert_device_present mhi0-mbim-probed mhi_wwan_ctrl mhi0_MBIM
+
+assert_driver_present qcom_mhi_qrtr-driver-present qcom_mhi_qrtr
+assert_device_present mhi1-ipcr-probed qcom_mhi_qrtr mhi1_IPCR
+assert_device_present mhi0-ipcr-probed qcom_mhi_qrtr mhi0_IPCR
+
+assert_driver_present 8250_pericom-driver-present 8250_pericom
+
+assert_driver_present ahci-driver-present ahci
+
+assert_driver_present ath12k_wifi7_pci-driver-present ath12k_wifi7_pci
+assert_device_present ath12k-wifi-probed ath12k_wifi7_pci 0004:01:00.0
+
+assert_driver_present ci_hdrc_pci-driver-present ci_hdrc_pci
+
+assert_driver_present cn10k_rng-driver-present cn10k_rng
+
+assert_driver_present dwc3-haps-driver-present dwc3-haps
+
+assert_driver_present dwc3-pci-driver-present dwc3-pci
+
+assert_driver_present ehci-pci-driver-present ehci-pci
+
+assert_driver_present exar_serial-driver-present exar_serial
+
+assert_driver_present hisi_sas_v3_hw-driver-present hisi_sas_v3_hw
+
+assert_driver_present isp1760-driver-present isp1760
+
+assert_driver_present megaraid_sas-driver-present megaraid_sas
+
+assert_driver_present mhi-pci-generic-driver-present mhi-pci-generic
+assert_device_present wwan-mhi-pci-probed mhi-pci-generic 0006:01:00.0
+
+assert_driver_present nvme-driver-present nvme
+assert_device_present nvme-probed nvme 0005:01:00.0
+
+assert_driver_present ohci-pci-driver-present ohci-pci
+
+assert_driver_present pcieport-driver-present pcieport
+assert_device_present pcie5-root-port-probed pcieport 0005:00:00.0
+assert_device_present pcie4-root-port-probed pcieport 0004:00:00.0
+assert_device_present pcie6-root-port-probed pcieport 0006:00:00.0
+
+assert_driver_present sata_sil24-driver-present sata_sil24
+
+assert_driver_present serial-driver-present serial
+
+assert_driver_present vfio-pci-driver-present vfio-pci
+
+assert_driver_present virtio-pci-driver-present virtio-pci
+
+assert_driver_present xhci_hcd-driver-present xhci_hcd
+
+assert_driver_present aer-driver-present aer
+assert_device_present pcie5-aer-probed aer 0005:00:00.0:pcie002
+assert_device_present pcie4-aer-probed aer 0004:00:00.0:pcie002
+assert_device_present pcie6-aer-probed aer 0006:00:00.0:pcie002
+
+assert_driver_present pcie_bwctrl-driver-present pcie_bwctrl
+assert_device_present pcie4-bwctrl-probed pcie_bwctrl 0004:00:00.0:pcie010
+
+assert_driver_present pcie_pme-driver-present pcie_pme
+assert_device_present pcie6-pme-probed pcie_pme 0006:00:00.0:pcie001
+assert_device_present pcie5-pme-probed pcie_pme 0005:00:00.0:pcie001
+assert_device_present pcie4-pme-probed pcie_pme 0004:00:00.0:pcie001
+
+assert_driver_present acpi-fan-driver-present acpi-fan
+
+assert_driver_present acpi-ged-driver-present acpi-ged
+
+assert_driver_present acpi-hardware-error-device-driver-present acpi-hardware-error-device
+
+assert_driver_present acpi-thermal-driver-present acpi-thermal
+
+assert_driver_present adreno-driver-present adreno
+assert_device_present gpu-probed adreno 3d00000.gpu
+
+assert_driver_present ahci-driver-present ahci
+
+assert_driver_present ahci-ceva-driver-present ahci-ceva
+
+assert_driver_present alarmtimer-driver-present alarmtimer
+
+assert_driver_present altera-msi-driver-present altera-msi
+
+assert_driver_present altera-pcie-driver-present altera-pcie
+
+assert_driver_present apss-ipq5424-clk-driver-present apss-ipq5424-clk
+
+assert_driver_present arch-timer-mmio-driver-present arch-timer-mmio
+assert_device_present arch-timer-probed arch-timer-mmio 17810000.timer
+
+assert_driver_present ARM-CCI-driver-present ARM-CCI
+
+assert_driver_present arm-scmi-driver-present arm-scmi
+assert_device_present arm-scmi.0.auto-probed arm-scmi arm-scmi.0.auto
+
+assert_driver_present arm_smc_wdt-driver-present arm_smc_wdt
+
+assert_driver_present arm-smmu-driver-present arm-smmu
+assert_device_present gpu-iommu-probed arm-smmu 3da0000.iommu
+assert_device_present apps-iommu-probed arm-smmu 15000000.iommu
+
+assert_driver_present arm-smmu-v3-driver-present arm-smmu-v3
+assert_device_present pcie-smmu-probed arm-smmu-v3 15480000.iommu
+
+assert_driver_present armv8-pmu-driver-present armv8-pmu
+assert_device_present armv8-pmu-probed armv8-pmu pmu
+
+assert_driver_present aspeed-clk-driver-present aspeed-clk
+
+assert_driver_present aspeed-lpc-ctrl-driver-present aspeed-lpc-ctrl
+
+assert_driver_present aspeed-lpc-snoop-driver-present aspeed-lpc-snoop
+
+assert_driver_present aspeed-p2a-ctrl-driver-present aspeed-p2a-ctrl
+
+assert_driver_present aspeed-uart-routing-driver-present aspeed-uart-routing
+
+assert_driver_present axp20x-regulator-driver-present axp20x-regulator
+
+assert_driver_present bam-dma-engine-driver-present bam-dma-engine
+assert_device_present bam-dma-probed bam-dma-engine 1dc4000.dma-controller
+
+assert_driver_present basic-mmio-gpio-driver-present basic-mmio-gpio
+
+assert_driver_present bcm_voter-driver-present bcm_voter
+assert_device_present bcm-voter-probed bcm_voter 18900000.rsc:bcm-voter
+
+assert_driver_present bd718xx-pmic-driver-present bd718xx-pmic
+
+assert_driver_present bd9571mwv-regulator-driver-present bd9571mwv-regulator
+
+assert_driver_present bdc-driver-present bdc
+
+assert_driver_present cadence-qspi-driver-present cadence-qspi
+
+assert_driver_present camcc-glymur-driver-present camcc-glymur
+assert_device_present camcc-clock-controller-probed camcc-glymur ade0000.clock-controller
+
+assert_driver_present chipidea-usb2-driver-present chipidea-usb2
+
+assert_driver_present ci_hdrc-driver-present ci_hdrc
+
+assert_driver_present clk-rpmh-driver-present clk-rpmh
+assert_device_present rpmh-clock-controller-probed clk-rpmh 18900000.rsc:clock-controller
+
+assert_driver_present cmd-db-driver-present cmd-db
+assert_device_present cmd-db-probed cmd-db 81c60000.aop-cmd-db
+
+assert_driver_present coresight-funnel-driver-present coresight-funnel
+
+assert_driver_present coresight-replicator-driver-present coresight-replicator
+
+assert_driver_present coresight-stm-platform-driver-present coresight-stm-platform
+
+assert_driver_present coresight-tmc-platform-driver-present coresight-tmc-platform
+
+assert_driver_present cpufreq-dt-driver-present cpufreq-dt
+
+assert_driver_present cros-charge-control-driver-present cros-charge-control
+
+assert_driver_present cros-ec-debugfs-driver-present cros-ec-debugfs
+
+assert_driver_present cros-ec-dev-driver-present cros-ec-dev
+
+assert_driver_present cros-ec-hwmon-driver-present cros-ec-hwmon
+
+assert_driver_present cros-ec-i2c-tunnel-driver-present cros-ec-i2c-tunnel
+
+assert_driver_present cros-ec-keyb-driver-present cros-ec-keyb
+
+assert_driver_present cros-ec-lightbar-driver-present cros-ec-lightbar
+
+assert_driver_present cros-ec-pchg-driver-present cros-ec-pchg
+
+assert_driver_present cros-ec-regulator-driver-present cros-ec-regulator
+
+assert_driver_present cros-ec-rtc-driver-present cros-ec-rtc
+
+assert_driver_present cros-ec-sensorhub-driver-present cros-ec-sensorhub
+
+assert_driver_present cros-ec-sysfs-driver-present cros-ec-sysfs
+
+assert_driver_present cros-ec-vbc-driver-present cros-ec-vbc
+
+assert_driver_present cros-usbpd-notify-driver-present cros-usbpd-notify
+
+assert_driver_present cros-usbpd-notify-acpi-driver-present cros-usbpd-notify-acpi
+
+assert_driver_present denali-nand-dt-driver-present denali-nand-dt
+
+assert_driver_present dispcc-glymur-driver-present dispcc-glymur
+assert_device_present dispcc-clock-controller-probed dispcc-glymur af00000.clock-controller
+
+assert_driver_present disp_cc-sdm845-driver-present disp_cc-sdm845
+
+assert_driver_present disp_cc-sm8250-driver-present disp_cc-sm8250
+
+assert_driver_present dw-apb-uart-driver-present dw-apb-uart
+
+assert_driver_present dwc2-driver-present dwc2
+
+assert_driver_present dwc3-driver-present dwc3
+
+assert_driver_present dwc3-generic-plat-driver-present dwc3-generic-plat
+
+assert_driver_present dwc3-of-simple-driver-present dwc3-of-simple
+
+assert_driver_present dwc3-qcom-driver-present dwc3-qcom
+assert_device_present usb1-controller-probed dwc3-qcom a800000.usb
+assert_device_present usb-mp-controller-probed dwc3-qcom a400000.usb
+assert_device_present usb0-controller-probed dwc3-qcom a600000.usb
+assert_device_present usb-hs-controller-probed dwc3-qcom a200000.usb
+
+assert_driver_present dwc3-qcom-legacy-driver-present dwc3-qcom-legacy
+
+assert_driver_present dw_mmc-driver-present dw_mmc
+
+assert_driver_present dwmmc_exynos-driver-present dwmmc_exynos
+
+assert_driver_present dwmmc_hi3798cv200-driver-present dwmmc_hi3798cv200
+
+assert_driver_present dwmmc_k3-driver-present dwmmc_k3
+
+assert_driver_present dw_wdt-driver-present dw_wdt
+
+assert_driver_present efi-framebuffer-driver-present efi-framebuffer
+
+assert_driver_present ehci-platform-driver-present ehci-platfor
+
+assert_driver_present eliza-tlmm-driver-present eliza-tlmm
+
+assert_driver_present evacc-glymur-driver-present evacc-glymur
+assert_device_present evacc-clock-controller-probed evacc-glymur abf0000.clock-controller
+
+assert_driver_present extcon-usbc-cros-ec-driver-present extcon-usbc-cros-ec
+
+assert_driver_present extcon-usb-gpio-driver-present extcon-usb-gpio
+
+assert_driver_present f_sdh30-driver-present f_sdh30
+
+assert_driver_present fsl-16550-uart-driver-present fsl-16550-uart
+
+assert_driver_present fsl-edma-driver-present fsl-edma
+
+assert_driver_present fsl-linflexuart-driver-present fsl-linflexuart
+
+assert_driver_present fsl-lpuart-driver-present fsl-lpuart
+
+assert_driver_present gated-fixed-clk-driver-present gated-fixed-clk
+
+assert_driver_present gcc-eliza-driver-present gcc-eliza
+
+assert_driver_present gcc-glymur-driver-present gcc-glymur
+assert_device_present gcc-clock-controller-probed gcc-glymur 100000.clock-controller
+
+assert_driver_present gcc-ipq5332-driver-present gcc-ipq5332
+
+assert_driver_present gcc-kaanapali-driver-present gcc-kaanapali
+
+assert_driver_present gcc-milos-driver-present gcc-milos
+
+assert_driver_present gcc-msm8916-driver-present gcc-msm8916
+
+assert_driver_present gcc-msm8953-driver-present gcc-msm8953
+
+assert_driver_present gcc-msm8994-driver-present gcc-msm8994
+
+assert_driver_present gcc-msm8996-driver-present gcc-msm8996
+
+assert_driver_present gcc-msm8998-driver-present gcc-msm8998
+
+assert_driver_present gcc-qcm2290-driver-present gcc-qcm2290
+
+assert_driver_present gcc-qcs404-driver-present gcc-qcs404
+
+assert_driver_present gcc-qcs615-driver-present gcc-qcs615
+
+assert_driver_present gcc-qcs8300-driver-present gcc-qcs8300
+
+assert_driver_present gcc-qdu1000-driver-present gcc-qdu1000
+
+assert_driver_present gcc-sc7180-driver-present gcc-sc7180
+
+assert_driver_present gcc-sc7280-driver-present gcc-sc7280
+
+assert_driver_present gcc-sc8180x-driver-present gcc-sc8180x
+
+assert_driver_present gcc-sc8280xp-driver-present gcc-sc8280xp
+
+assert_driver_present gcc-sdm845-driver-present gcc-sdm845
+
+assert_driver_present gcc-sdx75-driver-present gcc-sdx75
+
+assert_driver_present gcc-sm4450-driver-present gcc-sm4450
+
+assert_driver_present gcc-sm6115-driver-present gcc-sm6115
+
+assert_driver_present gcc-sm6350-driver-present gcc-sm6350
+
+assert_driver_present gcc-sm8150-driver-present gcc-sm8150
+
+assert_driver_present gcc-sm8250-driver-present gcc-sm8250
+
+assert_driver_present gcc-sm8450-driver-present gcc-sm8450
+
+assert_driver_present gcc-sm8550-driver-present gcc-sm8550
+
+assert_driver_present gcc-sm8650-driver-present gcc-sm8650
+
+assert_driver_present gcc-sm8750-driver-present gcc-sm8750
+
+assert_driver_present gcc-x1e80100-driver-present gcc-x1e80100
+
+assert_driver_present geni_i2c-driver-present geni_i2c
+assert_device_present geni-i2c5-probed geni_i2c b94000.i2c
+assert_device_present geni-i2c8-probed geni_i2c a80000.i2c
+assert_device_present geni-i2c0-probed geni_i2c b80000.i2c
+
+assert_driver_present geni_se_qup-driver-present geni_se_qup
+assert_device_present geniqup1-probed geni_se_qup ac0000.geniqup
+assert_device_present geniqup0-probed geni_se_qup bc0000.geniqup
+assert_device_present geniqup2-probed geni_se_qup 8c0000.geniqup
+
+assert_driver_present "GICv5 IWB-driver-present" "GICv5 IWB"
+
+assert_driver_present glymur-tlmm-driver-present glymur-tlmm
+assert_device_present tlmm-probed glymur-tlmm f100000.pinctrl
+
+assert_driver_present gpi-driver-present gpi
+assert_device_present gpi-dma0-probed gpi a00000.dma-controller
+assert_device_present gpi-dma1-probed gpi b00000.dma-controller
+assert_device_present gpi-dma2-probed gpi 800000.dma-controller
+
+assert_driver_present gpio-clk-driver-present gpio-clk
+
+assert_driver_present gpio-dwapb-driver-present gpio-dwapb
+
+assert_driver_present gpio-keys-driver-present gpio-keys
+assert_device_present gpio-keys-probed gpio-keys gpio-keys
+
+assert_driver_present gpio-regulator-driver-present gpio-regulator
+
+assert_driver_present gpio-syscon-driver-present gpio-syscon
+
+assert_driver_present gpucc-glymur-driver-present gpucc-glymur
+assert_device_present gpucc-clock-controller-probed gpucc-glymur 3d90000.clock-controller
+
+assert_driver_present gtdt-arm-mmio-timer-driver-present gtdt-arm-mmio-timer
+
+assert_driver_present gxclkctl-kaanapali-driver-present gxclkctl-kaanapali
+assert_device_present gxclkctl-clock-controller-probed gxclkctl-kaanapali 3d64000.clock-controller
+
+assert_driver_present hawi-tlmm-driver-present hawi-tlmm
+
+assert_driver_present hci_bcm-driver-present hci_bcm
+
+assert_driver_present hdmi-audio-codec-driver-present hdmi-audio-codec
+assert_device_present hdmi-audio-codec4-probed hdmi-audio-codec hdmi-audio-codec.4.auto
+assert_device_present hdmi-audio-codec3-probed hdmi-audio-codec hdmi-audio-codec.3.auto
+
+assert_driver_present hdmi_msm-driver-present hdmi_msm
+
+assert_driver_present hi6421_pmic-driver-present hi6421_pmic
+
+assert_driver_present hi6421v530-regulator-driver-present hi6421v530-regulator
+
+assert_driver_present hidma-driver-present hidma
+
+assert_driver_present hidma-mgmt-driver-present hidma-mgmt
+
+assert_driver_present hisi_cpa_pmu-driver-present hisi_cpa_pmu
+
+assert_driver_present hisi_ddrc_pmu-driver-present hisi_ddrc_pmu
+
+assert_driver_present hisi_hha_pmu-driver-present hisi_hha_pmu
+
+assert_driver_present hisi_l3c_pmu-driver-present hisi_l3c_pmu
+
+assert_driver_present hisi_mn_pmu-driver-present hisi_mn_pmu
+
+assert_driver_present hisi_noc_pmu-driver-present hisi_noc_pmu
+
+assert_driver_present hisi_pa_pmu-driver-present hisi_pa_pmu
+
+assert_driver_present hisi-pcie-almost-ecam-driver-present hisi-pcie-almost-ecam
+
+assert_driver_present hisi_sas_v1_hw-driver-present hisi_sas_v1_hw
+
+assert_driver_present hisi_sas_v2_hw-driver-present hisi_sas_v2_hw
+
+assert_driver_present hisi_sllc_pmu-driver-present hisi_sllc_pmu
+
+assert_driver_present hisi_uc_pmu-driver-present hisi_uc_pmu
+
+assert_driver_present i2c_designware-driver-present i2c_designware
+
+assert_driver_present i2c_qup-driver-present i2c_qup
+
+assert_driver_present icc_smd_rpm-driver-present icc_smd_rpm
+
+assert_driver_present imx_usb-driver-present imx_usb
+
+assert_driver_present ipq5018-tlmm-driver-present ipq5018-tlmm
+
+assert_driver_present ipq5210-tlmm-driver-present ipq5210-tlmm
+
+assert_driver_present ipq5332-tlmm-driver-present ipq5332-tlmm
+
+assert_driver_present ipq5424-tlmm-driver-present ipq5424-tlmm
+
+assert_driver_present ipq6018-pinctrl-driver-present ipq6018-pinctrl
+
+assert_driver_present ipq8074-pinctrl-driver-present ipq8074-pinctrl
+
+assert_driver_present ipq9574-tlmm-driver-present ipq9574-tlmm
+
+assert_driver_present ipq9650-tlmm-driver-present ipq9650-tlmm
+
+assert_driver_present isp1760-driver-present isp1760
+
+assert_driver_present kaanapali-tlmm-driver-present kaanapali-tlmm
+
+assert_driver_present kirin-pcie-driver-present kirin-pcie
+
+assert_driver_present leds-gpio-driver-present leds-gpio
+
+assert_driver_present leds_pwm-driver-present leds_pwm
+
+assert_driver_present leds-syscon-driver-present leds-syscon
+
+assert_driver_present max77620-gpio-driver-present max77620-gpio
+
+assert_driver_present max77620-pinctrl-driver-present max77620-pinctrl
+
+assert_driver_present max77620-pmic-driver-present max77620-pmic
+
+assert_driver_present max77686-rtc-driver-present max77686-rtc
+
+assert_driver_present mb86s70-gpio-driver-present mb86s70-gpio
+
+assert_driver_present mdio-mux-mmioreg-driver-present mdio-mux-mmioreg
+
+assert_driver_present mdio-mux-multiplexer-driver-present mdio-mux-multiplexer
+
+assert_driver_present mdp4-driver-present mdp4
+
+assert_driver_present milos-tlmm-driver-present milos-tlmm
+
+assert_driver_present mmio-mux-driver-present mmio-mux
+
+assert_driver_present msm8916-pinctrl-driver-present msm8916-pinctrl
+
+assert_driver_present msm8953-pinctrl-driver-present msm8953-pinctrl
+
+assert_driver_present msm8976-pinctrl-driver-present msm8976-pinctrl
+
+assert_driver_present msm8994-pinctrl-driver-present msm8994-pinctrl
+
+assert_driver_present msm8996-pinctrl-driver-present msm8996-pinctrl
+
+assert_driver_present msm8998-pinctrl-driver-present msm8998-pinctrl
+
+assert_driver_present msm-dp-display-driver-present msm-dp-display
+assert_device_present dp3-probed msm-dp-display af6c000.displayport-controller
+assert_device_present dp1-probed msm-dp-display af5c000.displayport-controller
+assert_device_present dp0-probed msm-dp-display af54000.displayport-controller
+
+assert_driver_present msm_dpu-driver-present msm_dpu
+assert_device_present dpu-probed msm_dpu ae01000.display-controller
+
+assert_driver_present msm_dsi-driver-present msm_dsi
+
+assert_driver_present msm_dsi_phy-driver-present msm_dsi_phy
+
+assert_driver_present msm_hdmi_phy-driver-present msm_hdmi_phy
+
+assert_driver_present msm_hsusb-driver-present msm_hsusb
+
+assert_driver_present msm_mdp-driver-present msm_mdp
+
+assert_driver_present msm-mdss-driver-present msm-mdss
+assert_device_present mdss-probed msm-mdss ae00000.display-subsystem
+
+assert_driver_present msm-restart-driver-present msm-restart
+
+assert_driver_present msm_serial-driver-present msm_serial
+
+assert_driver_present mt6357-regulator-driver-present mt6357-regulator
+
+assert_driver_present mt6358-regulator-driver-present mt6358-regulator
+
+assert_driver_present mt6359-regulator-driver-present mt6359-regulator
+
+assert_driver_present mt6360-regulator-driver-present mt6360-regulator
+
+assert_driver_present mt6397-driver-present mt6397
+
+assert_driver_present mt6397-regulator-driver-present mt6397-regulator
+
+assert_driver_present mtk-msdc-driver-present mtk-msdc
+
+assert_driver_present musb-hdrc-driver-present musb-hdrc
+
+assert_driver_present mv_xor_v2-driver-present mv_xor_v2
+
+assert_driver_present nord-tlmm-driver-present nord-tlmm
+
+assert_driver_present npcm_udc-driver-present npcm_udc
+
+assert_driver_present ocmem-driver-present ocmem
+
+assert_driver_present of_fixed_clk-driver-present of_fixed_clk
+
+assert_driver_present of_fixed_factor_clk-driver-present of_fixed_factor_clk
+
+assert_driver_present of_serial-driver-present of_serial
+
+assert_driver_present ohci-platform-driver-present ohci-platform
+
+assert_driver_present optee-driver-present optee
+
+assert_driver_present pata_of_platform-driver-present pata_of_platform
+
+assert_driver_present pata_platform-driver-present pata_platform
+
+assert_driver_present pci-host-generic-driver-present pci-host-generic
+
+assert_driver_present pci-pwrctrl-pwrseq-driver-present pci-pwrctrl-pwrseq
+assert_device_present pcie4-wifi-pwrseq-probed pci-pwrctrl-pwrseq 1bf0000.pci:pcie@0:wifi@0
+
+assert_driver_present pci-pwrctrl-slot-driver-present pci-pwrctrl-slot
+
+assert_driver_present pci_thunder_ecam-driver-present pci_thunder_ecam
+
+assert_driver_present pci_thunder_pem-driver-present pci_thunder_pem
+
+assert_driver_present physmap-flash-driver-present physmap-flash
+
+assert_driver_present pinctrl-single-driver-present pinctrl-single
+
+assert_driver_present platform-mhu-driver-present platform-mhu
+
+assert_driver_present pm8941-pwrkey-driver-present pm8941-pwrkey
+assert_device_present pwrkey-probed pm8941-pwrkey c426000.spmi:pmic@0:pon@1300:pwrkey
+assert_device_present resin-probed pm8941-pwrkey c426000.spmi:pmic@0:pon@1300:resin
+
+assert_driver_present poweroff-gpio-driver-present poweroff-gpio
+
+assert_driver_present psci-cpuidle-domain-driver-present psci-cpuidle-domain
+assert_device_present psci-probed psci-cpuidle-domain psci
+
+assert_driver_present pwm-clock-driver-present pwm-clock
+
+assert_driver_present pwm-regulator-driver-present pwm-regulator
+
+assert_driver_present pwrseq_emmc-driver-present pwrseq_emmc
+
+assert_driver_present pwrseq-qcom_wcn-driver-present pwrseq-qcom_wcn
+assert_device_present wcn7850-pmu-probed pwrseq-qcom_wcn wcn7850-pmu
+
+assert_driver_present pwrseq_simple-driver-present pwrseq_simple
+
+assert_driver_present q6apm-dai-driver-present q6apm-dai
+assert_device_present q6apm-dais-probed q6apm-dai 6800000.remoteproc:glink-edge:gpr:service@1:dais
+
+assert_driver_present q6apm-lpass-dais-driver-present q6apm-lpass-dais
+assert_device_present q6apm-lpass-dais-probed q6apm-lpass-dais 6800000.remoteproc:glink-edge:gpr:service@1:bedais
+
+assert_driver_present q6prm-lpass-clock-driver-present q6prm-lpass-clock
+assert_device_present q6prm-lpass-clock-controller-probed q6prm-lpass-clock 6800000.remoteproc:glink-edge:gpr:service@2:clock-controller
+
+assert_driver_present qcm2290-pinctl-driver-present qcm2290-pinctrl
+
+assert_driver_present qcom-a53pll-driver-present qcom-a53pll
+
+assert_driver_present qcom_aoss_qmp-driver-present qcom_aoss_qmp
+assert_device_present aoss-qmp-probed qcom_aoss_qmp c300000.power-management
+
+assert_driver_present qcom_aoss_reset-driver-present qcom_aoss_reset
+
+assert_driver_present qcom_apcs_ipc-driver-present qcom_apcs_ipc
+
+assert_driver_present qcom-apcs-msm8916-clk-driver-present qcom-apcs-msm8916-clk
+
+assert_driver_present qcom-apcs-msm8996-clk-driver-present qcom-apcs-msm8996-clk
+
+assert_driver_present qcom,apss-ipq6018-clk-driver-present qcom,apss-ipq6018-clk
+
+assert_driver_present qcom-bwmon-driver-present qcom-bwmon
+assert_device_present bwmon0-probed qcom-bwmon 100c400.pmu
+assert_device_present bwmon1-probed qcom-bwmon 100d400.pmu
+assert_device_present bwmon2-probed qcom-bwmon 100e400.pmu
+
+assert_driver_present qcom-clk-smd-rpm-driver-present qcom-clk-smd-rpm
+
+assert_driver_present qcom-cpr-driver-present qcom-cpr
+
+assert_driver_present qcom_cpucp_mbox-driver-present qcom_cpucp_mbox
+assert_device_present cpucp-mailbox-probed qcom_cpucp_mbox 17610000.mailbox
+
+assert_driver_present qcom-cpufreq-hw-driver-present qcom-cpufreq-hw
+
+assert_driver_present qcom-ebi2-driver-present qcom-ebi2
+
+assert_driver_present qcom-edp-phy-driver-present qcom-edp-phy
+assert_device_present edp-phy-probed qcom-edp-phy faac00.phy
+
+assert_driver_present qcom-eusb2-repeater-driver-present qcom-eusb2-repeater
+assert_device_present eusb2-repeater-sid9-probed qcom-eusb2-repeater c448000.spmi:pmic@9:phy@fd00
+assert_device_present eusb2-repeater-sida-probed qcom-eusb2-repeater c448000.spmi:pmic@a:phy@fd00
+assert_device_present eusb2-repeater-sidb-probed qcom-eusb2-repeater c448000.spmi:pmic@b:phy@fd00
+
+assert_driver_present qcom,fastrpc-cb-driver-present qcom,fastrpc-cb
+assert_device_present cdsp-fastrpc-cb3-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@3
+assert_device_present adsp-fastrpc-cb8-probed qcom,fastrpc-cb 6800000.remoteproc:glink-edge:fastrpc:compute-cb@8
+assert_device_present cdsp-fastrpc-cb1-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@1
+assert_device_present cdsp-fastrpc-cb12-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@12
+assert_device_present adsp-fastrpc-cb6-probed qcom,fastrpc-cb 6800000.remoteproc:glink-edge:fastrpc:compute-cb@6
+assert_device_present cdsp-fastrpc-cb10-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@10
+assert_device_present cdsp-fastrpc-cb8-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@8
+assert_device_present adsp-fastrpc-cb4-probed qcom,fastrpc-cb 6800000.remoteproc:glink-edge:fastrpc:compute-cb@4
+assert_device_present cdsp-fastrpc-cb6-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@6
+assert_device_present cdsp-fastrpc-cb4-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@4
+assert_device_present cdsp-fastrpc-cb2-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@2
+assert_device_present adsp-fastrpc-cb7-probed qcom,fastrpc-cb 6800000.remoteproc:glink-edge:fastrpc:compute-cb@7
+assert_device_present cdsp-fastrpc-cb11-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@11
+assert_device_present adsp-fastrpc-cb5-probed qcom,fastrpc-cb 6800000.remoteproc:glink-edge:fastrpc:compute-cb@5
+assert_device_present cdsp-fastrpc-cb7-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@7
+assert_device_present adsp-fastrpc-cb3-probed qcom,fastrpc-cb 6800000.remoteproc:glink-edge:fastrpc:compute-cb@3
+assert_device_present cdsp-fastrpc-cb5-probed qcom,fastrpc-cb 32300000.remoteproc:glink-edge:fastrpc:compute-cb@5
+
+assert_driver_present qcom,gcc-ipq5018-driver-present qcom,gcc-ipq5018
+
+assert_driver_present qcom,gcc-ipq5210-driver-present qcom,gcc-ipq5210
+
+assert_driver_present qcom,gcc-ipq5424-driver-present qcom,gcc-ipq5424
+
+assert_driver_present qcom,gcc-ipq6018-driver-present qcom,gcc-ipq6018
+
+assert_driver_present qcom,gcc-ipq8074-driver-present qcom,gcc-ipq8074
+
+assert_driver_present qcom,gcc-ipq9574-driver-present qcom,gcc-ipq9574
+
+assert_driver_present qcom,gcc-ipq9650-driver-present qcom,gcc-ipq9650
+
+assert_driver_present qcom_geni_serial-driver-present qcom_geni_serial
+assert_device_present uart14-probed qcom_geni_serial a98000.serial
+assert_device_present uart21-probed qcom_geni_serial 894000.serial
+
+assert_driver_present qcom_glink_rpm-driver-present qcom_glink_rpm
+
+assert_driver_present qcom-hfpll-driver-present qcom-hfpll
+
+assert_driver_present qcom_hwspinlock-driver-present qcom_hwspinlock
+assert_device_present tcsr-mutex-probed qcom_hwspinlock 1f40000.hwlock
+
+assert_driver_present qcom-iommu-driver-present qcom-iommu
+
+assert_driver_present qcom-iommu-ctx-driver-present qcom-iommu-ctx
+
+assert_driver_present qcom-ipcc-driver-present qcom-ipcc
+assert_device_present ipcc-probed qcom-ipcc 3e04000.mailbox
+
+assert_driver_present qcom-ipq-apss-pll-driver-present qcom-ipq-apss-pll
+
+assert_driver_present qcom-iris-driver-present qcom-iris
+assert_device_present video-codec-probed qcom-iris aa00000.video-codec
+
+assert_driver_present qcom-irq-combiner-driver-present qcom-irq-combiner
+
+assert_driver_present qcom-l2cache-pmu-driver-present qcom-l2cache-pmu
+
+assert_driver_present qcom-l3cache-pmu-driver-present qcom-l3cache-pmu
+
+assert_driver_present qcom-llcc-driver-present qcom-llcc
+assert_device_present llcc-probed qcom-llcc 21800000.system-cache-controller
+
+assert_driver_present qcom-m31eusb2-phy-driver-present qcom-m31eusb2-phy
+assert_device_present usb0-hsphy-probed qcom-m31eusb2-phy fd3000.phy
+assert_device_present usb1-hsphy-probed qcom-m31eusb2-phy fdd000.phy
+assert_device_present usb-hs-phy-probed qcom-m31eusb2-phy fa0000.phy
+assert_device_present usb-mp-hsphy0-probed qcom-m31eusb2-phy fa1000.phy
+assert_device_present usb-mp-hsphy1-probed qcom-m31eusb2-phy fa2000.phy
+
+assert_driver_present qcom_mpm-driver-present qcom_mpm
+
+assert_driver_present qcom-msm8996-apcc-driver-present qcom-msm8996-apcc
+
+assert_driver_present qcom-msm8996-cbf-driver-present qcom-msm8996-cbf
+
+assert_driver_present qcom-nandc-driver-present qcom-nandc
+
+assert_driver_present qcom-pcie-driver-present qcom-pcie
+assert_device_present pcie4-probed qcom-pcie 1bf0000.pci
+assert_device_present pcie6-probed qcom-pcie 1c00000.pci
+assert_device_present pcie5-probed qcom-pcie 1b40000.pci
+
+assert_driver_present qcom_pdc-driver-present qcom_pdc
+assert_device_present pdc-probed qcom_pdc b220000.interrupt-controller
+
+assert_driver_present qcom_pmic_glink-driver-present qcom_pmic_glink
+assert_device_present pmic-glink-probed qcom_pmic_glink pmic-glink
+
+assert_driver_present qcom-pon-driver-present qcom-pon
+assert_device_present pon-probed qcom-pon c426000.spmi:pmic@0:pon@1300
+
+assert_driver_present qcom_q6v5_pas-driver-present qcom_q6v5_pas
+assert_device_present remoteproc-cdsp-probed qcom_q6v5_pas 32300000.remoteproc
+assert_device_present remoteproc-soccp-probed qcom_q6v5_pas d00000.remoteproc-soccp
+assert_device_present remoteproc-adsp-probed qcom_q6v5_pas 6800000.remoteproc
+
+assert_driver_present qcom,qfprom-driver-present qcom,qfprom
+assert_device_present qfprom-probed qcom,qfprom 361c8000.efuse
+
+assert_driver_present qcom-qmp-combo-phy-driver-present qcom-qmp-combo-phy
+assert_device_present usb1-qmpphy-probed qcom-qmp-combo-phy fde000.phy
+assert_device_present usb0-qmpphy-probed qcom-qmp-combo-phy fd5000.phy
+
+assert_driver_present qcom-qmp-pcie-phy-driver-present qcom-qmp-pcie-phy
+assert_device_present pcie4-phy-probed qcom-qmp-pcie-phy 1bf6000.phy
+assert_device_present pcie6-phy-probed qcom-qmp-pcie-phy 1c06000.phy
+assert_device_present pcie5-phy-probed qcom-qmp-pcie-phy 1b50000.phy
+
+assert_driver_present qcom-qmp-usb-phy-driver-present qcom-qmp-usb-phy
+assert_device_present usb-mp-qmpphy0-probed qcom-qmp-usb-phy fa3000.phy
+assert_device_present usb-mp-qmpphy1-probed qcom-qmp-usb-phy fa5000.phy
+
+assert_driver_present qcom_qseecom-driver-present qcom_qseecom
+assert_device_present qseecom-probed qcom_qseecom qcom_qseecom
+
+assert_driver_present qcom-rpmhpd-driver-present qcom-rpmhpd
+assert_device_present rpmhpd-probed qcom-rpmhpd 18900000.rsc:power-controller
+
+assert_driver_present qcom-rpmh-regulator-driver-present qcom-rpmh-regulator
+assert_device_present rpmh-regulators4-probed qcom-rpmh-regulator 18900000.rsc:regulators-4
+assert_device_present rpmh-regulators2-probed qcom-rpmh-regulator 18900000.rsc:regulators-2
+assert_device_present rpmh-regulators0-probed qcom-rpmh-regulator 18900000.rsc:regulators-0
+assert_device_present rpmh-regulators3-probed qcom-rpmh-regulator 18900000.rsc:regulators-3
+assert_device_present rpmh-regulators1-probed qcom-rpmh-regulator 18900000.rsc:regulators-1
+
+assert_driver_present qcom-rpmpd-driver-present qcom-rpmpd
+
+assert_driver_present qcom-rpm-proc-driver-present qcom-rpm-proc
+
+assert_driver_present qcom_rpm_smd_regulator-driver-present qcom_rpm_smd_regulator
+
+assert_driver_present qcom_scm-driver-present qcom_scm
+assert_device_present scm-probed qcom_scm firmware:scm
+
+assert_driver_present qcom-sm8650-lpass-lpi-pinctrl-driver-present qcom-sm8650-lpass-lpi-pinctrl
+assert_device_present lpass-lpi-pinctrl-probed qcom-sm8650-lpass-lpi-pinctrl 7760000.pinctrl
+
+assert_driver_present qcom-smd-driver-present qcom-smd
+
+assert_driver_present qcom-smem-driver-present qcom-smem
+assert_device_present smem-probed qcom-smem ffe00000.smem
+
+assert_driver_present qcom_smp2p-driver-present qcom_smp2p
+assert_device_present smp2p-soccp-probed qcom_smp2p smp2p-soccp
+assert_device_present smp2p-adsp-probed qcom_smp2p smp2p-adsp
+assert_device_present smp2p-cdsp-probed qcom_smp2p smp2p-cdsp
+
+assert_driver_present qcom-smsm-driver-present qcom-smsm
+
+assert_driver_present qcom-socinfo-driver-present qcom-socinfo
+assert_device_present socinfo-probed qcom-socinfo qcom-socinfo
+
+assert_driver_present qcom-soundwire-driver-present qcom-soundwire
+assert_device_present wsa-soundwire-probed qcom-soundwire 6c80000.soundwire
+assert_device_present wsa2-soundwire-probed qcom-soundwire 6ca0000.soundwire
+
+assert_driver_present qcom-spmi-gpio-driver-present qcom-spmi-gpio
+assert_device_present spmi1-pmic5-gpio-probed qcom-spmi-gpio c437000.spmi:pmic@5:gpio@8800
+assert_device_present spmi0-pmic9-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@9:gpio@8800
+assert_device_present spmi1-pmic3-gpio-probed qcom-spmi-gpio c437000.spmi:pmic@3:gpio@8800
+assert_device_present spmi0-pmic2-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@2:gpio@8800
+assert_device_present spmi0-pmic7-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@7:gpio@8800
+assert_device_present c426000.spmi:pmic@0:gpio@b800-probed qcom-spmi-gpio c426000.spmi:pmic@0:gpio@b800
+assert_device_present spmi1-pmicb-gpio-probed qcom-spmi-gpio c437000.spmi:pmic@b:gpio@8800
+assert_device_present spmi0-pmic5-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@5:gpio@8800
+assert_device_present spmi0-pmic3-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@3:gpio@8800
+assert_device_present spmi0-pmic8-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@8:gpio@8800
+assert_device_present spmi1-pmic2-gpio-probed qcom-spmi-gpio c437000.spmi:pmic@2:gpio@8800
+assert_device_present spmi0-pmic1-gpio-probed qcom-spmi-gpio c426000.spmi:pmic@1:gpio@8800
+
+assert_driver_present qcom-spmi-mpp-driver-present qcom-spmi-mpp
+
+assert_driver_present qcom-spmi-regulator-driver-present qcom-spmi-regulator
+
+assert_driver_present qcom,spmi-sdam-driver-present qcom,spmi-sdam
+assert_device_present sdam-probed qcom,spmi-sdam c426000.spmi:pmic@0:nvram@7100
+
+assert_driver_present qcom_stats-driver-present qcom_stats
+assert_device_present stats-sram-probed qcom_stats c30f000.sram
+
+assert_driver_present qcom_tbu-driver-present qcom_tbu
+
+assert_driver_present qcomtee-driver-present qcomtee
+assert_device_present qcomtee-probed qcomtee qcomtee
+
+assert_driver_present qcom-tsens-driver-present qcom-tsens
+assert_device_present tsens0-probed qcom-tsens c230000.thermal-sensor
+assert_device_present tsens1-probed qcom-tsens c233000.thermal-sensor
+assert_device_present tsens2-probed qcom-tsens c22c000.thermal-sensor
+assert_device_present tsens3-probed qcom-tsens c22f000.thermal-sensor
+assert_device_present tsens4-probed qcom-tsens c231000.thermal-sensor
+assert_device_present tsens5-probed qcom-tsens c22d000.thermal-sensor
+assert_device_present tsens6-probed qcom-tsens c232000.thermal-sensor
+assert_device_present tsens7-probed qcom-tsens c22e000.thermal-sensor
+
+assert_driver_present qcom_wdt-driver-present qcom_wdt
+assert_device_present watchdog-probed qcom_wdt 17600000.watchdog
+
+assert_driver_present qcrypto-driver-present qcrypto
+assert_device_present crypto-probed qcrypto 1dfa000.crypto
+
+assert_driver_present qcs404-pinctrl-driver-present qcs404-pinctrl
+
+assert_driver_present qcs615-tlmm-driver-present qcs615-tlmm
+
+assert_driver_present qcs8300-tlmm-driver-present qcs8300-tlmm
+
+assert_driver_present qdf2xxx-pinctrl-driver-present qdf2xxx-pinctrl
+
+assert_driver_present qdu1000-tlmm-driver-present qdu1000-tlmm
+
+assert_driver_present qnoc-eliza-driver-present qnoc-eliza
+
+assert_driver_present qnoc-glymur-driver-present qnoc-glymur
+assert_device_present clk-virt-interconnect-probed qnoc-glymur interconnect-0
+assert_device_present llcc-interconnect-probed qnoc-glymur 1f300000.interconnect
+assert_device_present cnoc-main-interconnect-probed qnoc-glymur 1500000.interconnect
+assert_device_present pcie-center-interconnect-probed qnoc-glymur 16d0000.interconnect
+assert_device_present aggre3-interconnect-probed qnoc-glymur 2000000.interconnect
+assert_device_present system-interconnect-probed qnoc-glymur 1680000.interconnect
+assert_device_present mc-virt-interconnect-probed qnoc-glymur interconnect-1
+assert_device_present lpass-lpicx-interconnect-probed qnoc-glymur 7420000.interconnect
+assert_device_present cnoc-cfg-interconnect-probed qnoc-glymur 1600000.interconnect
+assert_device_present pcie-west-slv-interconnect-probed qnoc-glymur 1920000.interconnect
+assert_device_present lpass-lpiaon-interconnect-probed qnoc-glymur 7400000.interconnect
+assert_device_present pcie-east-slv-interconnect-probed qnoc-glymur 1900000.interconnect
+assert_device_present mm-nsp-interconnect-probed qnoc-glymur 1d600000.interconnect
+assert_device_present aggre1-interconnect-probed qnoc-glymur 16e0000.interconnect
+assert_device_present pcie-south-interconnect-probed qnoc-glymur 16c0000.interconnect
+assert_device_present mmss-interconnect-probed qnoc-glymur 1780000.interconnect
+assert_device_present lpass-ag-interconnect-probed qnoc-glymur 7e40000.interconnect
+assert_device_present pcie-north-interconnect-probed qnoc-glymur 1740000.interconnect
+assert_device_present usb-south-interconnect-probed qnoc-glymur 1720000.interconnect
+assert_device_present usb-center-interconnect-probed qnoc-glymur 1700000.interconnect
+assert_device_present nsp-interconnect-probed qnoc-glymur 320c0000.interconnect
+
+assert_driver_present qnoc-kaanapali-driver-present qnoc-kaanapali
+
+assert_driver_present qnoc-milos-driver-present qnoc-milos
+
+assert_driver_present qnoc-msm8953-driver-present qnoc-msm8953
+
+assert_driver_present qnoc-msm8996-driver-present qnoc-msm8996
+
+assert_driver_present qnoc-qcm2290-driver-present qnoc-qcm2290
+
+assert_driver_present qnoc-qcs615-driver-present qnoc-qcs615
+
+assert_driver_present qnoc-qcs8300-driver-present qnoc-qcs8300
+
+assert_driver_present qnoc-qdu1000-driver-present qnoc-qdu1000
+
+assert_driver_present qnoc-sa8775p-driver-present qnoc-sa8775p
+
+assert_driver_present qnoc-sc7180-driver-present qnoc-sc7180
+
+assert_driver_present qnoc-sc7280-driver-present qnoc-sc7280
+
+assert_driver_present qnoc-sc8180x-driver-present qnoc-sc8180x
+
+assert_driver_present qnoc-sc8280xp-driver-present qnoc-sc8280xp
+
+assert_driver_present qnoc-sdm845-driver-present qnoc-sdm845
+
+assert_driver_present qnoc-sdx75-driver-present qnoc-sdx75
+
+assert_driver_present qnoc-sm6115-driver-present qnoc-sm6115
+
+assert_driver_present qnoc-sm6350-driver-present qnoc-sm6350
+
+assert_driver_present qnoc-sm8150-driver-present qnoc-sm8150
+
+assert_driver_present qnoc-sm8250-driver-present qnoc-sm8250
+
+assert_driver_present qnoc-sm8350-driver-present qnoc-sm8350
+
+assert_driver_present qnoc-sm8450-driver-present qnoc-sm8450
+
+assert_driver_present qnoc-sm8550-driver-present qnoc-sm8550
+
+assert_driver_present qnoc-sm8650-drier-present qnoc-sm8650
+
+assert_driver_present qnoc-sm8750-driver-present qnoc-sm8750
+
+assert_driver_present qnoc-x1e80100-driver-present qnoc-x1e80100
+
+assert_driver_present rcpm-driver-present rcpm
+
+assert_driver_present reg-fixed-voltage-driver-present reg-fixed-voltage
+assert_device_present regulator-edp-3p3-probed reg-fixed-voltage regulator-edp-3p3
+assert_device_present regulator-wcn-0p95-probed reg-fixed-voltage regulator-wcn-0p95
+assert_device_present regulator-misc-3p3-probed reg-fixed-voltage regulator-misc-3p3
+assert_device_present regulator-nvmesec-probed reg-fixed-voltage regulator-nvmesec
+assert_device_present regulator-wcn-3p3-probed reg-fixed-voltage regulator-wcn-3p3
+assert_device_present regulator-wwan-probed reg-fixed-voltage regulator-wwan
+assert_device_present regulator-nvme-probed reg-fixed-voltage regulator-nvme
+
+assert_driver_present restart-gpio-driver-present restart-gpio
+
+assert_driver_present rk3x-i2c-driver-present rk3x-i2c
+
+assert_driver_present rk808-clkout-driver-present rk808-clkout
+
+assert_driver_present rk808-regulator-driver-present rk808-regulator
+
+assert_driver_present rpmh-driver-present rpmh
+assert_device_present rpmh-probed rpmh 18900000.rsc
+
+assert_driver_present rproc-virtio-driver-present rproc-virtio
+
+assert_driver_present rtc-pm8xxx-driver-present rtc-pm8xxx
+assert_device_present c426000.spmi:pmic@0:rtc@6100-probed rtc-pm8xxx c426000.spmi:pmic@0:rtc@6100
+
+assert_driver_present s2mps11-clk-driver-present s2mps11-clk
+
+assert_driver_present s2mps11-pmic-driver-present s2mps11-pmic
+
+assert_driver_present s5m-rtc-driver-present s5m-rtc
+
+assert_driver_present sa8775p-gcc-driver-present sa8775p-gcc
+
+assert_driver_present sa8775p-tlmm-driver-present sa8775p-tlmm
+
+assert_driver_present samsung-usb2-phy-driver-present samsung-usb2-phy
+
+assert_driver_present sbsa-gwdt-driver-present sbsa-gwdt
+
+assert_driver_present sbsa-uart-driver-present sbsa-uart
+
+assert_driver_present sc7180-pinctrl-driver-present sc7180-pinctrl
+
+assert_driver_present sc7280-pinctrl-driver-present sc7280-pinctrl
+
+assert_driver_present sc8180x-pinctrl-driver-present sc8180x-pinctrl
+
+assert_driver_present sc8280xp-tlmm-driver-present sc8280xp-tlmm
+
+assert_driver_present scmi_mailbox_transport-driver-present scmi_mailbox_transport
+assert_device_present scmi-probed scmi_mailbox_transport firmware:scmi
+
+assert_driver_present scmi_optee_transport-driver-present scmi_optee_transport
+
+assert_driver_present scmi_smc_transport-driver-present scmi_smc_transport
+
+assert_driver_present scpi_clocks-driver-present scpi_clocks
+
+assert_driver_present scpi-cpufreq-driver-present scpi-cpufreq
+
+assert_driver_present scpi-hwmon-driver-present scpi-hwmon
+
+assert_driver_present scpi_power_domain-driver-present scpi_power_domain
+
+assert_driver_present scpi_protocol-driver-present scpi_protocol
+
+assert_driver_present sdei-driver-present sdei
+
+assert_driver_present sdhci-acpi-driver-present sdhci-acpi
+
+assert_driver_present sdhci-arasan-driver-present sdhci-arasan
+
+assert_driver_present sdhci-cdns-driver-present sdhci-cdns
+
+assert_driver_present sdhci-dwcmshc-driver-present sdhci-dwcmshc
+
+assert_driver_present sdhci_msm-driver-present sdhci_msm
+assert_device_present sdhc-probed sdhci_msm 8804000.mmc
+
+assert_driver_present sdm660-pinctrl-driver-present sdm660-pinctrl
+
+assert_driver_present sdm670-pinctrl-driver-present sdm670-pinctrl
+
+assert_driver_present sdm845-gpucc-driver-present sdm845-gpucc
+
+assert_driver_present sdm845-pinctrl-driver-present sdm845-pinctrl
+
+assert_driver_present sdm845-videocc-driver-present sdm845-videocc
+
+assert_driver_present sdx75-tlmm-driver-present sdx75-tlmm
+
+assert_driver_present serial8250-driver-present serial8250
+assert_device_present serial8250-probed serial8250 serial8250
+
+assert_driver_present shikra-tlmm-driver-present shikra-tlmm
+
+assert_driver_present simple-pm-bus-driver-present simple-pm-bus
+assert_device_present soc@0-probed simple-pm-bus soc@0
+
+assert_driver_present simple-reset-driver-present simple-reset
+
+assert_driver_present sm4450-tlmm-driver-present sm4450-tlmm
+
+assert_driver_present sm6115-tlmm-driver-present sm6115-tlmm
+
+assert_driver_present sm6125-tlmm-driver-present sm6125-tlmm
+
+assert_driver_present sm6350-tlmm-driver-present sm6350-tlmm
+
+assert_driver_present sm6375-tlmm-driver-present sm6375-tlmm
+
+assert_driver_present sm7150-tlmm-driver-present sm7150-tlmm
+
+assert_driver_present sm8150-gpucc-driver-present sm8150-gpucc
+
+assert_driver_present sm8150-pinctrl-driver-present sm8150-pinctrl
+
+assert_driver_present sm8250-gpucc-driver-present sm8250-gpucc
+
+assert_driver_present sm8250-pinctrl-driver-present sm8250-pinctrl
+
+assert_driver_present sm8250-videocc-driver-present sm8250-videocc
+
+assert_driver_present sm8350-gcc-driver-present sm8350-gcc
+
+assert_driver_present sm8350-tlmm-driver-present sm8350-tlmm
+
+assert_driver_present sm8450-tlmm-driver-present sm8450-tlmm
+
+assert_driver_present sm8550-tlmm-driver-present sm8550-tlmm
+
+assert_driver_present sm8650-tlmm-driver-present sm8650-tlmm
+
+assert_driver_present sm8750-tlmm-driver-present sm8750-tlmm
+
+assert_driver_present smccc_trng-driver-present smccc_trng
+
+assert_driver_present snd-x1e80100-driver-present snd-x1e80100
+assert_device_present sound-card-probed snd-x1e80100 sound
+
+assert_driver_present snps-udc-plat-driver-present snps-udc-plat
+
+assert_driver_present soc-audio-driver-present soc-audio
+
+assert_driver_present spi_qup-driver-present spi_qup
+
+assert_driver_present spmi_pmic_arb-driver-present spmi_pmic_arb
+assert_device_present spmi-arbiter-probed spmi_pmic_arb c400000.arbiter
+
+assert_driver_present spmi-temp-alarm-driver-present spmi-temp-alarm
+assert_device_present spmi0-pmic2-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@2:temp-alarm@a00
+assert_device_present spmi0-pmic7-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@7:temp-alarm@a00
+assert_device_present spmi1-pmic5-temp-alarm-probed spmi-temp-alarm c437000.spmi:pmic@5:temp-alarm@a00
+assert_device_present spmi0-pmic1-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@1:temp-alarm@a00
+assert_device_present spmi0-pmic5-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@5:temp-alarm@a00
+assert_device_present spmi1-pmic3-temp-alarm-probed spmi-temp-alarm c437000.spmi:pmic@3:temp-alarm@a00
+assert_device_present spmi1-pmicb-temp-alarm-probed spmi-temp-alarm c437000.spmi:pmic@b:temp-alarm@a00
+assert_device_present spmi0-pmic9-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@9:temp-alarm@a00
+assert_device_present spmi1-pmic2-temp-alarm-probed spmi-temp-alarm c437000.spmi:pmic@2:temp-alarm@a00
+assert_device_present spmi0-pmic3-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@3:temp-alarm@a00
+assert_device_present spmi0-pmic8-temp-alarm-probed spmi-temp-alarm c426000.spmi:pmic@8:temp-alarm@a00
+
+assert_driver_present sram-driver-present sram
+assert_device_present sram-probed sram 81e08600.sram
+
+assert_driver_present syscon-poweroff-driver-present syscon-poweroff
+
+assert_driver_present syscon-reboot-driver-present syscon-reboot
+
+assert_driver_present syscon-reboot-mode-driver-present syscon-reboot-mode
+
+assert_driver_present tcsrcc-glymur-driver-present tcsrcc-glymur
+assert_device_present tcsrcc-clock-controller-probed tcsrcc-glymur 1fd5000.clock-controller
+
+assert_driver_present tcsr_cc-sm8550-driver-present tcsr_cc-sm8550
+
+assert_driver_present tcsr_cc-sm8650-driver-present tcsr_cc-sm8650
+
+assert_driver_present tcsrcc-x1e80100-driver-present tcsrcc-x1e80100
+
+assert_driver_present tegra-usb-driver-present tegra-usb
+
+assert_driver_present ti-syscon-reset-driver-present ti-syscon-reset
+
+assert_driver_present tps65219-gpio-driver-present tps65219-gpio
+
+assert_driver_present tps65219-regulator-driver-present tps65219-regulator
+
+assert_driver_present usb3503-driver-present usb3503
+
+assert_driver_present usb-conn-gpio-driver-present usb-conn-gpio
+
+assert_driver_present usbmisc_imx-driver-present usbmisc_imx
+
+assert_driver_present usb_phy_generic-driver-present usb_phy_generic
+
+assert_driver_present va_macro-driver-present va_macro
+assert_device_present va-macro-probed va_macro 7660000.codec
+
+assert_driver_present vexpress-osc-driver-present vexpress-osc
+
+assert_driver_present vexpress-syscfg-driver-present vexpress-syscfg
+
+assert_driver_present vexpress-sysreg-driver-present vexpress-sysreg
+
+assert_driver_present videocc-glymur-driver-present videocc-glymur
+assert_device_present videocc-clock-controller-probed videocc-glymur aaf0000.clock-controller
+
+assert_driver_present virtio-mmio-driver-present virtio-mmio
+
+assert_driver_present vmclock-driver-present vmclock
+
+assert_driver_present wsa_macro-driver-present wsa_macro
+assert_device_present wsa2-macro-probed wsa_macro 6cb0000.codec
+assert_device_present wsa-macro-probed wsa_macro 6c90000.codec
+
+assert_driver_present x1e80100-tlmm-driver-present x1e80100-tlmm
+
+assert_driver_present xenon-sdhci-driver-present xenon-sdhci
+
+assert_driver_present xgene-gpio-driver-present xgene-gpio
+
+assert_driver_present xgene-msi-driver-present xgene-msi
+
+assert_driver_present xgene-pcie-driver-present xgene-pcie
+
+assert_driver_present xgene-reboot-driver-present xgene-reboot
+
+assert_driver_present xhci-hcd-driver-present xhci-hcd
+assert_device_present xhci2-probed xhci-hcd xhci-hcd.2.auto
+assert_device_present xhci1-probed xhci-hcd xhci-hcd.1.auto
+
+assert_driver_present xilinx-pcie-driver-present xilinx-pcie
+
+assert_driver_present xuartps-driver-present xuartps
+
+assert_driver_present qcom,apr-driver-present qcom,apr
+assert_device_present adsp-apr-probed qcom,apr 6800000.remoteproc:glink-edge.adsp_apps.-1.-1
+
+assert_driver_present qcom,fastrpc-driver-present qcom,fastrpc
+assert_device_present adsp-fastrpc-probed qcom,fastrpc 6800000.remoteproc:glink-edge.fastrpcglink-apps-dsp.-1.-1
+assert_device_present cdsp-fastrpc-probed qcom,fastrpc 32300000.remoteproc:glink-edge.fastrpcglink-apps-dsp.-1.-1
+
+assert_driver_present qcom_glink_ssr-driver-present qcom_glink_ssr
+assert_device_present adsp-glink-ssr-probed qcom_glink_ssr 6800000.remoteproc:glink-edge.glink_ssr.-1.-1
+assert_device_present soccp-glink-ssr-probed qcom_glink_ssr d00000.remoteproc-soccp:glink-edge.glink_ssr.-1.-1
+
+assert_driver_present qcom_pmic_glink_rpmsg-driver-present qcom_pmic_glink_rpmsg
+assert_device_present soccp-pmic-rtr-probed qcom_pmic_glink_rpmsg d00000.remoteproc-soccp:glink-edge.PMIC_RTR_SOCCP_APPS.-1.-1
+
+assert_driver_present qcom_smd_qrtr-driver-present qcom_smd_qrtr
+assert_device_present adsp-ipcrouter-probed qcom_smd_qrtr 6800000.remoteproc:glink-edge.IPCRTR.-1.-1
+assert_device_present cdsp-ipcrouter-probed qcom_smd_qrtr 32300000.remoteproc:glink-edge.IPCRTR.-1.-1
+assert_device_present soccp-ipcrouter-probed qcom_smd_qrtr d00000.remoteproc-soccp:glink-edge.IPCRTR.-1.-1
+
+assert_driver_present qcom_sysmon-driver-present qcom_sysmon
+
+assert_driver_present rpmsg_chrdev-driver-present rpmsg_chrdev
+
+assert_driver_present rpmsg_ctrl-driver-present rpmsg_ctrl
+assert_device_present cdsp-rpmsg-ctrl-probed rpmsg_ctrl 32300000.remoteproc:glink-edge.rpmsg_ctrl.0.0
+assert_device_present adsp-rpmsg-ctrl-probed rpmsg_ctrl 6800000.remoteproc:glink-edge.rpmsg_ctrl.0.0
+assert_device_present soccp-rpmsg-ctrl-probed rpmsg_ctrl d00000.remoteproc-soccp:glink-edge.rpmsg_ctrl.0.0
+
+assert_driver_present scmi-clocks-driver-present scmi-clocks
+
+assert_driver_present scmi-cpufreq-driver-present scmi-cpufreq
+
+assert_driver_present scmi-hwmon-driver-present scmi-hwmon
+
+assert_driver_present scmi-imx-bbm-key-driver-present scmi-imx-bbm-key
+
+assert_driver_present scmi-imx-bbm-rtc-driver-present scmi-imx-bbm-rtc
+
+assert_driver_present scmi-perf-domain-driver-present scmi-perf-domain
+
+assert_driver_present scmi-power-domain-driver-present scmi-power-domain
+
+assert_driver_present scmi-regulator-driver-present scmi-regulator
+
+assert_driver_present scmi-reset-driver-present scmi-reset
+
+assert_driver_present ctrl-driver-present ctrl
+assert_device_present serial8250-ctrl-probed ctrl serial8250:0
+assert_device_present uart21-ctrl-probed ctrl 894000.serial:0
+assert_device_present uart14-ctrl-probed ctrl a98000.serial:0
+
+assert_driver_present port-driver-present port
+assert_device_present serial8250-port3-probed port serial8250:0.3
+assert_device_present serial8250-port1-probed port serial8250:0.1
+assert_device_present uart21-port-probed port 894000.serial:0.0
+assert_device_present uart14-port-probed port a98000.serial:0.0
+assert_device_present serial8250-port2-probed port serial8250:0.2
+assert_device_present serial8250-port0-probed port serial8250:0.0
+
+assert_driver_present hci-ti-driver-present hci-ti
+
+assert_driver_present hci_uart_bcm-driver-present hci_uart_bcm
+
+assert_driver_present hci_uart_mrvl-driver-present hci_uart_mrvl
+
+assert_driver_present hci_uart_qca-driver-present hci_uart_qca
+assert_device_present bluetooth-probed hci_uart_qca serial0-0
+
+assert_driver_present atkbd-driver-present atkbd
+
+assert_driver_present psmouse-driver-present psmouse
+
+assert_driver_present wsa884x-codec-driver-present wsa884x-codec
+assert_device_present wsa884x-right-tweeter-probed wsa884x-codec sdw:4:0:0217:0204:00:1
+assert_device_present wsa884x-left-woofer-probed wsa884x-codec sdw:1:0:0217:0204:00:0
+assert_device_present wsa884x-left-tweeter-probed wsa884x-codec sdw:1:0:0217:0204:00:1
+assert_device_present wsa884x-right-woofer-probed wsa884x-codec sdw:4:0:0217:0204:00:0
+
+assert_driver_present pmic-spmi-driver-present pmic-spmi
+assert_device_present spmi0-pmic03-probed pmic-spmi 0-03
+assert_device_present spmi2-pmic09-probed pmic-spmi 2-09
+assert_device_present spmi0-pmic01-probed pmic-spmi 0-01
+assert_device_present spmi1-pmic0b-probed pmic-spmi 1-0b
+assert_device_present spmi1-pmic02-probed pmic-spmi 1-02
+assert_device_present spmi0-pmic08-probed pmic-spmi 0-08
+assert_device_present spmi2-pmic0a-probed pmic-spmi 2-0a
+assert_device_present spmi0-pmic02-probed pmic-spmi 0-02
+assert_device_present spmi1-pmic05-probed pmic-spmi 1-05
+assert_device_present spmi0-pmic00-probed pmic-spmi 0-00
+assert_device_present spmi1-pmic03-probed pmic-spmi 1-03
+assert_device_present spmi0-pmic09-probed pmic-spmi 0-09
+assert_device_present spmi2-pmic0b-probed pmic-spmi 2-0b
+assert_device_present spmi0-pmic07-probed pmic-spmi 0-07
+assert_device_present spmi0-pmic05-probed pmic-spmi 0-05
+
+assert_driver_present hub-driver-present hub
+assert_device_present usb3-root-hub-interface-probed hub 3-0:1.0
+assert_device_present usb1-root-hub-interface-probed hub 1-0:1.0
+assert_device_present usb2-root-hub-interface-probed hub 2-0:1.0
+
+assert_driver_present usb-driver-present usb
+assert_device_present usb3-probed usb usb3
+assert_device_present usb1-probed usb usb1
+assert_device_present usb-device1-probed usb 1-1
+assert_device_present usb2-probed usb usb2
+
+assert_driver_present usbfs-driver-present usbfs
+
+assert_driver_present usbhid-driver-present usbhid
+
+assert_driver_present usb-storage-driver-present usb-storage
+
+assert_soundcard_present GLYMURCRD-playback GLYMURCRD pcm0p
