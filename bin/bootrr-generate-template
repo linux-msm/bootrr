@@ -30,8 +30,8 @@ for driver_path in /sys/bus/*/drivers/* ; do
 
 	# Check for each instance of the driver
 	find "$driver_path" -type l | grep -v module$ | while read -r dev ; do
-		d=$(cd ${dev} ; pwd -P | sed s,.*/,,)
-		echo assert_device_present ${d}-probed \"${driver}\" ${d}
+		d="$(cd "${dev}" ; pwd -P | sed s,.*/,,)"
+		echo assert_device_present \"${d}-probed\" \"${driver}\" \"${d}\"
 	done
 
 	echo

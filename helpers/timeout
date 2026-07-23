@@ -6,11 +6,10 @@ if [ $# -lt 2 ]; then
 fi
 
 attempts="$1"; shift
-cmd="$@"
 
 for i in `seq ${attempts}`
 do
-	$cmd && exit 0 
+	"$@" && exit 0
 	sleep 1
 done
 
